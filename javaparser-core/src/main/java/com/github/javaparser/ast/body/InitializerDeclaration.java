@@ -23,6 +23,8 @@ package com.github.javaparser.ast.body;
 import com.github.javaparser.Range;
 import com.github.javaparser.ast.AllFieldsConstructor;
 import com.github.javaparser.ast.NodeList;
+import com.github.javaparser.ast.expr.AnnotationExpr;
+import com.github.javaparser.ast.nodeTypes.NodeWithAnnotations;
 import com.github.javaparser.ast.nodeTypes.NodeWithBlockStmt;
 import com.github.javaparser.ast.nodeTypes.NodeWithJavadoc;
 import com.github.javaparser.ast.observer.ObservableProperty;
@@ -44,7 +46,7 @@ import com.github.javaparser.TokenRange;
  *
  * @author Julio Vilmar Gesser
  */
-public final class InitializerDeclaration extends BodyDeclaration<InitializerDeclaration> implements NodeWithJavadoc<InitializerDeclaration>, NodeWithBlockStmt<InitializerDeclaration> {
+public final class InitializerDeclaration extends BodyDeclaration implements NodeWithJavadoc<InitializerDeclaration>, NodeWithBlockStmt<InitializerDeclaration>, NodeWithAnnotations<InitializerDeclaration> {
 
     private boolean isStatic;
 
@@ -136,5 +138,10 @@ public final class InitializerDeclaration extends BodyDeclaration<InitializerDec
     @Generated("com.github.javaparser.generator.core.node.GetMetaModelGenerator")
     public InitializerDeclarationMetaModel getMetaModel() {
         return JavaParserMetaModel.initializerDeclarationMetaModel;
+    }
+
+    @Override
+    public InitializerDeclaration setAnnotations(NodeList<AnnotationExpr> annotations) {
+        return (InitializerDeclaration) super.setAnnotations(annotations);
     }
 }

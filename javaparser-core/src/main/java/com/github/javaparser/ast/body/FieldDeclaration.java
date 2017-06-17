@@ -29,6 +29,7 @@ import com.github.javaparser.ast.expr.AnnotationExpr;
 import com.github.javaparser.ast.expr.AssignExpr;
 import com.github.javaparser.ast.expr.AssignExpr.Operator;
 import com.github.javaparser.ast.expr.NameExpr;
+import com.github.javaparser.ast.nodeTypes.NodeWithAnnotations;
 import com.github.javaparser.ast.nodeTypes.NodeWithJavadoc;
 import com.github.javaparser.ast.nodeTypes.NodeWithVariables;
 import com.github.javaparser.ast.nodeTypes.modifiers.NodeWithAccessModifiers;
@@ -61,7 +62,7 @@ import com.github.javaparser.TokenRange;
  *
  * @author Julio Vilmar Gesser
  */
-public final class FieldDeclaration extends BodyDeclaration<FieldDeclaration> implements NodeWithJavadoc<FieldDeclaration>, NodeWithVariables<FieldDeclaration>, NodeWithAccessModifiers<FieldDeclaration>, NodeWithStaticModifier<FieldDeclaration>, NodeWithFinalModifier<FieldDeclaration> {
+public final class FieldDeclaration extends BodyDeclaration implements NodeWithJavadoc<FieldDeclaration>, NodeWithVariables<FieldDeclaration>, NodeWithAccessModifiers<FieldDeclaration>, NodeWithStaticModifier<FieldDeclaration>, NodeWithFinalModifier<FieldDeclaration>, NodeWithAnnotations<FieldDeclaration> {
 
     private EnumSet<Modifier> modifiers;
 
@@ -257,5 +258,10 @@ public final class FieldDeclaration extends BodyDeclaration<FieldDeclaration> im
     @Generated("com.github.javaparser.generator.core.node.GetMetaModelGenerator")
     public FieldDeclarationMetaModel getMetaModel() {
         return JavaParserMetaModel.fieldDeclarationMetaModel;
+    }
+
+    @Override
+    public FieldDeclaration setAnnotations(NodeList<AnnotationExpr> annotations) {
+        return (FieldDeclaration) super.setAnnotations(annotations);
     }
 }

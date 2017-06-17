@@ -130,9 +130,9 @@ public class SharedSteps {
         assertThat(compilationUnit.toString(), CoreMatchers.is(equalToIgnoringWhiteSpace(classSrc)));
     }
 
-    public static BodyDeclaration<?> getMemberByTypeAndPosition(TypeDeclaration<?> typeDeclaration, int position, Class<? extends BodyDeclaration<?>> typeClass) {
+    public static BodyDeclaration getMemberByTypeAndPosition(TypeDeclaration<?> typeDeclaration, int position, Class<? extends BodyDeclaration> typeClass) {
         int typeCount = 0;
-        for (BodyDeclaration<?> declaration : typeDeclaration.getMembers()) {
+        for (BodyDeclaration declaration : typeDeclaration.getMembers()) {
             if (declaration.getClass().equals(typeClass)) {
                 if (typeCount == position) {
                     return declaration;
@@ -149,7 +149,7 @@ public class SharedSteps {
 
         int memberCount = 0;
         int methodCount = 0;
-        for (BodyDeclaration<?> bodyDeclaration : type.getMembers()) {
+        for (BodyDeclaration bodyDeclaration : type.getMembers()) {
             if (bodyDeclaration instanceof MethodDeclaration) {
                 if (methodCount == methodPosition - 1) {
                     return (MethodDeclaration) type.getMember(memberCount);

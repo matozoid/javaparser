@@ -52,7 +52,7 @@ public class ModifierVisitor<A> implements GenericVisitor<Visitable, A> {
     @Override
     @Generated("com.github.javaparser.generator.core.visitor.ModifierVisitorGenerator")
     public Visitable visit(final AnnotationDeclaration n, final A arg) {
-        NodeList<BodyDeclaration<?>> members = modifyList(n.getMembers(), arg);
+        NodeList<BodyDeclaration> members = modifyList(n.getMembers(), arg);
         SimpleName name = (SimpleName) n.getName().accept(this, arg);
         NodeList<AnnotationExpr> annotations = modifyList(n.getAnnotations(), arg);
         Comment comment = n.getComment().map(s -> (Comment) s.accept(this, arg)).orElse(null);
@@ -249,7 +249,7 @@ public class ModifierVisitor<A> implements GenericVisitor<Visitable, A> {
         NodeList<ClassOrInterfaceType> extendedTypes = modifyList(n.getExtendedTypes(), arg);
         NodeList<ClassOrInterfaceType> implementedTypes = modifyList(n.getImplementedTypes(), arg);
         NodeList<TypeParameter> typeParameters = modifyList(n.getTypeParameters(), arg);
-        NodeList<BodyDeclaration<?>> members = modifyList(n.getMembers(), arg);
+        NodeList<BodyDeclaration> members = modifyList(n.getMembers(), arg);
         SimpleName name = (SimpleName) n.getName().accept(this, arg);
         NodeList<AnnotationExpr> annotations = modifyList(n.getAnnotations(), arg);
         Comment comment = n.getComment().map(s -> (Comment) s.accept(this, arg)).orElse(null);
@@ -391,7 +391,7 @@ public class ModifierVisitor<A> implements GenericVisitor<Visitable, A> {
     @Generated("com.github.javaparser.generator.core.visitor.ModifierVisitorGenerator")
     public Visitable visit(final EnumConstantDeclaration n, final A arg) {
         NodeList<Expression> arguments = modifyList(n.getArguments(), arg);
-        NodeList<BodyDeclaration<?>> classBody = modifyList(n.getClassBody(), arg);
+        NodeList<BodyDeclaration> classBody = modifyList(n.getClassBody(), arg);
         SimpleName name = (SimpleName) n.getName().accept(this, arg);
         NodeList<AnnotationExpr> annotations = modifyList(n.getAnnotations(), arg);
         Comment comment = n.getComment().map(s -> (Comment) s.accept(this, arg)).orElse(null);
@@ -410,7 +410,7 @@ public class ModifierVisitor<A> implements GenericVisitor<Visitable, A> {
     public Visitable visit(final EnumDeclaration n, final A arg) {
         NodeList<EnumConstantDeclaration> entries = modifyList(n.getEntries(), arg);
         NodeList<ClassOrInterfaceType> implementedTypes = modifyList(n.getImplementedTypes(), arg);
-        NodeList<BodyDeclaration<?>> members = modifyList(n.getMembers(), arg);
+        NodeList<BodyDeclaration> members = modifyList(n.getMembers(), arg);
         SimpleName name = (SimpleName) n.getName().accept(this, arg);
         NodeList<AnnotationExpr> annotations = modifyList(n.getAnnotations(), arg);
         Comment comment = n.getComment().map(s -> (Comment) s.accept(this, arg)).orElse(null);
@@ -702,7 +702,7 @@ public class ModifierVisitor<A> implements GenericVisitor<Visitable, A> {
     @Override
     @Generated("com.github.javaparser.generator.core.visitor.ModifierVisitorGenerator")
     public Visitable visit(final ObjectCreationExpr n, final A arg) {
-        NodeList<BodyDeclaration<?>> anonymousClassBody = modifyList(n.getAnonymousClassBody(), arg);
+        NodeList<BodyDeclaration> anonymousClassBody = modifyList(n.getAnonymousClassBody(), arg);
         NodeList<Expression> arguments = modifyList(n.getArguments(), arg);
         Expression scope = n.getScope().map(s -> (Expression) s.accept(this, arg)).orElse(null);
         ClassOrInterfaceType type = (ClassOrInterfaceType) n.getType().accept(this, arg);

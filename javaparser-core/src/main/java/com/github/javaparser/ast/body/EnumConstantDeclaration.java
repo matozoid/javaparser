@@ -26,6 +26,7 @@ import com.github.javaparser.ast.NodeList;
 import com.github.javaparser.ast.expr.AnnotationExpr;
 import com.github.javaparser.ast.expr.Expression;
 import com.github.javaparser.ast.expr.SimpleName;
+import com.github.javaparser.ast.nodeTypes.NodeWithAnnotations;
 import com.github.javaparser.ast.nodeTypes.NodeWithArguments;
 import com.github.javaparser.ast.nodeTypes.NodeWithJavadoc;
 import com.github.javaparser.ast.nodeTypes.NodeWithSimpleName;
@@ -47,13 +48,13 @@ import com.github.javaparser.TokenRange;
  *
  * @author Julio Vilmar Gesser
  */
-public final class EnumConstantDeclaration extends BodyDeclaration<EnumConstantDeclaration> implements NodeWithJavadoc<EnumConstantDeclaration>, NodeWithSimpleName<EnumConstantDeclaration>, NodeWithArguments<EnumConstantDeclaration> {
+public final class EnumConstantDeclaration extends BodyDeclaration implements NodeWithJavadoc<EnumConstantDeclaration>, NodeWithSimpleName<EnumConstantDeclaration>, NodeWithArguments<EnumConstantDeclaration>, NodeWithAnnotations<EnumConstantDeclaration> {
 
     private SimpleName name;
 
     private NodeList<Expression> arguments;
 
-    private NodeList<BodyDeclaration<?>> classBody;
+    private NodeList<BodyDeclaration> classBody;
 
     public EnumConstantDeclaration() {
         this(null, new NodeList<>(), new SimpleName(), new NodeList<>(), new NodeList<>());
@@ -64,13 +65,13 @@ public final class EnumConstantDeclaration extends BodyDeclaration<EnumConstantD
     }
 
     @AllFieldsConstructor
-    public EnumConstantDeclaration(NodeList<AnnotationExpr> annotations, SimpleName name, NodeList<Expression> arguments, NodeList<BodyDeclaration<?>> classBody) {
+    public EnumConstantDeclaration(NodeList<AnnotationExpr> annotations, SimpleName name, NodeList<Expression> arguments, NodeList<BodyDeclaration> classBody) {
         this(null, annotations, name, arguments, classBody);
     }
 
     /**This constructor is used by the parser and is considered private.*/
     @Generated("com.github.javaparser.generator.core.node.MainConstructorGenerator")
-    public EnumConstantDeclaration(TokenRange tokenRange, NodeList<AnnotationExpr> annotations, SimpleName name, NodeList<Expression> arguments, NodeList<BodyDeclaration<?>> classBody) {
+    public EnumConstantDeclaration(TokenRange tokenRange, NodeList<AnnotationExpr> annotations, SimpleName name, NodeList<Expression> arguments, NodeList<BodyDeclaration> classBody) {
         super(tokenRange, annotations);
         setName(name);
         setArguments(arguments);
@@ -94,7 +95,7 @@ public final class EnumConstantDeclaration extends BodyDeclaration<EnumConstantD
     }
 
     @Generated("com.github.javaparser.generator.core.node.PropertyGenerator")
-    public NodeList<BodyDeclaration<?>> getClassBody() {
+    public NodeList<BodyDeclaration> getClassBody() {
         return classBody;
     }
 
@@ -118,7 +119,7 @@ public final class EnumConstantDeclaration extends BodyDeclaration<EnumConstantD
     }
 
     @Generated("com.github.javaparser.generator.core.node.PropertyGenerator")
-    public EnumConstantDeclaration setClassBody(final NodeList<BodyDeclaration<?>> classBody) {
+    public EnumConstantDeclaration setClassBody(final NodeList<BodyDeclaration> classBody) {
         assertNotNull(classBody);
         if (classBody == this.classBody) {
             return (EnumConstantDeclaration) this;
@@ -181,5 +182,10 @@ public final class EnumConstantDeclaration extends BodyDeclaration<EnumConstantD
     @Generated("com.github.javaparser.generator.core.node.GetMetaModelGenerator")
     public EnumConstantDeclarationMetaModel getMetaModel() {
         return JavaParserMetaModel.enumConstantDeclarationMetaModel;
+    }
+
+    @Override
+    public EnumConstantDeclaration setAnnotations(NodeList<AnnotationExpr> annotations) {
+        return (EnumConstantDeclaration) super.setAnnotations(annotations);
     }
 }

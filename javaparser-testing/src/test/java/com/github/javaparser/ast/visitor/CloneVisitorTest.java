@@ -48,7 +48,7 @@ public class CloneVisitorTest {
     @Test
     public void cloneJavaDocTest() {
 
-        NodeList<BodyDeclaration<?>> bodyDeclarationList = new NodeList<>();
+        NodeList<BodyDeclaration> bodyDeclarationList = new NodeList<>();
         bodyDeclarationList.add(new AnnotationMemberDeclaration().setJavadocComment("javadoc"));
         bodyDeclarationList.add(new ConstructorDeclaration().setJavadocComment("javadoc"));
         bodyDeclarationList.add(new EnumConstantDeclaration().setJavadocComment("javadoc"));
@@ -88,9 +88,9 @@ public class CloneVisitorTest {
             if (typeDeclaration.getMembers() == null) {
                 assertEquals(typeDeclaration.getComment().get().getContent(), "javadoc");
             } else {
-                Iterator<BodyDeclaration<?>> bodyItr = typeDeclaration.getMembers().iterator();
+                Iterator<BodyDeclaration> bodyItr = typeDeclaration.getMembers().iterator();
                 while (bodyItr.hasNext()) {
-                    BodyDeclaration<?> bodyDeclaration = bodyItr.next();
+                    BodyDeclaration bodyDeclaration = bodyItr.next();
                     assertEquals(bodyDeclaration.getComment().get().getContent(), "javadoc");
                 }
             }

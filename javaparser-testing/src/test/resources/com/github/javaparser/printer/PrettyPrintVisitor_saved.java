@@ -67,8 +67,8 @@ public class PrettyPrintVisitor implements VoidVisitor<Void> {
         }
     }
 
-    private void printMembers(final NodeList<BodyDeclaration<?>> members, final Void arg) {
-        for (final BodyDeclaration<?> member : members) {
+    private void printMembers(final NodeList<BodyDeclaration> members, final Void arg) {
+        for (final BodyDeclaration member : members) {
             printer.println();
             member.accept(this, arg);
             printer.println();

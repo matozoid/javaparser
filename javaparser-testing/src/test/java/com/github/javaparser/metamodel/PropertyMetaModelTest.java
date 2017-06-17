@@ -22,9 +22,9 @@ public class PropertyMetaModelTest {
     public void whenPropertyIsVeryComplexThenTypeInfoIsCorrect() {
         PropertyMetaModel bert = new PropertyMetaModel(null, "bert", BodyDeclaration.class, Optional.empty(), true, false, true, false, true);
         assertEquals("BodyDeclaration", bert.getTypeName());
-        assertEquals("BodyDeclaration<?>", bert.getTypeNameGenerified());
-        assertEquals("Optional<NodeList<BodyDeclaration<?>>>", bert.getTypeNameForGetter());
-        assertEquals("NodeList<BodyDeclaration<?>>", bert.getTypeNameForSetter());
+        assertEquals("BodyDeclaration", bert.getTypeNameGenerified());
+        assertEquals("Optional<NodeList<BodyDeclaration>>", bert.getTypeNameForGetter());
+        assertEquals("NodeList<BodyDeclaration>", bert.getTypeNameForSetter());
     }
 
     @Test

@@ -46,27 +46,27 @@ import static java.util.stream.Collectors.toList;
  * method.
  */
 public interface NodeWithMembers<N extends Node> {
-    NodeList<BodyDeclaration<?>> getMembers();
+    NodeList<BodyDeclaration> getMembers();
 
     void tryAddImportToParentCompilationUnit(Class<?> clazz);
 
-    default BodyDeclaration<?> getMember(int i) {
+    default BodyDeclaration getMember(int i) {
         return getMembers().get(i);
     }
 
     @SuppressWarnings("unchecked")
-    default N setMember(int i, BodyDeclaration<?> member) {
+    default N setMember(int i, BodyDeclaration member) {
         getMembers().set(i, member);
         return (N) this;
     }
 
     @SuppressWarnings("unchecked")
-    default N addMember(BodyDeclaration<?> member) {
+    default N addMember(BodyDeclaration member) {
         getMembers().add(member);
         return (N) this;
     }
 
-    N setMembers(NodeList<BodyDeclaration<?>> members);
+    N setMembers(NodeList<BodyDeclaration> members);
 
     /**
      * Add a field to this and automatically add the import of the type if needed

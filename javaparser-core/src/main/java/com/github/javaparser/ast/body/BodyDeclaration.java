@@ -41,7 +41,7 @@ import com.github.javaparser.TokenRange;
  *
  * @author Julio Vilmar Gesser
  */
-public abstract class BodyDeclaration<T extends BodyDeclaration<?>> extends Node implements NodeWithAnnotations<T> {
+public abstract class BodyDeclaration extends Node {
 
     private NodeList<AnnotationExpr> annotations;
 
@@ -73,17 +73,17 @@ public abstract class BodyDeclaration<T extends BodyDeclaration<?>> extends Node
 
     @SuppressWarnings("unchecked")
     @Generated("com.github.javaparser.generator.core.node.PropertyGenerator")
-    public T setAnnotations(final NodeList<AnnotationExpr> annotations) {
+    public BodyDeclaration setAnnotations(final NodeList<AnnotationExpr> annotations) {
         assertNotNull(annotations);
         if (annotations == this.annotations) {
-            return (T) this;
+            return (BodyDeclaration) this;
         }
         notifyPropertyChange(ObservableProperty.ANNOTATIONS, this.annotations, annotations);
         if (this.annotations != null)
             this.annotations.setParentNode(null);
         this.annotations = annotations;
         setAsParentNodeOf(annotations);
-        return (T) this;
+        return (BodyDeclaration) this;
     }
 
     @Override
@@ -107,8 +107,8 @@ public abstract class BodyDeclaration<T extends BodyDeclaration<?>> extends Node
 
     @Override
     @Generated("com.github.javaparser.generator.core.node.CloneGenerator")
-    public BodyDeclaration<?> clone() {
-        return (BodyDeclaration<?>) accept(new CloneVisitor(), null);
+    public BodyDeclaration clone() {
+        return (BodyDeclaration) accept(new CloneVisitor(), null);
     }
 
     @Override

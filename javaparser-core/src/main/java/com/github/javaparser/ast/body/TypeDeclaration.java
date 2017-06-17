@@ -48,13 +48,15 @@ import com.github.javaparser.TokenRange;
  *
  * @author Julio Vilmar Gesser
  */
-public abstract class TypeDeclaration<T extends TypeDeclaration<?>> extends BodyDeclaration<T> implements NodeWithSimpleName<T>, NodeWithJavadoc<T>, NodeWithMembers<T>, NodeWithAccessModifiers<T>, NodeWithStaticModifier<T>, NodeWithStrictfpModifier<T> {
+public abstract class TypeDeclaration extends BodyDeclaration {
+
+//    implements NodeWithSimpleName<TypeDeclaration>, NodeWithJavadoc<TypeDeclaration>, NodeWithMembers<TypeDeclaration>, NodeWithAccessModifiers<TypeDeclaration>, NodeWithStaticModifier<TypeDeclaration>, NodeWithStrictfpModifier<TypeDeclaration>
 
     private SimpleName name;
 
     private EnumSet<Modifier> modifiers;
 
-    private NodeList<BodyDeclaration<?>> members;
+    private NodeList<BodyDeclaration> members;
 
     public TypeDeclaration() {
         this(null, EnumSet.noneOf(Modifier.class), new NodeList<>(), new SimpleName(), new NodeList<>());
@@ -65,13 +67,13 @@ public abstract class TypeDeclaration<T extends TypeDeclaration<?>> extends Body
     }
 
     @AllFieldsConstructor
-    public TypeDeclaration(EnumSet<Modifier> modifiers, NodeList<AnnotationExpr> annotations, SimpleName name, NodeList<BodyDeclaration<?>> members) {
+    public TypeDeclaration(EnumSet<Modifier> modifiers, NodeList<AnnotationExpr> annotations, SimpleName name, NodeList<BodyDeclaration> members) {
         this(null, modifiers, annotations, name, members);
     }
 
     /**This constructor is used by the parser and is considered private.*/
     @Generated("com.github.javaparser.generator.core.node.MainConstructorGenerator")
-    public TypeDeclaration(TokenRange tokenRange, EnumSet<Modifier> modifiers, NodeList<AnnotationExpr> annotations, SimpleName name, NodeList<BodyDeclaration<?>> members) {
+    public TypeDeclaration(TokenRange tokenRange, EnumSet<Modifier> modifiers, NodeList<AnnotationExpr> annotations, SimpleName name, NodeList<BodyDeclaration> members) {
         super(tokenRange, annotations);
         setModifiers(modifiers);
         setName(name);
@@ -79,19 +81,8 @@ public abstract class TypeDeclaration<T extends TypeDeclaration<?>> extends Body
         customInitialization();
     }
 
-    /**
-     * Adds the given declaration to the specified type.
-     *
-     * @param decl member declaration
-     */
-    public T addMember(BodyDeclaration<?> decl) {
-        NodeList<BodyDeclaration<?>> members = getMembers();
-        members.add(decl);
-        return (T) this;
-    }
-
     @Generated("com.github.javaparser.generator.core.node.PropertyGenerator")
-    public NodeList<BodyDeclaration<?>> getMembers() {
+    public NodeList<BodyDeclaration> getMembers() {
         return members;
     }
 
@@ -108,44 +99,44 @@ public abstract class TypeDeclaration<T extends TypeDeclaration<?>> extends Body
 
     @SuppressWarnings("unchecked")
     @Generated("com.github.javaparser.generator.core.node.PropertyGenerator")
-    public T setMembers(final NodeList<BodyDeclaration<?>> members) {
+    public TypeDeclaration setMembers(final NodeList<BodyDeclaration> members) {
         assertNotNull(members);
         if (members == this.members) {
-            return (T) this;
+            return (TypeDeclaration) this;
         }
         notifyPropertyChange(ObservableProperty.MEMBERS, this.members, members);
         if (this.members != null)
             this.members.setParentNode(null);
         this.members = members;
         setAsParentNodeOf(members);
-        return (T) this;
+        return (TypeDeclaration) this;
     }
 
     @SuppressWarnings("unchecked")
     @Generated("com.github.javaparser.generator.core.node.PropertyGenerator")
-    public T setModifiers(final EnumSet<Modifier> modifiers) {
+    public TypeDeclaration setModifiers(final EnumSet<Modifier> modifiers) {
         assertNotNull(modifiers);
         if (modifiers == this.modifiers) {
-            return (T) this;
+            return (TypeDeclaration) this;
         }
         notifyPropertyChange(ObservableProperty.MODIFIERS, this.modifiers, modifiers);
         this.modifiers = modifiers;
-        return (T) this;
+        return (TypeDeclaration) this;
     }
 
     @SuppressWarnings("unchecked")
     @Generated("com.github.javaparser.generator.core.node.PropertyGenerator")
-    public T setName(final SimpleName name) {
+    public TypeDeclaration setName(final SimpleName name) {
         assertNotNull(name);
         if (name == this.name) {
-            return (T) this;
+            return (TypeDeclaration) this;
         }
         notifyPropertyChange(ObservableProperty.NAME, this.name, name);
         if (this.name != null)
             this.name.setParentNode(null);
         this.name = name;
         setAsParentNodeOf(name);
-        return (T) this;
+        return (TypeDeclaration) this;
     }
 
     @Generated("com.github.javaparser.generator.core.node.PropertyGenerator")
@@ -197,8 +188,8 @@ public abstract class TypeDeclaration<T extends TypeDeclaration<?>> extends Body
 
     @Override
     @Generated("com.github.javaparser.generator.core.node.CloneGenerator")
-    public TypeDeclaration<?> clone() {
-        return (TypeDeclaration<?>) accept(new CloneVisitor(), null);
+    public TypeDeclaration clone() {
+        return (TypeDeclaration) accept(new CloneVisitor(), null);
     }
 
     @Override

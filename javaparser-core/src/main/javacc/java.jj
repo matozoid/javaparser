@@ -806,7 +806,7 @@ ClassOrInterfaceDeclaration ClassOrInterfaceDeclaration(ModifierHolder modifier)
     RangedList<TypeParameter> typePar = new RangedList<TypeParameter>(emptyList());
     NodeList<ClassOrInterfaceType> extList = emptyList();
     NodeList<ClassOrInterfaceType> impList = emptyList();
-    NodeList<BodyDeclaration<?>> members = emptyList();
+    NodeList<BodyDeclaration> members = emptyList();
     JavaToken begin = modifier.begin;
 }
 {
@@ -849,8 +849,8 @@ EnumDeclaration EnumDeclaration(ModifierHolder modifier):
     NodeList<ClassOrInterfaceType> impList = emptyList();
 	EnumConstantDeclaration entry;
 	NodeList<EnumConstantDeclaration> entries = emptyList();
-	BodyDeclaration<?> member;
-    NodeList<BodyDeclaration<?>> members = emptyList();
+	BodyDeclaration member;
+    NodeList<BodyDeclaration> members = emptyList();
 	JavaToken begin = modifier.begin;
 }
 {
@@ -881,7 +881,7 @@ EnumConstantDeclaration EnumConstantDeclaration():
 	AnnotationExpr ann;
 	SimpleName name;
 	NodeList<Expression> args = emptyList();
-	NodeList<BodyDeclaration<?>> classBody = emptyList();
+	NodeList<BodyDeclaration> classBody = emptyList();
 	JavaToken begin = INVALID;
 }
 {
@@ -937,9 +937,9 @@ NodeList<ClassOrInterfaceType> TypeBound():
    { return ret; }
 }
 
-NodeList<BodyDeclaration<?>> ClassOrInterfaceBody():
+NodeList<BodyDeclaration> ClassOrInterfaceBody():
 {
-	NodeList<BodyDeclaration<?>> ret = emptyList();
+	NodeList<BodyDeclaration> ret = emptyList();
 	BodyDeclaration member;
 }
 {
@@ -951,10 +951,10 @@ NodeList<BodyDeclaration<?>> ClassOrInterfaceBody():
     { return ret; }
 }
 
-BodyDeclaration<?> ClassOrInterfaceBodyDeclaration():
+BodyDeclaration ClassOrInterfaceBodyDeclaration():
 {
    ModifierHolder modifier;
-   BodyDeclaration<?> ret;
+   BodyDeclaration ret;
 }
 {
   {  }
@@ -2066,7 +2066,7 @@ Expression AllocationExpression(Expression scope):
 	Expression ret;
 	Type type;
 	RangedList<Type> typeArgs = new RangedList<Type>(null);
-	NodeList<BodyDeclaration<?>> anonymousBody = null;
+	NodeList<BodyDeclaration> anonymousBody = null;
 	NodeList<Expression> args;
 	JavaToken begin;
 	NodeList<AnnotationExpr> annotations = new NodeList<AnnotationExpr>();
@@ -2683,7 +2683,7 @@ Expression  MemberValueArrayInitializer():
 AnnotationDeclaration AnnotationTypeDeclaration(ModifierHolder modifier):
 {
 	SimpleName name;
-    NodeList<BodyDeclaration<?>> members = emptyList();
+    NodeList<BodyDeclaration> members = emptyList();
 	JavaToken begin = modifier.begin;
 }
 {
@@ -2694,9 +2694,9 @@ AnnotationDeclaration AnnotationTypeDeclaration(ModifierHolder modifier):
   }
 }
 
-NodeList<BodyDeclaration<?>> AnnotationTypeBody():
+NodeList<BodyDeclaration> AnnotationTypeBody():
 {
-	NodeList<BodyDeclaration<?>> ret = emptyList();
+	NodeList<BodyDeclaration> ret = emptyList();
 	BodyDeclaration member;
 }
 {
@@ -2708,7 +2708,7 @@ NodeList<BodyDeclaration<?>> AnnotationTypeBody():
     { return ret; }
 }
 
-BodyDeclaration<?> AnnotationBodyDeclaration():
+BodyDeclaration AnnotationBodyDeclaration():
 {
    ModifierHolder modifier;
    BodyDeclaration ret;

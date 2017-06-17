@@ -53,8 +53,8 @@ public class MethodChanger_2 {
         NodeList<TypeDeclaration<?>> types = cu.getTypes();
         for (TypeDeclaration<?> type : types) {
             // Go through all fields, methods, etc. in this type
-            NodeList<BodyDeclaration<?>> members = type.getMembers();
-            for (BodyDeclaration<?> member : members) {
+            NodeList<BodyDeclaration> members = type.getMembers();
+            for (BodyDeclaration member : members) {
                 if (member instanceof MethodDeclaration) {
                     MethodDeclaration method = (MethodDeclaration) member;
                     changeMethod(method);

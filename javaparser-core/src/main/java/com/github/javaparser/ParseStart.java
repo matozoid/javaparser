@@ -52,8 +52,8 @@ public interface ParseStart<R> {
     ParseStart<ImportDeclaration> IMPORT_DECLARATION = GeneratedJavaParser::ImportDeclaration;
     ParseStart<Expression> EXPRESSION = GeneratedJavaParser::Expression;
     ParseStart<AnnotationExpr> ANNOTATION = GeneratedJavaParser::Annotation;
-    ParseStart<BodyDeclaration<?>> ANNOTATION_BODY = GeneratedJavaParser::AnnotationBodyDeclaration;
-    ParseStart<BodyDeclaration<?>> CLASS_BODY = GeneratedJavaParser::ClassOrInterfaceBodyDeclaration;
+    ParseStart<BodyDeclaration> ANNOTATION_BODY = GeneratedJavaParser::AnnotationBodyDeclaration;
+    ParseStart<BodyDeclaration> CLASS_BODY = GeneratedJavaParser::ClassOrInterfaceBodyDeclaration;
     ParseStart<ClassOrInterfaceType> CLASS_OR_INTERFACE_TYPE = GeneratedJavaParser::ClassOrInterfaceType;
     ParseStart<Type> TYPE = GeneratedJavaParser::ResultType;
     ParseStart<VariableDeclarationExpr> VARIABLE_DECLARATION_EXPR = GeneratedJavaParser::VariableDeclarationExpression;

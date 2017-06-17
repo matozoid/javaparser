@@ -372,7 +372,7 @@ public final class JavaParser {
      * @return BodyDeclaration representing the Java annotation
      * @throws ParseProblemException if the source code has parser errors
      */
-    public static BodyDeclaration<?> parseAnnotationBodyDeclaration(final String body) {
+    public static BodyDeclaration parseAnnotationBodyDeclaration(final String body) {
         return simplifiedParse(ANNOTATION_BODY, provider(body));
     }
 
@@ -386,7 +386,7 @@ public final class JavaParser {
      * @deprecated just use parseBodyDeclaration now.
      */
     @Deprecated
-    public static BodyDeclaration<?> parseClassBodyDeclaration(String body) {
+    public static BodyDeclaration parseClassBodyDeclaration(String body) {
         return parseBodyDeclaration(body);
     }
 

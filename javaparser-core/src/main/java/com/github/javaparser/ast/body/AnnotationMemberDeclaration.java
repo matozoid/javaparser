@@ -28,6 +28,7 @@ import com.github.javaparser.ast.NodeList;
 import com.github.javaparser.ast.expr.AnnotationExpr;
 import com.github.javaparser.ast.expr.Expression;
 import com.github.javaparser.ast.expr.SimpleName;
+import com.github.javaparser.ast.nodeTypes.NodeWithAnnotations;
 import com.github.javaparser.ast.nodeTypes.NodeWithJavadoc;
 import com.github.javaparser.ast.nodeTypes.NodeWithSimpleName;
 import com.github.javaparser.ast.nodeTypes.NodeWithType;
@@ -54,7 +55,7 @@ import com.github.javaparser.TokenRange;
  *
  * @author Julio Vilmar Gesser
  */
-public final class AnnotationMemberDeclaration extends BodyDeclaration<AnnotationMemberDeclaration> implements NodeWithJavadoc<AnnotationMemberDeclaration>, NodeWithSimpleName<AnnotationMemberDeclaration>, NodeWithType<AnnotationMemberDeclaration, Type>, NodeWithPublicModifier<AnnotationMemberDeclaration>, NodeWithAbstractModifier<AnnotationMemberDeclaration> {
+public final class AnnotationMemberDeclaration extends BodyDeclaration implements NodeWithJavadoc<AnnotationMemberDeclaration>, NodeWithSimpleName<AnnotationMemberDeclaration>, NodeWithType<AnnotationMemberDeclaration, Type>, NodeWithPublicModifier<AnnotationMemberDeclaration>, NodeWithAbstractModifier<AnnotationMemberDeclaration>, NodeWithAnnotations<AnnotationMemberDeclaration> {
 
     private EnumSet<Modifier> modifiers;
 
@@ -218,4 +219,10 @@ public final class AnnotationMemberDeclaration extends BodyDeclaration<Annotatio
     public AnnotationMemberDeclarationMetaModel getMetaModel() {
         return JavaParserMetaModel.annotationMemberDeclarationMetaModel;
     }
+
+    @Override
+    public AnnotationMemberDeclaration setAnnotations(NodeList<AnnotationExpr> annotations) {
+        return (AnnotationMemberDeclaration) super.setAnnotations(annotations);
+    }
+
 }

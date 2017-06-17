@@ -61,7 +61,7 @@ public final class ObjectCreationExpr extends Expression implements NodeWithType
 
     private NodeList<Expression> arguments;
 
-    private NodeList<BodyDeclaration<?>> anonymousClassBody;
+    private NodeList<BodyDeclaration> anonymousClassBody;
 
     public ObjectCreationExpr() {
         this(null, null, new ClassOrInterfaceType(), new NodeList<>(), new NodeList<>(), null);
@@ -79,13 +79,13 @@ public final class ObjectCreationExpr extends Expression implements NodeWithType
     }
 
     @AllFieldsConstructor
-    public ObjectCreationExpr(final Expression scope, final ClassOrInterfaceType type, final NodeList<Type> typeArguments, final NodeList<Expression> arguments, final NodeList<BodyDeclaration<?>> anonymousClassBody) {
+    public ObjectCreationExpr(final Expression scope, final ClassOrInterfaceType type, final NodeList<Type> typeArguments, final NodeList<Expression> arguments, final NodeList<BodyDeclaration> anonymousClassBody) {
         this(null, scope, type, typeArguments, arguments, anonymousClassBody);
     }
 
     /**This constructor is used by the parser and is considered private.*/
     @Generated("com.github.javaparser.generator.core.node.MainConstructorGenerator")
-    public ObjectCreationExpr(TokenRange tokenRange, Expression scope, ClassOrInterfaceType type, NodeList<Type> typeArguments, NodeList<Expression> arguments, NodeList<BodyDeclaration<?>> anonymousClassBody) {
+    public ObjectCreationExpr(TokenRange tokenRange, Expression scope, ClassOrInterfaceType type, NodeList<Type> typeArguments, NodeList<Expression> arguments, NodeList<BodyDeclaration> anonymousClassBody) {
         super(tokenRange);
         setScope(scope);
         setType(type);
@@ -106,11 +106,11 @@ public final class ObjectCreationExpr extends Expression implements NodeWithType
     }
 
     @Generated("com.github.javaparser.generator.core.node.PropertyGenerator")
-    public Optional<NodeList<BodyDeclaration<?>>> getAnonymousClassBody() {
+    public Optional<NodeList<BodyDeclaration>> getAnonymousClassBody() {
         return Optional.ofNullable(anonymousClassBody);
     }
 
-    public void addAnonymousClassBody(BodyDeclaration<?> body) {
+    public void addAnonymousClassBody(BodyDeclaration body) {
         if (anonymousClassBody == null)
             anonymousClassBody = new NodeList<>();
         anonymousClassBody.add(body);
@@ -140,7 +140,7 @@ public final class ObjectCreationExpr extends Expression implements NodeWithType
      * @return this, the ObjectCreationExpr
      */
     @Generated("com.github.javaparser.generator.core.node.PropertyGenerator")
-    public ObjectCreationExpr setAnonymousClassBody(final NodeList<BodyDeclaration<?>> anonymousClassBody) {
+    public ObjectCreationExpr setAnonymousClassBody(final NodeList<BodyDeclaration> anonymousClassBody) {
         if (anonymousClassBody == this.anonymousClassBody) {
             return (ObjectCreationExpr) this;
         }

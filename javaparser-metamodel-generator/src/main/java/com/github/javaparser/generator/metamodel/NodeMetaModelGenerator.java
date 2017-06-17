@@ -101,7 +101,7 @@ public class NodeMetaModelGenerator {
     }
 
     private void moveStaticInitializeToTheEndOfTheClassBecauseWeNeedTheFieldsToInitializeFirst(ClassOrInterfaceDeclaration metaModelCoid) {
-        for (BodyDeclaration<?> m : metaModelCoid.getMembers()) {
+        for (BodyDeclaration m : metaModelCoid.getMembers()) {
             if (m instanceof InitializerDeclaration) {
                 m.remove();
                 metaModelCoid.addMember(m);
