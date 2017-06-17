@@ -62,9 +62,6 @@ public abstract class BodyDeclaration<T extends BodyDeclaration<?>> extends Node
         customInitialization();
     }
 
-    /**
-     * This supports {@link EmptyMemberDeclaration}.
-     */
     protected BodyDeclaration(TokenRange range) {
         this(range, new NodeList<>());
     }
