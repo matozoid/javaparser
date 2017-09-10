@@ -81,18 +81,28 @@ final class GeneratedJavaParser {
 
     /* Called from within a catch block to skip forward to a known token,
         and report the occurred exception as a problem. */
-    TokenRange recover(int recoveryTokenType, ParseException p) {
+    TokenRange recover(int recoveryTokenType, ParseException p, boolean consumeRecoveryToken) {
         JavaToken begin = null;
         if (p.currentToken != null) {
             if (p.currentToken instanceof GeneratedJavaParser.CustomToken) {
                 begin = token();
             }
         }
-        Token t;
+        Token t = token;
         boolean done = false;
-        do {
+        int kind;
+        while(t.kind != recoveryTokenType && t.kind!=EOF) {
             t = getNextToken();
-        } while(t.kind != recoveryTokenType && t.kind!=EOF);
+            if(consumeRecoveryToken) {
+                kind = t.kind;
+            } else {
+                if(t.kind == EOF) {
+                    kind = EOF;
+                } else {
+                    kind = token_source.getNextToken().kind;
+                }
+            }
+        }
 
         JavaToken end = token();
 
@@ -709,6 +719,9 @@ TOKEN :
 | < GT: ">" >
 }
 
+TOKEN : {
+    <EOF_CHAR: "\u001A"> // ctrl+z char
+}
 
 /*****************************************
  * THE JAVA LANGUAGE GRAMMAR STARTS HERE *
@@ -750,10 +763,10 @@ CompilationUnit CompilationUnit():
                 )
             )
         )*
-        (<EOF> | "\u001A" /** ctrl+z char **/)
+        (<EOF> | <EOF_CHAR>)
         { return new CompilationUnit(range(token_source.getHomeToken(), token()), pakage, imports, types, module); }
     } catch (ParseException e) {
-        recover(EOF, e);
+        recover(EOF_CHAR, e, true);
         final CompilationUnit compilationUnit = new CompilationUnit(range(token_source.getHomeToken(), token()), null, new NodeList<ImportDeclaration>(), new NodeList<TypeDeclaration<?>>(), null);
         compilationUnit.setParsed(UNPARSABLE);
         return compilationUnit;
@@ -2130,9 +2143,24 @@ ArrayCreationExpr ArrayCreation(JavaToken begin, Type type):
     ( LOOKAHEAD(2)
         annotations = Annotations()
         "[" { arrayCreationLevelStart = annotations.isEmpty() ? token() : annotations.get(0).getTokenRange().get().getBegin(); }
-        (expr = Expression())? { accum = add(accum, annotations); inits = add(inits, expr); annotations=null; expr=null; } 
-        "]" { levelRanges.add(new TokenRange(arrayCreationLevelStart, token())); }
-    )+ 
+        try {
+            try {
+                (expr = Expression())? { accum = add(accum, annotations); inits = add(inits, expr); annotations=null; expr=null; }
+            } catch (ParseException e) {
+                // Expression was bad when we reached ] 
+                TokenRange exprRange = recover(RBRACKET, e, false);
+                expr = new UnparsableExpr(exprRange);
+                accum = add(accum, annotations); inits = add(inits, expr); annotations=null; expr=null;
+            }
+            "]" { levelRanges.add(new TokenRange(arrayCreationLevelStart, token())); }
+        } catch (ParseException e) {
+            // We parsed an expression but it wasn't followed by ]
+            // So: find one.
+            TokenRange exprRange = recover(RBRACKET, e, true);
+            expr = new UnparsableExpr(exprRange);
+            accum = add(accum, annotations); inits = add(inits, expr); annotations=null; expr=null;
+        }
+    )+
     (arrayInitializerExpr = ArrayInitializer())? 
     {  
         return juggleArrayCreation(range(begin, token()), levelRanges, type, inits, accum, arrayInitializerExpr);
@@ -2184,7 +2212,7 @@ Statement Statement():
         )
         { return ret; }
     } catch (ParseException e) {
-        TokenRange errorRange = recover(SEMICOLON, e);
+        TokenRange errorRange = recover(SEMICOLON, e, true);
         return new UnparsableStmt(errorRange);
     }
 }
@@ -2223,7 +2251,7 @@ BlockStmt Block():
         "}"
         { return new BlockStmt(range(begin, token()), stmts); }
     } catch (ParseException e) {
-        recover(RBRACE, e);
+        recover(RBRACE, e, true);
         BlockStmt block = new BlockStmt(range(begin, token()), new NodeList<Statement>());
         block.setParsed(UNPARSABLE);
         return block;
@@ -2253,7 +2281,7 @@ Statement BlockStatement():
         )
         { return ret; }
     } catch (ParseException e) {
-        TokenRange errorRange = recover(SEMICOLON, e);
+        TokenRange errorRange = recover(SEMICOLON, e, true);
         return new UnparsableStmt(errorRange);
     }
 }

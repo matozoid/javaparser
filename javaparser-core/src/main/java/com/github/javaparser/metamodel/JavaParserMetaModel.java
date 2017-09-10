@@ -339,6 +339,7 @@ public final class JavaParserMetaModel {
         nodeMetaModels.add(unaryExprMetaModel);
         nodeMetaModels.add(unionTypeMetaModel);
         nodeMetaModels.add(unknownTypeMetaModel);
+        nodeMetaModels.add(unparsableExprMetaModel);
         nodeMetaModels.add(unparsableStmtMetaModel);
         nodeMetaModels.add(variableDeclarationExprMetaModel);
         nodeMetaModels.add(variableDeclaratorMetaModel);
@@ -866,6 +867,8 @@ public final class JavaParserMetaModel {
     public static final UnaryExprMetaModel unaryExprMetaModel = new UnaryExprMetaModel(Optional.of(expressionMetaModel));
 
     public static final VariableDeclarationExprMetaModel variableDeclarationExprMetaModel = new VariableDeclarationExprMetaModel(Optional.of(expressionMetaModel));
+
+    public static final UnparsableExprMetaModel unparsableExprMetaModel = new UnparsableExprMetaModel(Optional.of(expressionMetaModel));
 
     public static final ImportDeclarationMetaModel importDeclarationMetaModel = new ImportDeclarationMetaModel(Optional.of(nodeMetaModel));
 

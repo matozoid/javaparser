@@ -1455,6 +1455,11 @@ public class PrettyPrintVisitor implements VoidVisitor<Void> {
         printer.print("???;");
     }
 
+    @Override
+    public void visit(UnparsableExpr n, Void arg) {
+        printer.print("???;");
+    }
+
     private void printOrphanCommentsBeforeThisChildNode(final Node node) {
         if (configuration.isIgnoreComments()) return;
         if (node instanceof Comment) return;

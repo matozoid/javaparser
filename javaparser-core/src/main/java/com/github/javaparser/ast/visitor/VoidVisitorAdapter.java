@@ -753,4 +753,10 @@ public abstract class VoidVisitorAdapter<A> implements VoidVisitor<A> {
     public void visit(final UnparsableStmt n, final A arg) {
         n.getComment().ifPresent(l -> l.accept(this, arg));
     }
+
+    @Override
+    @Generated("com.github.javaparser.generator.core.visitor.VoidVisitorAdapterGenerator")
+    public void visit(final UnparsableExpr n, final A arg) {
+        n.getComment().ifPresent(l -> l.accept(this, arg));
+    }
 }
