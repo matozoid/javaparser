@@ -5,6 +5,10 @@ import com.github.javaparser.ast.Modifier;
 import com.github.javaparser.ast.Node;
 import com.github.javaparser.ast.NodeList;
 import com.github.javaparser.ast.body.Parameter;
+import com.github.javaparser.ast.comments.BlockComment;
+import com.github.javaparser.ast.comments.Comment;
+import com.github.javaparser.ast.comments.JavadocComment;
+import com.github.javaparser.ast.comments.LineComment;
 import com.github.javaparser.ast.expr.*;
 import com.github.javaparser.ast.stmt.Statement;
 import com.github.javaparser.ast.type.ArrayType;
@@ -18,6 +22,10 @@ import java.util.List;
 import java.util.TreeSet;
 
 import static com.github.javaparser.GeneratedJavaParser.CustomToken;
+import static com.github.javaparser.GeneratedJavaParserConstants.JAVADOC_COMMENT;
+import static com.github.javaparser.GeneratedJavaParserConstants.MULTI_LINE_COMMENT;
+import static com.github.javaparser.GeneratedJavaParserConstants.SINGLE_LINE_COMMENT;
+import static com.github.javaparser.Position.pos;
 import static com.github.javaparser.ast.type.ArrayType.unwrapArrayTypes;
 import static com.github.javaparser.ast.type.ArrayType.wrapInArrayTypes;
 
@@ -243,5 +251,25 @@ class GeneratedJavaParserSupport {
                     .append(expected.toString());
         }
         return sb.toString();
+    }
+
+    static Comment createCommentFromToken(CustomToken token) {
+        String commentText = token.image;
+        if (token.kind == JAVADOC_COMMENT) {
+            return new JavadocComment(tokenRange(token), commentText.substring(3, commentText.length() - 2));
+        } else if (token.kind == MULTI_LINE_COMMENT) {
+            return new BlockComment(tokenRange(token), commentText.substring(2, commentText.length() - 2));
+        } else if (token.kind == SINGLE_LINE_COMMENT) {
+            // line comments have their end of line character(s) included, and we don't want that.
+            Range range = new Range(pos(token.beginLine, token.beginColumn), pos(token.endLine, token.endColumn));
+            while (commentText.endsWith("\r") || commentText.endsWith("\n")) {
+                commentText = commentText.substring(0, commentText.length() - 1);
+            }
+            range = range.withEnd(pos(range.begin.line, range.begin.column + commentText.length()));
+            LineComment comment = new LineComment(tokenRange(token), commentText.substring(2));
+            comment.setRange(range);
+            return comment;
+        }
+        throw new AssertionError("Ouch!");
     }
 }
