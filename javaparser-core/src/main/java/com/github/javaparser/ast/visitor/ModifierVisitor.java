@@ -56,12 +56,16 @@ public class ModifierVisitor<A> implements GenericVisitor<Visitable, A> {
         SimpleName name = (SimpleName) n.getName().accept(this, arg);
         NodeList<AnnotationExpr> annotations = modifyList(n.getAnnotations(), arg);
         Comment comment = n.getComment().map(s -> (Comment) s.accept(this, arg)).orElse(null);
+        NodeList<Comment> leadingComments = modifyList(n.getLeadingComments(), arg);
+        NodeList<Comment> trailingComments = modifyList(n.getTrailingComments(), arg);
         if (name == null)
             return null;
         n.setMembers(members);
         n.setName(name);
         n.setAnnotations(annotations);
         n.setComment(comment);
+        n.setLeadingComments(leadingComments);
+        n.setTrailingComments(trailingComments);
         return n;
     }
 
@@ -73,6 +77,8 @@ public class ModifierVisitor<A> implements GenericVisitor<Visitable, A> {
         Type type = (Type) n.getType().accept(this, arg);
         NodeList<AnnotationExpr> annotations = modifyList(n.getAnnotations(), arg);
         Comment comment = n.getComment().map(s -> (Comment) s.accept(this, arg)).orElse(null);
+        NodeList<Comment> leadingComments = modifyList(n.getLeadingComments(), arg);
+        NodeList<Comment> trailingComments = modifyList(n.getTrailingComments(), arg);
         if (name == null || type == null)
             return null;
         n.setDefaultValue(defaultValue);
@@ -80,6 +86,8 @@ public class ModifierVisitor<A> implements GenericVisitor<Visitable, A> {
         n.setType(type);
         n.setAnnotations(annotations);
         n.setComment(comment);
+        n.setLeadingComments(leadingComments);
+        n.setTrailingComments(trailingComments);
         return n;
     }
 
@@ -89,11 +97,15 @@ public class ModifierVisitor<A> implements GenericVisitor<Visitable, A> {
         Expression index = (Expression) n.getIndex().accept(this, arg);
         Expression name = (Expression) n.getName().accept(this, arg);
         Comment comment = n.getComment().map(s -> (Comment) s.accept(this, arg)).orElse(null);
+        NodeList<Comment> leadingComments = modifyList(n.getLeadingComments(), arg);
+        NodeList<Comment> trailingComments = modifyList(n.getTrailingComments(), arg);
         if (index == null || name == null)
             return null;
         n.setIndex(index);
         n.setName(name);
         n.setComment(comment);
+        n.setLeadingComments(leadingComments);
+        n.setTrailingComments(trailingComments);
         return n;
     }
 
@@ -104,12 +116,16 @@ public class ModifierVisitor<A> implements GenericVisitor<Visitable, A> {
         ArrayInitializerExpr initializer = n.getInitializer().map(s -> (ArrayInitializerExpr) s.accept(this, arg)).orElse(null);
         NodeList<ArrayCreationLevel> levels = modifyList(n.getLevels(), arg);
         Comment comment = n.getComment().map(s -> (Comment) s.accept(this, arg)).orElse(null);
+        NodeList<Comment> leadingComments = modifyList(n.getLeadingComments(), arg);
+        NodeList<Comment> trailingComments = modifyList(n.getTrailingComments(), arg);
         if (elementType == null || levels.isEmpty())
             return null;
         n.setElementType(elementType);
         n.setInitializer(initializer);
         n.setLevels(levels);
         n.setComment(comment);
+        n.setLeadingComments(leadingComments);
+        n.setTrailingComments(trailingComments);
         return n;
     }
 
@@ -118,8 +134,12 @@ public class ModifierVisitor<A> implements GenericVisitor<Visitable, A> {
     public Visitable visit(final ArrayInitializerExpr n, final A arg) {
         NodeList<Expression> values = modifyList(n.getValues(), arg);
         Comment comment = n.getComment().map(s -> (Comment) s.accept(this, arg)).orElse(null);
+        NodeList<Comment> leadingComments = modifyList(n.getLeadingComments(), arg);
+        NodeList<Comment> trailingComments = modifyList(n.getTrailingComments(), arg);
         n.setValues(values);
         n.setComment(comment);
+        n.setLeadingComments(leadingComments);
+        n.setTrailingComments(trailingComments);
         return n;
     }
 
@@ -129,11 +149,15 @@ public class ModifierVisitor<A> implements GenericVisitor<Visitable, A> {
         Expression check = (Expression) n.getCheck().accept(this, arg);
         Expression message = n.getMessage().map(s -> (Expression) s.accept(this, arg)).orElse(null);
         Comment comment = n.getComment().map(s -> (Comment) s.accept(this, arg)).orElse(null);
+        NodeList<Comment> leadingComments = modifyList(n.getLeadingComments(), arg);
+        NodeList<Comment> trailingComments = modifyList(n.getTrailingComments(), arg);
         if (check == null)
             return null;
         n.setCheck(check);
         n.setMessage(message);
         n.setComment(comment);
+        n.setLeadingComments(leadingComments);
+        n.setTrailingComments(trailingComments);
         return n;
     }
 
@@ -143,11 +167,15 @@ public class ModifierVisitor<A> implements GenericVisitor<Visitable, A> {
         Expression target = (Expression) n.getTarget().accept(this, arg);
         Expression value = (Expression) n.getValue().accept(this, arg);
         Comment comment = n.getComment().map(s -> (Comment) s.accept(this, arg)).orElse(null);
+        NodeList<Comment> leadingComments = modifyList(n.getLeadingComments(), arg);
+        NodeList<Comment> trailingComments = modifyList(n.getTrailingComments(), arg);
         if (target == null || value == null)
             return null;
         n.setTarget(target);
         n.setValue(value);
         n.setComment(comment);
+        n.setLeadingComments(leadingComments);
+        n.setTrailingComments(trailingComments);
         return n;
     }
 
@@ -157,6 +185,8 @@ public class ModifierVisitor<A> implements GenericVisitor<Visitable, A> {
         Expression left = (Expression) n.getLeft().accept(this, arg);
         Expression right = (Expression) n.getRight().accept(this, arg);
         Comment comment = n.getComment().map(s -> (Comment) s.accept(this, arg)).orElse(null);
+        NodeList<Comment> leadingComments = modifyList(n.getLeadingComments(), arg);
+        NodeList<Comment> trailingComments = modifyList(n.getTrailingComments(), arg);
         if (left == null)
             return right;
         if (right == null)
@@ -164,6 +194,8 @@ public class ModifierVisitor<A> implements GenericVisitor<Visitable, A> {
         n.setLeft(left);
         n.setRight(right);
         n.setComment(comment);
+        n.setLeadingComments(leadingComments);
+        n.setTrailingComments(trailingComments);
         return n;
     }
 
@@ -172,8 +204,12 @@ public class ModifierVisitor<A> implements GenericVisitor<Visitable, A> {
     public Visitable visit(final BlockStmt n, final A arg) {
         NodeList<Statement> statements = modifyList(n.getStatements(), arg);
         Comment comment = n.getComment().map(s -> (Comment) s.accept(this, arg)).orElse(null);
+        NodeList<Comment> leadingComments = modifyList(n.getLeadingComments(), arg);
+        NodeList<Comment> trailingComments = modifyList(n.getTrailingComments(), arg);
         n.setStatements(statements);
         n.setComment(comment);
+        n.setLeadingComments(leadingComments);
+        n.setTrailingComments(trailingComments);
         return n;
     }
 
@@ -181,7 +217,11 @@ public class ModifierVisitor<A> implements GenericVisitor<Visitable, A> {
     @Generated("com.github.javaparser.generator.core.visitor.ModifierVisitorGenerator")
     public Visitable visit(final BooleanLiteralExpr n, final A arg) {
         Comment comment = n.getComment().map(s -> (Comment) s.accept(this, arg)).orElse(null);
+        NodeList<Comment> leadingComments = modifyList(n.getLeadingComments(), arg);
+        NodeList<Comment> trailingComments = modifyList(n.getTrailingComments(), arg);
         n.setComment(comment);
+        n.setLeadingComments(leadingComments);
+        n.setTrailingComments(trailingComments);
         return n;
     }
 
@@ -190,8 +230,12 @@ public class ModifierVisitor<A> implements GenericVisitor<Visitable, A> {
     public Visitable visit(final BreakStmt n, final A arg) {
         SimpleName label = n.getLabel().map(s -> (SimpleName) s.accept(this, arg)).orElse(null);
         Comment comment = n.getComment().map(s -> (Comment) s.accept(this, arg)).orElse(null);
+        NodeList<Comment> leadingComments = modifyList(n.getLeadingComments(), arg);
+        NodeList<Comment> trailingComments = modifyList(n.getTrailingComments(), arg);
         n.setLabel(label);
         n.setComment(comment);
+        n.setLeadingComments(leadingComments);
+        n.setTrailingComments(trailingComments);
         return n;
     }
 
@@ -201,11 +245,15 @@ public class ModifierVisitor<A> implements GenericVisitor<Visitable, A> {
         Expression expression = (Expression) n.getExpression().accept(this, arg);
         Type type = (Type) n.getType().accept(this, arg);
         Comment comment = n.getComment().map(s -> (Comment) s.accept(this, arg)).orElse(null);
+        NodeList<Comment> leadingComments = modifyList(n.getLeadingComments(), arg);
+        NodeList<Comment> trailingComments = modifyList(n.getTrailingComments(), arg);
         if (expression == null || type == null)
             return null;
         n.setExpression(expression);
         n.setType(type);
         n.setComment(comment);
+        n.setLeadingComments(leadingComments);
+        n.setTrailingComments(trailingComments);
         return n;
     }
 
@@ -215,11 +263,15 @@ public class ModifierVisitor<A> implements GenericVisitor<Visitable, A> {
         BlockStmt body = (BlockStmt) n.getBody().accept(this, arg);
         Parameter parameter = (Parameter) n.getParameter().accept(this, arg);
         Comment comment = n.getComment().map(s -> (Comment) s.accept(this, arg)).orElse(null);
+        NodeList<Comment> leadingComments = modifyList(n.getLeadingComments(), arg);
+        NodeList<Comment> trailingComments = modifyList(n.getTrailingComments(), arg);
         if (body == null || parameter == null)
             return null;
         n.setBody(body);
         n.setParameter(parameter);
         n.setComment(comment);
+        n.setLeadingComments(leadingComments);
+        n.setTrailingComments(trailingComments);
         return n;
     }
 
@@ -227,7 +279,11 @@ public class ModifierVisitor<A> implements GenericVisitor<Visitable, A> {
     @Generated("com.github.javaparser.generator.core.visitor.ModifierVisitorGenerator")
     public Visitable visit(final CharLiteralExpr n, final A arg) {
         Comment comment = n.getComment().map(s -> (Comment) s.accept(this, arg)).orElse(null);
+        NodeList<Comment> leadingComments = modifyList(n.getLeadingComments(), arg);
+        NodeList<Comment> trailingComments = modifyList(n.getTrailingComments(), arg);
         n.setComment(comment);
+        n.setLeadingComments(leadingComments);
+        n.setTrailingComments(trailingComments);
         return n;
     }
 
@@ -236,10 +292,14 @@ public class ModifierVisitor<A> implements GenericVisitor<Visitable, A> {
     public Visitable visit(final ClassExpr n, final A arg) {
         Type type = (Type) n.getType().accept(this, arg);
         Comment comment = n.getComment().map(s -> (Comment) s.accept(this, arg)).orElse(null);
+        NodeList<Comment> leadingComments = modifyList(n.getLeadingComments(), arg);
+        NodeList<Comment> trailingComments = modifyList(n.getTrailingComments(), arg);
         if (type == null)
             return null;
         n.setType(type);
         n.setComment(comment);
+        n.setLeadingComments(leadingComments);
+        n.setTrailingComments(trailingComments);
         return n;
     }
 
@@ -253,6 +313,8 @@ public class ModifierVisitor<A> implements GenericVisitor<Visitable, A> {
         SimpleName name = (SimpleName) n.getName().accept(this, arg);
         NodeList<AnnotationExpr> annotations = modifyList(n.getAnnotations(), arg);
         Comment comment = n.getComment().map(s -> (Comment) s.accept(this, arg)).orElse(null);
+        NodeList<Comment> leadingComments = modifyList(n.getLeadingComments(), arg);
+        NodeList<Comment> trailingComments = modifyList(n.getTrailingComments(), arg);
         if (name == null)
             return null;
         n.setExtendedTypes(extendedTypes);
@@ -262,6 +324,8 @@ public class ModifierVisitor<A> implements GenericVisitor<Visitable, A> {
         n.setName(name);
         n.setAnnotations(annotations);
         n.setComment(comment);
+        n.setLeadingComments(leadingComments);
+        n.setTrailingComments(trailingComments);
         return n;
     }
 
@@ -273,6 +337,8 @@ public class ModifierVisitor<A> implements GenericVisitor<Visitable, A> {
         NodeList<Type> typeArguments = modifyList(n.getTypeArguments(), arg);
         NodeList<AnnotationExpr> annotations = modifyList(n.getAnnotations(), arg);
         Comment comment = n.getComment().map(s -> (Comment) s.accept(this, arg)).orElse(null);
+        NodeList<Comment> leadingComments = modifyList(n.getLeadingComments(), arg);
+        NodeList<Comment> trailingComments = modifyList(n.getTrailingComments(), arg);
         if (name == null)
             return null;
         n.setName(name);
@@ -280,6 +346,8 @@ public class ModifierVisitor<A> implements GenericVisitor<Visitable, A> {
         n.setTypeArguments(typeArguments);
         n.setAnnotations(annotations);
         n.setComment(comment);
+        n.setLeadingComments(leadingComments);
+        n.setTrailingComments(trailingComments);
         return n;
     }
 
@@ -291,11 +359,15 @@ public class ModifierVisitor<A> implements GenericVisitor<Visitable, A> {
         PackageDeclaration packageDeclaration = n.getPackageDeclaration().map(s -> (PackageDeclaration) s.accept(this, arg)).orElse(null);
         NodeList<TypeDeclaration<?>> types = modifyList(n.getTypes(), arg);
         Comment comment = n.getComment().map(s -> (Comment) s.accept(this, arg)).orElse(null);
+        NodeList<Comment> leadingComments = modifyList(n.getLeadingComments(), arg);
+        NodeList<Comment> trailingComments = modifyList(n.getTrailingComments(), arg);
         n.setImports(imports);
         n.setModule(module);
         n.setPackageDeclaration(packageDeclaration);
         n.setTypes(types);
         n.setComment(comment);
+        n.setLeadingComments(leadingComments);
+        n.setTrailingComments(trailingComments);
         return n;
     }
 
@@ -306,12 +378,16 @@ public class ModifierVisitor<A> implements GenericVisitor<Visitable, A> {
         Expression elseExpr = (Expression) n.getElseExpr().accept(this, arg);
         Expression thenExpr = (Expression) n.getThenExpr().accept(this, arg);
         Comment comment = n.getComment().map(s -> (Comment) s.accept(this, arg)).orElse(null);
+        NodeList<Comment> leadingComments = modifyList(n.getLeadingComments(), arg);
+        NodeList<Comment> trailingComments = modifyList(n.getTrailingComments(), arg);
         if (condition == null || elseExpr == null || thenExpr == null)
             return null;
         n.setCondition(condition);
         n.setElseExpr(elseExpr);
         n.setThenExpr(thenExpr);
         n.setComment(comment);
+        n.setLeadingComments(leadingComments);
+        n.setTrailingComments(trailingComments);
         return n;
     }
 
@@ -325,6 +401,8 @@ public class ModifierVisitor<A> implements GenericVisitor<Visitable, A> {
         NodeList<TypeParameter> typeParameters = modifyList(n.getTypeParameters(), arg);
         NodeList<AnnotationExpr> annotations = modifyList(n.getAnnotations(), arg);
         Comment comment = n.getComment().map(s -> (Comment) s.accept(this, arg)).orElse(null);
+        NodeList<Comment> leadingComments = modifyList(n.getLeadingComments(), arg);
+        NodeList<Comment> trailingComments = modifyList(n.getTrailingComments(), arg);
         if (body == null || name == null)
             return null;
         n.setBody(body);
@@ -334,6 +412,8 @@ public class ModifierVisitor<A> implements GenericVisitor<Visitable, A> {
         n.setTypeParameters(typeParameters);
         n.setAnnotations(annotations);
         n.setComment(comment);
+        n.setLeadingComments(leadingComments);
+        n.setTrailingComments(trailingComments);
         return n;
     }
 
@@ -342,8 +422,12 @@ public class ModifierVisitor<A> implements GenericVisitor<Visitable, A> {
     public Visitable visit(final ContinueStmt n, final A arg) {
         SimpleName label = n.getLabel().map(s -> (SimpleName) s.accept(this, arg)).orElse(null);
         Comment comment = n.getComment().map(s -> (Comment) s.accept(this, arg)).orElse(null);
+        NodeList<Comment> leadingComments = modifyList(n.getLeadingComments(), arg);
+        NodeList<Comment> trailingComments = modifyList(n.getTrailingComments(), arg);
         n.setLabel(label);
         n.setComment(comment);
+        n.setLeadingComments(leadingComments);
+        n.setTrailingComments(trailingComments);
         return n;
     }
 
@@ -353,11 +437,15 @@ public class ModifierVisitor<A> implements GenericVisitor<Visitable, A> {
         Statement body = (Statement) n.getBody().accept(this, arg);
         Expression condition = (Expression) n.getCondition().accept(this, arg);
         Comment comment = n.getComment().map(s -> (Comment) s.accept(this, arg)).orElse(null);
+        NodeList<Comment> leadingComments = modifyList(n.getLeadingComments(), arg);
+        NodeList<Comment> trailingComments = modifyList(n.getTrailingComments(), arg);
         if (body == null || condition == null)
             return null;
         n.setBody(body);
         n.setCondition(condition);
         n.setComment(comment);
+        n.setLeadingComments(leadingComments);
+        n.setTrailingComments(trailingComments);
         return n;
     }
 
@@ -365,7 +453,11 @@ public class ModifierVisitor<A> implements GenericVisitor<Visitable, A> {
     @Generated("com.github.javaparser.generator.core.visitor.ModifierVisitorGenerator")
     public Visitable visit(final DoubleLiteralExpr n, final A arg) {
         Comment comment = n.getComment().map(s -> (Comment) s.accept(this, arg)).orElse(null);
+        NodeList<Comment> leadingComments = modifyList(n.getLeadingComments(), arg);
+        NodeList<Comment> trailingComments = modifyList(n.getTrailingComments(), arg);
         n.setComment(comment);
+        n.setLeadingComments(leadingComments);
+        n.setTrailingComments(trailingComments);
         return n;
     }
 
@@ -373,7 +465,11 @@ public class ModifierVisitor<A> implements GenericVisitor<Visitable, A> {
     @Generated("com.github.javaparser.generator.core.visitor.ModifierVisitorGenerator")
     public Visitable visit(final EmptyStmt n, final A arg) {
         Comment comment = n.getComment().map(s -> (Comment) s.accept(this, arg)).orElse(null);
+        NodeList<Comment> leadingComments = modifyList(n.getLeadingComments(), arg);
+        NodeList<Comment> trailingComments = modifyList(n.getTrailingComments(), arg);
         n.setComment(comment);
+        n.setLeadingComments(leadingComments);
+        n.setTrailingComments(trailingComments);
         return n;
     }
 
@@ -382,10 +478,14 @@ public class ModifierVisitor<A> implements GenericVisitor<Visitable, A> {
     public Visitable visit(final EnclosedExpr n, final A arg) {
         Expression inner = (Expression) n.getInner().accept(this, arg);
         Comment comment = n.getComment().map(s -> (Comment) s.accept(this, arg)).orElse(null);
+        NodeList<Comment> leadingComments = modifyList(n.getLeadingComments(), arg);
+        NodeList<Comment> trailingComments = modifyList(n.getTrailingComments(), arg);
         if (inner == null)
             return null;
         n.setInner(inner);
         n.setComment(comment);
+        n.setLeadingComments(leadingComments);
+        n.setTrailingComments(trailingComments);
         return n;
     }
 
@@ -397,6 +497,8 @@ public class ModifierVisitor<A> implements GenericVisitor<Visitable, A> {
         SimpleName name = (SimpleName) n.getName().accept(this, arg);
         NodeList<AnnotationExpr> annotations = modifyList(n.getAnnotations(), arg);
         Comment comment = n.getComment().map(s -> (Comment) s.accept(this, arg)).orElse(null);
+        NodeList<Comment> leadingComments = modifyList(n.getLeadingComments(), arg);
+        NodeList<Comment> trailingComments = modifyList(n.getTrailingComments(), arg);
         if (name == null)
             return null;
         n.setArguments(arguments);
@@ -404,6 +506,8 @@ public class ModifierVisitor<A> implements GenericVisitor<Visitable, A> {
         n.setName(name);
         n.setAnnotations(annotations);
         n.setComment(comment);
+        n.setLeadingComments(leadingComments);
+        n.setTrailingComments(trailingComments);
         return n;
     }
 
@@ -416,6 +520,8 @@ public class ModifierVisitor<A> implements GenericVisitor<Visitable, A> {
         SimpleName name = (SimpleName) n.getName().accept(this, arg);
         NodeList<AnnotationExpr> annotations = modifyList(n.getAnnotations(), arg);
         Comment comment = n.getComment().map(s -> (Comment) s.accept(this, arg)).orElse(null);
+        NodeList<Comment> leadingComments = modifyList(n.getLeadingComments(), arg);
+        NodeList<Comment> trailingComments = modifyList(n.getTrailingComments(), arg);
         if (name == null)
             return null;
         n.setEntries(entries);
@@ -424,6 +530,8 @@ public class ModifierVisitor<A> implements GenericVisitor<Visitable, A> {
         n.setName(name);
         n.setAnnotations(annotations);
         n.setComment(comment);
+        n.setLeadingComments(leadingComments);
+        n.setTrailingComments(trailingComments);
         return n;
     }
 
@@ -434,10 +542,14 @@ public class ModifierVisitor<A> implements GenericVisitor<Visitable, A> {
         Expression expression = n.getExpression().map(s -> (Expression) s.accept(this, arg)).orElse(null);
         NodeList<Type> typeArguments = modifyList(n.getTypeArguments(), arg);
         Comment comment = n.getComment().map(s -> (Comment) s.accept(this, arg)).orElse(null);
+        NodeList<Comment> leadingComments = modifyList(n.getLeadingComments(), arg);
+        NodeList<Comment> trailingComments = modifyList(n.getTrailingComments(), arg);
         n.setArguments(arguments);
         n.setExpression(expression);
         n.setTypeArguments(typeArguments);
         n.setComment(comment);
+        n.setLeadingComments(leadingComments);
+        n.setTrailingComments(trailingComments);
         return n;
     }
 
@@ -446,10 +558,14 @@ public class ModifierVisitor<A> implements GenericVisitor<Visitable, A> {
     public Visitable visit(final ExpressionStmt n, final A arg) {
         Expression expression = (Expression) n.getExpression().accept(this, arg);
         Comment comment = n.getComment().map(s -> (Comment) s.accept(this, arg)).orElse(null);
+        NodeList<Comment> leadingComments = modifyList(n.getLeadingComments(), arg);
+        NodeList<Comment> trailingComments = modifyList(n.getTrailingComments(), arg);
         if (expression == null)
             return null;
         n.setExpression(expression);
         n.setComment(comment);
+        n.setLeadingComments(leadingComments);
+        n.setTrailingComments(trailingComments);
         return n;
     }
 
@@ -460,12 +576,16 @@ public class ModifierVisitor<A> implements GenericVisitor<Visitable, A> {
         Expression scope = (Expression) n.getScope().accept(this, arg);
         NodeList<Type> typeArguments = modifyList(n.getTypeArguments(), arg);
         Comment comment = n.getComment().map(s -> (Comment) s.accept(this, arg)).orElse(null);
+        NodeList<Comment> leadingComments = modifyList(n.getLeadingComments(), arg);
+        NodeList<Comment> trailingComments = modifyList(n.getTrailingComments(), arg);
         if (name == null || scope == null)
             return null;
         n.setName(name);
         n.setScope(scope);
         n.setTypeArguments(typeArguments);
         n.setComment(comment);
+        n.setLeadingComments(leadingComments);
+        n.setTrailingComments(trailingComments);
         return n;
     }
 
@@ -475,11 +595,15 @@ public class ModifierVisitor<A> implements GenericVisitor<Visitable, A> {
         NodeList<VariableDeclarator> variables = modifyList(n.getVariables(), arg);
         NodeList<AnnotationExpr> annotations = modifyList(n.getAnnotations(), arg);
         Comment comment = n.getComment().map(s -> (Comment) s.accept(this, arg)).orElse(null);
+        NodeList<Comment> leadingComments = modifyList(n.getLeadingComments(), arg);
+        NodeList<Comment> trailingComments = modifyList(n.getTrailingComments(), arg);
         if (variables.isEmpty())
             return null;
         n.setVariables(variables);
         n.setAnnotations(annotations);
         n.setComment(comment);
+        n.setLeadingComments(leadingComments);
+        n.setTrailingComments(trailingComments);
         return n;
     }
 
@@ -490,12 +614,16 @@ public class ModifierVisitor<A> implements GenericVisitor<Visitable, A> {
         Expression iterable = (Expression) n.getIterable().accept(this, arg);
         VariableDeclarationExpr variable = (VariableDeclarationExpr) n.getVariable().accept(this, arg);
         Comment comment = n.getComment().map(s -> (Comment) s.accept(this, arg)).orElse(null);
+        NodeList<Comment> leadingComments = modifyList(n.getLeadingComments(), arg);
+        NodeList<Comment> trailingComments = modifyList(n.getTrailingComments(), arg);
         if (body == null || iterable == null || variable == null)
             return null;
         n.setBody(body);
         n.setIterable(iterable);
         n.setVariable(variable);
         n.setComment(comment);
+        n.setLeadingComments(leadingComments);
+        n.setTrailingComments(trailingComments);
         return n;
     }
 
@@ -507,6 +635,8 @@ public class ModifierVisitor<A> implements GenericVisitor<Visitable, A> {
         NodeList<Expression> initialization = modifyList(n.getInitialization(), arg);
         NodeList<Expression> update = modifyList(n.getUpdate(), arg);
         Comment comment = n.getComment().map(s -> (Comment) s.accept(this, arg)).orElse(null);
+        NodeList<Comment> leadingComments = modifyList(n.getLeadingComments(), arg);
+        NodeList<Comment> trailingComments = modifyList(n.getTrailingComments(), arg);
         if (body == null)
             return null;
         n.setBody(body);
@@ -514,6 +644,8 @@ public class ModifierVisitor<A> implements GenericVisitor<Visitable, A> {
         n.setInitialization(initialization);
         n.setUpdate(update);
         n.setComment(comment);
+        n.setLeadingComments(leadingComments);
+        n.setTrailingComments(trailingComments);
         return n;
     }
 
@@ -524,12 +656,16 @@ public class ModifierVisitor<A> implements GenericVisitor<Visitable, A> {
         Statement elseStmt = n.getElseStmt().map(s -> (Statement) s.accept(this, arg)).orElse(null);
         Statement thenStmt = (Statement) n.getThenStmt().accept(this, arg);
         Comment comment = n.getComment().map(s -> (Comment) s.accept(this, arg)).orElse(null);
+        NodeList<Comment> leadingComments = modifyList(n.getLeadingComments(), arg);
+        NodeList<Comment> trailingComments = modifyList(n.getTrailingComments(), arg);
         if (condition == null || thenStmt == null)
             return null;
         n.setCondition(condition);
         n.setElseStmt(elseStmt);
         n.setThenStmt(thenStmt);
         n.setComment(comment);
+        n.setLeadingComments(leadingComments);
+        n.setTrailingComments(trailingComments);
         return n;
     }
 
@@ -539,11 +675,15 @@ public class ModifierVisitor<A> implements GenericVisitor<Visitable, A> {
         BlockStmt body = (BlockStmt) n.getBody().accept(this, arg);
         NodeList<AnnotationExpr> annotations = modifyList(n.getAnnotations(), arg);
         Comment comment = n.getComment().map(s -> (Comment) s.accept(this, arg)).orElse(null);
+        NodeList<Comment> leadingComments = modifyList(n.getLeadingComments(), arg);
+        NodeList<Comment> trailingComments = modifyList(n.getTrailingComments(), arg);
         if (body == null)
             return null;
         n.setBody(body);
         n.setAnnotations(annotations);
         n.setComment(comment);
+        n.setLeadingComments(leadingComments);
+        n.setTrailingComments(trailingComments);
         return n;
     }
 
@@ -553,11 +693,15 @@ public class ModifierVisitor<A> implements GenericVisitor<Visitable, A> {
         Expression expression = (Expression) n.getExpression().accept(this, arg);
         ReferenceType type = (ReferenceType) n.getType().accept(this, arg);
         Comment comment = n.getComment().map(s -> (Comment) s.accept(this, arg)).orElse(null);
+        NodeList<Comment> leadingComments = modifyList(n.getLeadingComments(), arg);
+        NodeList<Comment> trailingComments = modifyList(n.getTrailingComments(), arg);
         if (expression == null || type == null)
             return null;
         n.setExpression(expression);
         n.setType(type);
         n.setComment(comment);
+        n.setLeadingComments(leadingComments);
+        n.setTrailingComments(trailingComments);
         return n;
     }
 
@@ -565,7 +709,11 @@ public class ModifierVisitor<A> implements GenericVisitor<Visitable, A> {
     @Generated("com.github.javaparser.generator.core.visitor.ModifierVisitorGenerator")
     public Visitable visit(final IntegerLiteralExpr n, final A arg) {
         Comment comment = n.getComment().map(s -> (Comment) s.accept(this, arg)).orElse(null);
+        NodeList<Comment> leadingComments = modifyList(n.getLeadingComments(), arg);
+        NodeList<Comment> trailingComments = modifyList(n.getTrailingComments(), arg);
         n.setComment(comment);
+        n.setLeadingComments(leadingComments);
+        n.setTrailingComments(trailingComments);
         return n;
     }
 
@@ -573,7 +721,11 @@ public class ModifierVisitor<A> implements GenericVisitor<Visitable, A> {
     @Generated("com.github.javaparser.generator.core.visitor.ModifierVisitorGenerator")
     public Visitable visit(final JavadocComment n, final A arg) {
         Comment comment = n.getComment().map(s -> (Comment) s.accept(this, arg)).orElse(null);
+        NodeList<Comment> leadingComments = modifyList(n.getLeadingComments(), arg);
+        NodeList<Comment> trailingComments = modifyList(n.getTrailingComments(), arg);
         n.setComment(comment);
+        n.setLeadingComments(leadingComments);
+        n.setTrailingComments(trailingComments);
         return n;
     }
 
@@ -583,11 +735,15 @@ public class ModifierVisitor<A> implements GenericVisitor<Visitable, A> {
         SimpleName label = (SimpleName) n.getLabel().accept(this, arg);
         Statement statement = (Statement) n.getStatement().accept(this, arg);
         Comment comment = n.getComment().map(s -> (Comment) s.accept(this, arg)).orElse(null);
+        NodeList<Comment> leadingComments = modifyList(n.getLeadingComments(), arg);
+        NodeList<Comment> trailingComments = modifyList(n.getTrailingComments(), arg);
         if (label == null || statement == null)
             return null;
         n.setLabel(label);
         n.setStatement(statement);
         n.setComment(comment);
+        n.setLeadingComments(leadingComments);
+        n.setTrailingComments(trailingComments);
         return n;
     }
 
@@ -595,7 +751,11 @@ public class ModifierVisitor<A> implements GenericVisitor<Visitable, A> {
     @Generated("com.github.javaparser.generator.core.visitor.ModifierVisitorGenerator")
     public Visitable visit(final LongLiteralExpr n, final A arg) {
         Comment comment = n.getComment().map(s -> (Comment) s.accept(this, arg)).orElse(null);
+        NodeList<Comment> leadingComments = modifyList(n.getLeadingComments(), arg);
+        NodeList<Comment> trailingComments = modifyList(n.getTrailingComments(), arg);
         n.setComment(comment);
+        n.setLeadingComments(leadingComments);
+        n.setTrailingComments(trailingComments);
         return n;
     }
 
@@ -604,10 +764,14 @@ public class ModifierVisitor<A> implements GenericVisitor<Visitable, A> {
     public Visitable visit(final MarkerAnnotationExpr n, final A arg) {
         Name name = (Name) n.getName().accept(this, arg);
         Comment comment = n.getComment().map(s -> (Comment) s.accept(this, arg)).orElse(null);
+        NodeList<Comment> leadingComments = modifyList(n.getLeadingComments(), arg);
+        NodeList<Comment> trailingComments = modifyList(n.getTrailingComments(), arg);
         if (name == null)
             return null;
         n.setName(name);
         n.setComment(comment);
+        n.setLeadingComments(leadingComments);
+        n.setTrailingComments(trailingComments);
         return n;
     }
 
@@ -617,11 +781,15 @@ public class ModifierVisitor<A> implements GenericVisitor<Visitable, A> {
         SimpleName name = (SimpleName) n.getName().accept(this, arg);
         Expression value = (Expression) n.getValue().accept(this, arg);
         Comment comment = n.getComment().map(s -> (Comment) s.accept(this, arg)).orElse(null);
+        NodeList<Comment> leadingComments = modifyList(n.getLeadingComments(), arg);
+        NodeList<Comment> trailingComments = modifyList(n.getTrailingComments(), arg);
         if (name == null || value == null)
             return null;
         n.setName(name);
         n.setValue(value);
         n.setComment(comment);
+        n.setLeadingComments(leadingComments);
+        n.setTrailingComments(trailingComments);
         return n;
     }
 
@@ -633,6 +801,8 @@ public class ModifierVisitor<A> implements GenericVisitor<Visitable, A> {
         Expression scope = n.getScope().map(s -> (Expression) s.accept(this, arg)).orElse(null);
         NodeList<Type> typeArguments = modifyList(n.getTypeArguments(), arg);
         Comment comment = n.getComment().map(s -> (Comment) s.accept(this, arg)).orElse(null);
+        NodeList<Comment> leadingComments = modifyList(n.getLeadingComments(), arg);
+        NodeList<Comment> trailingComments = modifyList(n.getTrailingComments(), arg);
         if (name == null)
             return null;
         n.setArguments(arguments);
@@ -640,6 +810,8 @@ public class ModifierVisitor<A> implements GenericVisitor<Visitable, A> {
         n.setScope(scope);
         n.setTypeArguments(typeArguments);
         n.setComment(comment);
+        n.setLeadingComments(leadingComments);
+        n.setTrailingComments(trailingComments);
         return n;
     }
 
@@ -654,6 +826,8 @@ public class ModifierVisitor<A> implements GenericVisitor<Visitable, A> {
         NodeList<TypeParameter> typeParameters = modifyList(n.getTypeParameters(), arg);
         NodeList<AnnotationExpr> annotations = modifyList(n.getAnnotations(), arg);
         Comment comment = n.getComment().map(s -> (Comment) s.accept(this, arg)).orElse(null);
+        NodeList<Comment> leadingComments = modifyList(n.getLeadingComments(), arg);
+        NodeList<Comment> trailingComments = modifyList(n.getTrailingComments(), arg);
         if (type == null || name == null)
             return null;
         n.setBody(body);
@@ -664,6 +838,8 @@ public class ModifierVisitor<A> implements GenericVisitor<Visitable, A> {
         n.setTypeParameters(typeParameters);
         n.setAnnotations(annotations);
         n.setComment(comment);
+        n.setLeadingComments(leadingComments);
+        n.setTrailingComments(trailingComments);
         return n;
     }
 
@@ -672,10 +848,14 @@ public class ModifierVisitor<A> implements GenericVisitor<Visitable, A> {
     public Visitable visit(final NameExpr n, final A arg) {
         SimpleName name = (SimpleName) n.getName().accept(this, arg);
         Comment comment = n.getComment().map(s -> (Comment) s.accept(this, arg)).orElse(null);
+        NodeList<Comment> leadingComments = modifyList(n.getLeadingComments(), arg);
+        NodeList<Comment> trailingComments = modifyList(n.getTrailingComments(), arg);
         if (name == null)
             return null;
         n.setName(name);
         n.setComment(comment);
+        n.setLeadingComments(leadingComments);
+        n.setTrailingComments(trailingComments);
         return n;
     }
 
@@ -685,11 +865,15 @@ public class ModifierVisitor<A> implements GenericVisitor<Visitable, A> {
         NodeList<MemberValuePair> pairs = modifyList(n.getPairs(), arg);
         Name name = (Name) n.getName().accept(this, arg);
         Comment comment = n.getComment().map(s -> (Comment) s.accept(this, arg)).orElse(null);
+        NodeList<Comment> leadingComments = modifyList(n.getLeadingComments(), arg);
+        NodeList<Comment> trailingComments = modifyList(n.getTrailingComments(), arg);
         if (name == null)
             return null;
         n.setPairs(pairs);
         n.setName(name);
         n.setComment(comment);
+        n.setLeadingComments(leadingComments);
+        n.setTrailingComments(trailingComments);
         return n;
     }
 
@@ -697,7 +881,11 @@ public class ModifierVisitor<A> implements GenericVisitor<Visitable, A> {
     @Generated("com.github.javaparser.generator.core.visitor.ModifierVisitorGenerator")
     public Visitable visit(final NullLiteralExpr n, final A arg) {
         Comment comment = n.getComment().map(s -> (Comment) s.accept(this, arg)).orElse(null);
+        NodeList<Comment> leadingComments = modifyList(n.getLeadingComments(), arg);
+        NodeList<Comment> trailingComments = modifyList(n.getTrailingComments(), arg);
         n.setComment(comment);
+        n.setLeadingComments(leadingComments);
+        n.setTrailingComments(trailingComments);
         return n;
     }
 
@@ -710,6 +898,8 @@ public class ModifierVisitor<A> implements GenericVisitor<Visitable, A> {
         ClassOrInterfaceType type = (ClassOrInterfaceType) n.getType().accept(this, arg);
         NodeList<Type> typeArguments = modifyList(n.getTypeArguments(), arg);
         Comment comment = n.getComment().map(s -> (Comment) s.accept(this, arg)).orElse(null);
+        NodeList<Comment> leadingComments = modifyList(n.getLeadingComments(), arg);
+        NodeList<Comment> trailingComments = modifyList(n.getTrailingComments(), arg);
         if (type == null)
             return null;
         n.setAnonymousClassBody(anonymousClassBody);
@@ -718,6 +908,8 @@ public class ModifierVisitor<A> implements GenericVisitor<Visitable, A> {
         n.setType(type);
         n.setTypeArguments(typeArguments);
         n.setComment(comment);
+        n.setLeadingComments(leadingComments);
+        n.setTrailingComments(trailingComments);
         return n;
     }
 
@@ -727,11 +919,15 @@ public class ModifierVisitor<A> implements GenericVisitor<Visitable, A> {
         NodeList<AnnotationExpr> annotations = modifyList(n.getAnnotations(), arg);
         Name name = (Name) n.getName().accept(this, arg);
         Comment comment = n.getComment().map(s -> (Comment) s.accept(this, arg)).orElse(null);
+        NodeList<Comment> leadingComments = modifyList(n.getLeadingComments(), arg);
+        NodeList<Comment> trailingComments = modifyList(n.getTrailingComments(), arg);
         if (name == null)
             return null;
         n.setAnnotations(annotations);
         n.setName(name);
         n.setComment(comment);
+        n.setLeadingComments(leadingComments);
+        n.setTrailingComments(trailingComments);
         return n;
     }
 
@@ -743,6 +939,8 @@ public class ModifierVisitor<A> implements GenericVisitor<Visitable, A> {
         Type type = (Type) n.getType().accept(this, arg);
         NodeList<AnnotationExpr> varArgsAnnotations = modifyList(n.getVarArgsAnnotations(), arg);
         Comment comment = n.getComment().map(s -> (Comment) s.accept(this, arg)).orElse(null);
+        NodeList<Comment> leadingComments = modifyList(n.getLeadingComments(), arg);
+        NodeList<Comment> trailingComments = modifyList(n.getTrailingComments(), arg);
         if (name == null || type == null)
             return null;
         n.setAnnotations(annotations);
@@ -750,6 +948,8 @@ public class ModifierVisitor<A> implements GenericVisitor<Visitable, A> {
         n.setType(type);
         n.setVarArgsAnnotations(varArgsAnnotations);
         n.setComment(comment);
+        n.setLeadingComments(leadingComments);
+        n.setTrailingComments(trailingComments);
         return n;
     }
 
@@ -759,9 +959,13 @@ public class ModifierVisitor<A> implements GenericVisitor<Visitable, A> {
         NodeList<AnnotationExpr> annotations = modifyList(n.getAnnotations(), arg);
         Name qualifier = n.getQualifier().map(s -> (Name) s.accept(this, arg)).orElse(null);
         Comment comment = n.getComment().map(s -> (Comment) s.accept(this, arg)).orElse(null);
+        NodeList<Comment> leadingComments = modifyList(n.getLeadingComments(), arg);
+        NodeList<Comment> trailingComments = modifyList(n.getTrailingComments(), arg);
         n.setAnnotations(annotations);
         n.setQualifier(qualifier);
         n.setComment(comment);
+        n.setLeadingComments(leadingComments);
+        n.setTrailingComments(trailingComments);
         return n;
     }
 
@@ -770,8 +974,12 @@ public class ModifierVisitor<A> implements GenericVisitor<Visitable, A> {
     public Visitable visit(final PrimitiveType n, final A arg) {
         NodeList<AnnotationExpr> annotations = modifyList(n.getAnnotations(), arg);
         Comment comment = n.getComment().map(s -> (Comment) s.accept(this, arg)).orElse(null);
+        NodeList<Comment> leadingComments = modifyList(n.getLeadingComments(), arg);
+        NodeList<Comment> trailingComments = modifyList(n.getTrailingComments(), arg);
         n.setAnnotations(annotations);
         n.setComment(comment);
+        n.setLeadingComments(leadingComments);
+        n.setTrailingComments(trailingComments);
         return n;
     }
 
@@ -779,7 +987,11 @@ public class ModifierVisitor<A> implements GenericVisitor<Visitable, A> {
     @Generated("com.github.javaparser.generator.core.visitor.ModifierVisitorGenerator")
     public Visitable visit(final SimpleName n, final A arg) {
         Comment comment = n.getComment().map(s -> (Comment) s.accept(this, arg)).orElse(null);
+        NodeList<Comment> leadingComments = modifyList(n.getLeadingComments(), arg);
+        NodeList<Comment> trailingComments = modifyList(n.getTrailingComments(), arg);
         n.setComment(comment);
+        n.setLeadingComments(leadingComments);
+        n.setTrailingComments(trailingComments);
         return n;
     }
 
@@ -789,11 +1001,15 @@ public class ModifierVisitor<A> implements GenericVisitor<Visitable, A> {
         Type componentType = (Type) n.getComponentType().accept(this, arg);
         NodeList<AnnotationExpr> annotations = modifyList(n.getAnnotations(), arg);
         Comment comment = n.getComment().map(s -> (Comment) s.accept(this, arg)).orElse(null);
+        NodeList<Comment> leadingComments = modifyList(n.getLeadingComments(), arg);
+        NodeList<Comment> trailingComments = modifyList(n.getTrailingComments(), arg);
         if (componentType == null)
             return null;
         n.setComponentType(componentType);
         n.setAnnotations(annotations);
         n.setComment(comment);
+        n.setLeadingComments(leadingComments);
+        n.setTrailingComments(trailingComments);
         return n;
     }
 
@@ -803,9 +1019,13 @@ public class ModifierVisitor<A> implements GenericVisitor<Visitable, A> {
         NodeList<AnnotationExpr> annotations = modifyList(n.getAnnotations(), arg);
         Expression dimension = n.getDimension().map(s -> (Expression) s.accept(this, arg)).orElse(null);
         Comment comment = n.getComment().map(s -> (Comment) s.accept(this, arg)).orElse(null);
+        NodeList<Comment> leadingComments = modifyList(n.getLeadingComments(), arg);
+        NodeList<Comment> trailingComments = modifyList(n.getTrailingComments(), arg);
         n.setAnnotations(annotations);
         n.setDimension(dimension);
         n.setComment(comment);
+        n.setLeadingComments(leadingComments);
+        n.setTrailingComments(trailingComments);
         return n;
     }
 
@@ -815,11 +1035,15 @@ public class ModifierVisitor<A> implements GenericVisitor<Visitable, A> {
         NodeList<ReferenceType> elements = modifyList(n.getElements(), arg);
         NodeList<AnnotationExpr> annotations = modifyList(n.getAnnotations(), arg);
         Comment comment = n.getComment().map(s -> (Comment) s.accept(this, arg)).orElse(null);
+        NodeList<Comment> leadingComments = modifyList(n.getLeadingComments(), arg);
+        NodeList<Comment> trailingComments = modifyList(n.getTrailingComments(), arg);
         if (elements.isEmpty())
             return null;
         n.setElements(elements);
         n.setAnnotations(annotations);
         n.setComment(comment);
+        n.setLeadingComments(leadingComments);
+        n.setTrailingComments(trailingComments);
         return n;
     }
 
@@ -829,11 +1053,15 @@ public class ModifierVisitor<A> implements GenericVisitor<Visitable, A> {
         NodeList<ReferenceType> elements = modifyList(n.getElements(), arg);
         NodeList<AnnotationExpr> annotations = modifyList(n.getAnnotations(), arg);
         Comment comment = n.getComment().map(s -> (Comment) s.accept(this, arg)).orElse(null);
+        NodeList<Comment> leadingComments = modifyList(n.getLeadingComments(), arg);
+        NodeList<Comment> trailingComments = modifyList(n.getTrailingComments(), arg);
         if (elements.isEmpty())
             return null;
         n.setElements(elements);
         n.setAnnotations(annotations);
         n.setComment(comment);
+        n.setLeadingComments(leadingComments);
+        n.setTrailingComments(trailingComments);
         return n;
     }
 
@@ -842,8 +1070,12 @@ public class ModifierVisitor<A> implements GenericVisitor<Visitable, A> {
     public Visitable visit(final ReturnStmt n, final A arg) {
         Expression expression = n.getExpression().map(s -> (Expression) s.accept(this, arg)).orElse(null);
         Comment comment = n.getComment().map(s -> (Comment) s.accept(this, arg)).orElse(null);
+        NodeList<Comment> leadingComments = modifyList(n.getLeadingComments(), arg);
+        NodeList<Comment> trailingComments = modifyList(n.getTrailingComments(), arg);
         n.setExpression(expression);
         n.setComment(comment);
+        n.setLeadingComments(leadingComments);
+        n.setTrailingComments(trailingComments);
         return n;
     }
 
@@ -853,11 +1085,15 @@ public class ModifierVisitor<A> implements GenericVisitor<Visitable, A> {
         Expression memberValue = (Expression) n.getMemberValue().accept(this, arg);
         Name name = (Name) n.getName().accept(this, arg);
         Comment comment = n.getComment().map(s -> (Comment) s.accept(this, arg)).orElse(null);
+        NodeList<Comment> leadingComments = modifyList(n.getLeadingComments(), arg);
+        NodeList<Comment> trailingComments = modifyList(n.getTrailingComments(), arg);
         if (memberValue == null || name == null)
             return null;
         n.setMemberValue(memberValue);
         n.setName(name);
         n.setComment(comment);
+        n.setLeadingComments(leadingComments);
+        n.setTrailingComments(trailingComments);
         return n;
     }
 
@@ -865,7 +1101,11 @@ public class ModifierVisitor<A> implements GenericVisitor<Visitable, A> {
     @Generated("com.github.javaparser.generator.core.visitor.ModifierVisitorGenerator")
     public Visitable visit(final StringLiteralExpr n, final A arg) {
         Comment comment = n.getComment().map(s -> (Comment) s.accept(this, arg)).orElse(null);
+        NodeList<Comment> leadingComments = modifyList(n.getLeadingComments(), arg);
+        NodeList<Comment> trailingComments = modifyList(n.getTrailingComments(), arg);
         n.setComment(comment);
+        n.setLeadingComments(leadingComments);
+        n.setTrailingComments(trailingComments);
         return n;
     }
 
@@ -874,8 +1114,12 @@ public class ModifierVisitor<A> implements GenericVisitor<Visitable, A> {
     public Visitable visit(final SuperExpr n, final A arg) {
         Expression classExpr = n.getClassExpr().map(s -> (Expression) s.accept(this, arg)).orElse(null);
         Comment comment = n.getComment().map(s -> (Comment) s.accept(this, arg)).orElse(null);
+        NodeList<Comment> leadingComments = modifyList(n.getLeadingComments(), arg);
+        NodeList<Comment> trailingComments = modifyList(n.getTrailingComments(), arg);
         n.setClassExpr(classExpr);
         n.setComment(comment);
+        n.setLeadingComments(leadingComments);
+        n.setTrailingComments(trailingComments);
         return n;
     }
 
@@ -885,9 +1129,13 @@ public class ModifierVisitor<A> implements GenericVisitor<Visitable, A> {
         Expression label = n.getLabel().map(s -> (Expression) s.accept(this, arg)).orElse(null);
         NodeList<Statement> statements = modifyList(n.getStatements(), arg);
         Comment comment = n.getComment().map(s -> (Comment) s.accept(this, arg)).orElse(null);
+        NodeList<Comment> leadingComments = modifyList(n.getLeadingComments(), arg);
+        NodeList<Comment> trailingComments = modifyList(n.getTrailingComments(), arg);
         n.setLabel(label);
         n.setStatements(statements);
         n.setComment(comment);
+        n.setLeadingComments(leadingComments);
+        n.setTrailingComments(trailingComments);
         return n;
     }
 
@@ -897,11 +1145,15 @@ public class ModifierVisitor<A> implements GenericVisitor<Visitable, A> {
         NodeList<SwitchEntryStmt> entries = modifyList(n.getEntries(), arg);
         Expression selector = (Expression) n.getSelector().accept(this, arg);
         Comment comment = n.getComment().map(s -> (Comment) s.accept(this, arg)).orElse(null);
+        NodeList<Comment> leadingComments = modifyList(n.getLeadingComments(), arg);
+        NodeList<Comment> trailingComments = modifyList(n.getTrailingComments(), arg);
         if (selector == null)
             return null;
         n.setEntries(entries);
         n.setSelector(selector);
         n.setComment(comment);
+        n.setLeadingComments(leadingComments);
+        n.setTrailingComments(trailingComments);
         return n;
     }
 
@@ -911,11 +1163,15 @@ public class ModifierVisitor<A> implements GenericVisitor<Visitable, A> {
         BlockStmt body = (BlockStmt) n.getBody().accept(this, arg);
         Expression expression = (Expression) n.getExpression().accept(this, arg);
         Comment comment = n.getComment().map(s -> (Comment) s.accept(this, arg)).orElse(null);
+        NodeList<Comment> leadingComments = modifyList(n.getLeadingComments(), arg);
+        NodeList<Comment> trailingComments = modifyList(n.getTrailingComments(), arg);
         if (body == null || expression == null)
             return null;
         n.setBody(body);
         n.setExpression(expression);
         n.setComment(comment);
+        n.setLeadingComments(leadingComments);
+        n.setTrailingComments(trailingComments);
         return n;
     }
 
@@ -924,8 +1180,12 @@ public class ModifierVisitor<A> implements GenericVisitor<Visitable, A> {
     public Visitable visit(final ThisExpr n, final A arg) {
         Expression classExpr = n.getClassExpr().map(s -> (Expression) s.accept(this, arg)).orElse(null);
         Comment comment = n.getComment().map(s -> (Comment) s.accept(this, arg)).orElse(null);
+        NodeList<Comment> leadingComments = modifyList(n.getLeadingComments(), arg);
+        NodeList<Comment> trailingComments = modifyList(n.getTrailingComments(), arg);
         n.setClassExpr(classExpr);
         n.setComment(comment);
+        n.setLeadingComments(leadingComments);
+        n.setTrailingComments(trailingComments);
         return n;
     }
 
@@ -934,10 +1194,14 @@ public class ModifierVisitor<A> implements GenericVisitor<Visitable, A> {
     public Visitable visit(final ThrowStmt n, final A arg) {
         Expression expression = (Expression) n.getExpression().accept(this, arg);
         Comment comment = n.getComment().map(s -> (Comment) s.accept(this, arg)).orElse(null);
+        NodeList<Comment> leadingComments = modifyList(n.getLeadingComments(), arg);
+        NodeList<Comment> trailingComments = modifyList(n.getTrailingComments(), arg);
         if (expression == null)
             return null;
         n.setExpression(expression);
         n.setComment(comment);
+        n.setLeadingComments(leadingComments);
+        n.setTrailingComments(trailingComments);
         return n;
     }
 
@@ -949,6 +1213,8 @@ public class ModifierVisitor<A> implements GenericVisitor<Visitable, A> {
         NodeList<Expression> resources = modifyList(n.getResources(), arg);
         BlockStmt tryBlock = (BlockStmt) n.getTryBlock().accept(this, arg);
         Comment comment = n.getComment().map(s -> (Comment) s.accept(this, arg)).orElse(null);
+        NodeList<Comment> leadingComments = modifyList(n.getLeadingComments(), arg);
+        NodeList<Comment> trailingComments = modifyList(n.getTrailingComments(), arg);
         if (tryBlock == null)
             return null;
         n.setCatchClauses(catchClauses);
@@ -956,6 +1222,8 @@ public class ModifierVisitor<A> implements GenericVisitor<Visitable, A> {
         n.setResources(resources);
         n.setTryBlock(tryBlock);
         n.setComment(comment);
+        n.setLeadingComments(leadingComments);
+        n.setTrailingComments(trailingComments);
         return n;
     }
 
@@ -964,10 +1232,14 @@ public class ModifierVisitor<A> implements GenericVisitor<Visitable, A> {
     public Visitable visit(final LocalClassDeclarationStmt n, final A arg) {
         ClassOrInterfaceDeclaration classDeclaration = (ClassOrInterfaceDeclaration) n.getClassDeclaration().accept(this, arg);
         Comment comment = n.getComment().map(s -> (Comment) s.accept(this, arg)).orElse(null);
+        NodeList<Comment> leadingComments = modifyList(n.getLeadingComments(), arg);
+        NodeList<Comment> trailingComments = modifyList(n.getTrailingComments(), arg);
         if (classDeclaration == null)
             return null;
         n.setClassDeclaration(classDeclaration);
         n.setComment(comment);
+        n.setLeadingComments(leadingComments);
+        n.setTrailingComments(trailingComments);
         return n;
     }
 
@@ -978,12 +1250,16 @@ public class ModifierVisitor<A> implements GenericVisitor<Visitable, A> {
         NodeList<ClassOrInterfaceType> typeBound = modifyList(n.getTypeBound(), arg);
         NodeList<AnnotationExpr> annotations = modifyList(n.getAnnotations(), arg);
         Comment comment = n.getComment().map(s -> (Comment) s.accept(this, arg)).orElse(null);
+        NodeList<Comment> leadingComments = modifyList(n.getLeadingComments(), arg);
+        NodeList<Comment> trailingComments = modifyList(n.getTrailingComments(), arg);
         if (name == null)
             return null;
         n.setName(name);
         n.setTypeBound(typeBound);
         n.setAnnotations(annotations);
         n.setComment(comment);
+        n.setLeadingComments(leadingComments);
+        n.setTrailingComments(trailingComments);
         return n;
     }
 
@@ -992,10 +1268,14 @@ public class ModifierVisitor<A> implements GenericVisitor<Visitable, A> {
     public Visitable visit(final UnaryExpr n, final A arg) {
         Expression expression = (Expression) n.getExpression().accept(this, arg);
         Comment comment = n.getComment().map(s -> (Comment) s.accept(this, arg)).orElse(null);
+        NodeList<Comment> leadingComments = modifyList(n.getLeadingComments(), arg);
+        NodeList<Comment> trailingComments = modifyList(n.getTrailingComments(), arg);
         if (expression == null)
             return null;
         n.setExpression(expression);
         n.setComment(comment);
+        n.setLeadingComments(leadingComments);
+        n.setTrailingComments(trailingComments);
         return n;
     }
 
@@ -1004,8 +1284,12 @@ public class ModifierVisitor<A> implements GenericVisitor<Visitable, A> {
     public Visitable visit(final UnknownType n, final A arg) {
         NodeList<AnnotationExpr> annotations = modifyList(n.getAnnotations(), arg);
         Comment comment = n.getComment().map(s -> (Comment) s.accept(this, arg)).orElse(null);
+        NodeList<Comment> leadingComments = modifyList(n.getLeadingComments(), arg);
+        NodeList<Comment> trailingComments = modifyList(n.getTrailingComments(), arg);
         n.setAnnotations(annotations);
         n.setComment(comment);
+        n.setLeadingComments(leadingComments);
+        n.setTrailingComments(trailingComments);
         return n;
     }
 
@@ -1015,11 +1299,15 @@ public class ModifierVisitor<A> implements GenericVisitor<Visitable, A> {
         NodeList<AnnotationExpr> annotations = modifyList(n.getAnnotations(), arg);
         NodeList<VariableDeclarator> variables = modifyList(n.getVariables(), arg);
         Comment comment = n.getComment().map(s -> (Comment) s.accept(this, arg)).orElse(null);
+        NodeList<Comment> leadingComments = modifyList(n.getLeadingComments(), arg);
+        NodeList<Comment> trailingComments = modifyList(n.getTrailingComments(), arg);
         if (variables.isEmpty())
             return null;
         n.setAnnotations(annotations);
         n.setVariables(variables);
         n.setComment(comment);
+        n.setLeadingComments(leadingComments);
+        n.setTrailingComments(trailingComments);
         return n;
     }
 
@@ -1030,12 +1318,16 @@ public class ModifierVisitor<A> implements GenericVisitor<Visitable, A> {
         SimpleName name = (SimpleName) n.getName().accept(this, arg);
         Type type = (Type) n.getType().accept(this, arg);
         Comment comment = n.getComment().map(s -> (Comment) s.accept(this, arg)).orElse(null);
+        NodeList<Comment> leadingComments = modifyList(n.getLeadingComments(), arg);
+        NodeList<Comment> trailingComments = modifyList(n.getTrailingComments(), arg);
         if (name == null || type == null)
             return null;
         n.setInitializer(initializer);
         n.setName(name);
         n.setType(type);
         n.setComment(comment);
+        n.setLeadingComments(leadingComments);
+        n.setTrailingComments(trailingComments);
         return n;
     }
 
@@ -1044,8 +1336,12 @@ public class ModifierVisitor<A> implements GenericVisitor<Visitable, A> {
     public Visitable visit(final VoidType n, final A arg) {
         NodeList<AnnotationExpr> annotations = modifyList(n.getAnnotations(), arg);
         Comment comment = n.getComment().map(s -> (Comment) s.accept(this, arg)).orElse(null);
+        NodeList<Comment> leadingComments = modifyList(n.getLeadingComments(), arg);
+        NodeList<Comment> trailingComments = modifyList(n.getTrailingComments(), arg);
         n.setAnnotations(annotations);
         n.setComment(comment);
+        n.setLeadingComments(leadingComments);
+        n.setTrailingComments(trailingComments);
         return n;
     }
 
@@ -1055,11 +1351,15 @@ public class ModifierVisitor<A> implements GenericVisitor<Visitable, A> {
         Statement body = (Statement) n.getBody().accept(this, arg);
         Expression condition = (Expression) n.getCondition().accept(this, arg);
         Comment comment = n.getComment().map(s -> (Comment) s.accept(this, arg)).orElse(null);
+        NodeList<Comment> leadingComments = modifyList(n.getLeadingComments(), arg);
+        NodeList<Comment> trailingComments = modifyList(n.getTrailingComments(), arg);
         if (body == null || condition == null)
             return null;
         n.setBody(body);
         n.setCondition(condition);
         n.setComment(comment);
+        n.setLeadingComments(leadingComments);
+        n.setTrailingComments(trailingComments);
         return n;
     }
 
@@ -1070,10 +1370,14 @@ public class ModifierVisitor<A> implements GenericVisitor<Visitable, A> {
         ReferenceType superType = n.getSuperType().map(s -> (ReferenceType) s.accept(this, arg)).orElse(null);
         NodeList<AnnotationExpr> annotations = modifyList(n.getAnnotations(), arg);
         Comment comment = n.getComment().map(s -> (Comment) s.accept(this, arg)).orElse(null);
+        NodeList<Comment> leadingComments = modifyList(n.getLeadingComments(), arg);
+        NodeList<Comment> trailingComments = modifyList(n.getTrailingComments(), arg);
         n.setExtendedType(extendedType);
         n.setSuperType(superType);
         n.setAnnotations(annotations);
         n.setComment(comment);
+        n.setLeadingComments(leadingComments);
+        n.setTrailingComments(trailingComments);
         return n;
     }
 
@@ -1083,11 +1387,15 @@ public class ModifierVisitor<A> implements GenericVisitor<Visitable, A> {
         Statement body = (Statement) n.getBody().accept(this, arg);
         NodeList<Parameter> parameters = modifyList(n.getParameters(), arg);
         Comment comment = n.getComment().map(s -> (Comment) s.accept(this, arg)).orElse(null);
+        NodeList<Comment> leadingComments = modifyList(n.getLeadingComments(), arg);
+        NodeList<Comment> trailingComments = modifyList(n.getTrailingComments(), arg);
         if (body == null)
             return null;
         n.setBody(body);
         n.setParameters(parameters);
         n.setComment(comment);
+        n.setLeadingComments(leadingComments);
+        n.setTrailingComments(trailingComments);
         return n;
     }
 
@@ -1097,11 +1405,15 @@ public class ModifierVisitor<A> implements GenericVisitor<Visitable, A> {
         Expression scope = (Expression) n.getScope().accept(this, arg);
         NodeList<Type> typeArguments = modifyList(n.getTypeArguments(), arg);
         Comment comment = n.getComment().map(s -> (Comment) s.accept(this, arg)).orElse(null);
+        NodeList<Comment> leadingComments = modifyList(n.getLeadingComments(), arg);
+        NodeList<Comment> trailingComments = modifyList(n.getTrailingComments(), arg);
         if (scope == null)
             return null;
         n.setScope(scope);
         n.setTypeArguments(typeArguments);
         n.setComment(comment);
+        n.setLeadingComments(leadingComments);
+        n.setTrailingComments(trailingComments);
         return n;
     }
 
@@ -1110,10 +1422,14 @@ public class ModifierVisitor<A> implements GenericVisitor<Visitable, A> {
     public Visitable visit(final TypeExpr n, final A arg) {
         Type type = (Type) n.getType().accept(this, arg);
         Comment comment = n.getComment().map(s -> (Comment) s.accept(this, arg)).orElse(null);
+        NodeList<Comment> leadingComments = modifyList(n.getLeadingComments(), arg);
+        NodeList<Comment> trailingComments = modifyList(n.getTrailingComments(), arg);
         if (type == null)
             return null;
         n.setType(type);
         n.setComment(comment);
+        n.setLeadingComments(leadingComments);
+        n.setTrailingComments(trailingComments);
         return n;
     }
 
@@ -1147,10 +1463,14 @@ public class ModifierVisitor<A> implements GenericVisitor<Visitable, A> {
     public Node visit(final ImportDeclaration n, final A arg) {
         Name name = (Name) n.getName().accept(this, arg);
         Comment comment = n.getComment().map(s -> (Comment) s.accept(this, arg)).orElse(null);
+        NodeList<Comment> leadingComments = modifyList(n.getLeadingComments(), arg);
+        NodeList<Comment> trailingComments = modifyList(n.getTrailingComments(), arg);
         if (name == null)
             return null;
         n.setName(name);
         n.setComment(comment);
+        n.setLeadingComments(leadingComments);
+        n.setTrailingComments(trailingComments);
         return n;
     }
 
@@ -1158,7 +1478,11 @@ public class ModifierVisitor<A> implements GenericVisitor<Visitable, A> {
     @Generated("com.github.javaparser.generator.core.visitor.ModifierVisitorGenerator")
     public Visitable visit(final BlockComment n, final A arg) {
         Comment comment = n.getComment().map(s -> (Comment) s.accept(this, arg)).orElse(null);
+        NodeList<Comment> leadingComments = modifyList(n.getLeadingComments(), arg);
+        NodeList<Comment> trailingComments = modifyList(n.getTrailingComments(), arg);
         n.setComment(comment);
+        n.setLeadingComments(leadingComments);
+        n.setTrailingComments(trailingComments);
         return n;
     }
 
@@ -1166,7 +1490,11 @@ public class ModifierVisitor<A> implements GenericVisitor<Visitable, A> {
     @Generated("com.github.javaparser.generator.core.visitor.ModifierVisitorGenerator")
     public Visitable visit(final LineComment n, final A arg) {
         Comment comment = n.getComment().map(s -> (Comment) s.accept(this, arg)).orElse(null);
+        NodeList<Comment> leadingComments = modifyList(n.getLeadingComments(), arg);
+        NodeList<Comment> trailingComments = modifyList(n.getTrailingComments(), arg);
         n.setComment(comment);
+        n.setLeadingComments(leadingComments);
+        n.setTrailingComments(trailingComments);
         return n;
     }
 
@@ -1184,12 +1512,16 @@ public class ModifierVisitor<A> implements GenericVisitor<Visitable, A> {
         NodeList<ModuleStmt> moduleStmts = modifyList(n.getModuleStmts(), arg);
         Name name = (Name) n.getName().accept(this, arg);
         Comment comment = n.getComment().map(s -> (Comment) s.accept(this, arg)).orElse(null);
+        NodeList<Comment> leadingComments = modifyList(n.getLeadingComments(), arg);
+        NodeList<Comment> trailingComments = modifyList(n.getTrailingComments(), arg);
         if (name == null)
             return null;
         n.setAnnotations(annotations);
         n.setModuleStmts(moduleStmts);
         n.setName(name);
         n.setComment(comment);
+        n.setLeadingComments(leadingComments);
+        n.setTrailingComments(trailingComments);
         return n;
     }
 
@@ -1197,10 +1529,14 @@ public class ModifierVisitor<A> implements GenericVisitor<Visitable, A> {
     public Visitable visit(final ModuleRequiresStmt n, final A arg) {
         Name name = (Name) n.getName().accept(this, arg);
         Comment comment = n.getComment().map(s -> (Comment) s.accept(this, arg)).orElse(null);
+        NodeList<Comment> leadingComments = modifyList(n.getLeadingComments(), arg);
+        NodeList<Comment> trailingComments = modifyList(n.getTrailingComments(), arg);
         if (name == null)
             return null;
         n.setName(name);
         n.setComment(comment);
+        n.setLeadingComments(leadingComments);
+        n.setTrailingComments(trailingComments);
         return n;
     }
 
@@ -1210,11 +1546,15 @@ public class ModifierVisitor<A> implements GenericVisitor<Visitable, A> {
         NodeList<Name> moduleNames = modifyList(n.getModuleNames(), arg);
         Name name = (Name) n.getName().accept(this, arg);
         Comment comment = n.getComment().map(s -> (Comment) s.accept(this, arg)).orElse(null);
+        NodeList<Comment> leadingComments = modifyList(n.getLeadingComments(), arg);
+        NodeList<Comment> trailingComments = modifyList(n.getTrailingComments(), arg);
         if (name == null)
             return null;
         n.setModuleNames(moduleNames);
         n.setName(name);
         n.setComment(comment);
+        n.setLeadingComments(leadingComments);
+        n.setTrailingComments(trailingComments);
         return n;
     }
 
@@ -1224,11 +1564,15 @@ public class ModifierVisitor<A> implements GenericVisitor<Visitable, A> {
         Type type = (Type) n.getType().accept(this, arg);
         NodeList<Type> withTypes = modifyList(n.getWithTypes(), arg);
         Comment comment = n.getComment().map(s -> (Comment) s.accept(this, arg)).orElse(null);
+        NodeList<Comment> leadingComments = modifyList(n.getLeadingComments(), arg);
+        NodeList<Comment> trailingComments = modifyList(n.getTrailingComments(), arg);
         if (type == null)
             return null;
         n.setType(type);
         n.setWithTypes(withTypes);
         n.setComment(comment);
+        n.setLeadingComments(leadingComments);
+        n.setTrailingComments(trailingComments);
         return n;
     }
 
@@ -1237,10 +1581,14 @@ public class ModifierVisitor<A> implements GenericVisitor<Visitable, A> {
     public Visitable visit(final ModuleUsesStmt n, final A arg) {
         Type type = (Type) n.getType().accept(this, arg);
         Comment comment = n.getComment().map(s -> (Comment) s.accept(this, arg)).orElse(null);
+        NodeList<Comment> leadingComments = modifyList(n.getLeadingComments(), arg);
+        NodeList<Comment> trailingComments = modifyList(n.getTrailingComments(), arg);
         if (type == null)
             return null;
         n.setType(type);
         n.setComment(comment);
+        n.setLeadingComments(leadingComments);
+        n.setTrailingComments(trailingComments);
         return n;
     }
 
@@ -1250,11 +1598,15 @@ public class ModifierVisitor<A> implements GenericVisitor<Visitable, A> {
         NodeList<Name> moduleNames = modifyList(n.getModuleNames(), arg);
         Name name = (Name) n.getName().accept(this, arg);
         Comment comment = n.getComment().map(s -> (Comment) s.accept(this, arg)).orElse(null);
+        NodeList<Comment> leadingComments = modifyList(n.getLeadingComments(), arg);
+        NodeList<Comment> trailingComments = modifyList(n.getTrailingComments(), arg);
         if (name == null)
             return null;
         n.setModuleNames(moduleNames);
         n.setName(name);
         n.setComment(comment);
+        n.setLeadingComments(leadingComments);
+        n.setTrailingComments(trailingComments);
         return n;
     }
 
@@ -1262,7 +1614,11 @@ public class ModifierVisitor<A> implements GenericVisitor<Visitable, A> {
     @Generated("com.github.javaparser.generator.core.visitor.ModifierVisitorGenerator")
     public Visitable visit(final UnparsableStmt n, final A arg) {
         Comment comment = n.getComment().map(s -> (Comment) s.accept(this, arg)).orElse(null);
+        NodeList<Comment> leadingComments = modifyList(n.getLeadingComments(), arg);
+        NodeList<Comment> trailingComments = modifyList(n.getTrailingComments(), arg);
         n.setComment(comment);
+        n.setLeadingComments(leadingComments);
+        n.setTrailingComments(trailingComments);
         return n;
     }
 }

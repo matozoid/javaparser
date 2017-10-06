@@ -14,4 +14,8 @@ public class NodeMetaModel extends BaseNodeMetaModel {
     }
 
     public PropertyMetaModel commentPropertyMetaModel;
+
+    public PropertyMetaModel leadingCommentsPropertyMetaModel;
+
+    public PropertyMetaModel trailingCommentsPropertyMetaModel;
 }

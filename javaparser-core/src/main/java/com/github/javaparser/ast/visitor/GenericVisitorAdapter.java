@@ -64,6 +64,16 @@ public abstract class GenericVisitorAdapter<R, A> implements GenericVisitor<R, A
             if (result != null)
                 return result;
         }
+        {
+            result = n.getLeadingComments().accept(this, arg);
+            if (result != null)
+                return result;
+        }
+        {
+            result = n.getTrailingComments().accept(this, arg);
+            if (result != null)
+                return result;
+        }
         return null;
     }
 
@@ -96,6 +106,16 @@ public abstract class GenericVisitorAdapter<R, A> implements GenericVisitor<R, A
             if (result != null)
                 return result;
         }
+        {
+            result = n.getLeadingComments().accept(this, arg);
+            if (result != null)
+                return result;
+        }
+        {
+            result = n.getTrailingComments().accept(this, arg);
+            if (result != null)
+                return result;
+        }
         return null;
     }
 
@@ -115,6 +135,16 @@ public abstract class GenericVisitorAdapter<R, A> implements GenericVisitor<R, A
         }
         if (n.getComment().isPresent()) {
             result = n.getComment().get().accept(this, arg);
+            if (result != null)
+                return result;
+        }
+        {
+            result = n.getLeadingComments().accept(this, arg);
+            if (result != null)
+                return result;
+        }
+        {
+            result = n.getTrailingComments().accept(this, arg);
             if (result != null)
                 return result;
         }
@@ -145,6 +175,16 @@ public abstract class GenericVisitorAdapter<R, A> implements GenericVisitor<R, A
             if (result != null)
                 return result;
         }
+        {
+            result = n.getLeadingComments().accept(this, arg);
+            if (result != null)
+                return result;
+        }
+        {
+            result = n.getTrailingComments().accept(this, arg);
+            if (result != null)
+                return result;
+        }
         return null;
     }
 
@@ -159,6 +199,16 @@ public abstract class GenericVisitorAdapter<R, A> implements GenericVisitor<R, A
         }
         if (n.getComment().isPresent()) {
             result = n.getComment().get().accept(this, arg);
+            if (result != null)
+                return result;
+        }
+        {
+            result = n.getLeadingComments().accept(this, arg);
+            if (result != null)
+                return result;
+        }
+        {
+            result = n.getTrailingComments().accept(this, arg);
             if (result != null)
                 return result;
         }
@@ -184,6 +234,16 @@ public abstract class GenericVisitorAdapter<R, A> implements GenericVisitor<R, A
             if (result != null)
                 return result;
         }
+        {
+            result = n.getLeadingComments().accept(this, arg);
+            if (result != null)
+                return result;
+        }
+        {
+            result = n.getTrailingComments().accept(this, arg);
+            if (result != null)
+                return result;
+        }
         return null;
     }
 
@@ -203,6 +263,16 @@ public abstract class GenericVisitorAdapter<R, A> implements GenericVisitor<R, A
         }
         if (n.getComment().isPresent()) {
             result = n.getComment().get().accept(this, arg);
+            if (result != null)
+                return result;
+        }
+        {
+            result = n.getLeadingComments().accept(this, arg);
+            if (result != null)
+                return result;
+        }
+        {
+            result = n.getTrailingComments().accept(this, arg);
             if (result != null)
                 return result;
         }
@@ -228,6 +298,16 @@ public abstract class GenericVisitorAdapter<R, A> implements GenericVisitor<R, A
             if (result != null)
                 return result;
         }
+        {
+            result = n.getLeadingComments().accept(this, arg);
+            if (result != null)
+                return result;
+        }
+        {
+            result = n.getTrailingComments().accept(this, arg);
+            if (result != null)
+                return result;
+        }
         return null;
     }
 
@@ -245,6 +325,16 @@ public abstract class GenericVisitorAdapter<R, A> implements GenericVisitor<R, A
             if (result != null)
                 return result;
         }
+        {
+            result = n.getLeadingComments().accept(this, arg);
+            if (result != null)
+                return result;
+        }
+        {
+            result = n.getTrailingComments().accept(this, arg);
+            if (result != null)
+                return result;
+        }
         return null;
     }
 
@@ -254,6 +344,16 @@ public abstract class GenericVisitorAdapter<R, A> implements GenericVisitor<R, A
         R result;
         if (n.getComment().isPresent()) {
             result = n.getComment().get().accept(this, arg);
+            if (result != null)
+                return result;
+        }
+        {
+            result = n.getLeadingComments().accept(this, arg);
+            if (result != null)
+                return result;
+        }
+        {
+            result = n.getTrailingComments().accept(this, arg);
             if (result != null)
                 return result;
         }
@@ -271,6 +371,16 @@ public abstract class GenericVisitorAdapter<R, A> implements GenericVisitor<R, A
         }
         if (n.getComment().isPresent()) {
             result = n.getComment().get().accept(this, arg);
+            if (result != null)
+                return result;
+        }
+        {
+            result = n.getLeadingComments().accept(this, arg);
+            if (result != null)
+                return result;
+        }
+        {
+            result = n.getTrailingComments().accept(this, arg);
             if (result != null)
                 return result;
         }
@@ -296,6 +406,16 @@ public abstract class GenericVisitorAdapter<R, A> implements GenericVisitor<R, A
             if (result != null)
                 return result;
         }
+        {
+            result = n.getLeadingComments().accept(this, arg);
+            if (result != null)
+                return result;
+        }
+        {
+            result = n.getTrailingComments().accept(this, arg);
+            if (result != null)
+                return result;
+        }
         return null;
     }
 
@@ -318,6 +438,16 @@ public abstract class GenericVisitorAdapter<R, A> implements GenericVisitor<R, A
             if (result != null)
                 return result;
         }
+        {
+            result = n.getLeadingComments().accept(this, arg);
+            if (result != null)
+                return result;
+        }
+        {
+            result = n.getTrailingComments().accept(this, arg);
+            if (result != null)
+                return result;
+        }
         return null;
     }
 
@@ -327,6 +457,16 @@ public abstract class GenericVisitorAdapter<R, A> implements GenericVisitor<R, A
         R result;
         if (n.getComment().isPresent()) {
             result = n.getComment().get().accept(this, arg);
+            if (result != null)
+                return result;
+        }
+        {
+            result = n.getLeadingComments().accept(this, arg);
+            if (result != null)
+                return result;
+        }
+        {
+            result = n.getTrailingComments().accept(this, arg);
             if (result != null)
                 return result;
         }
@@ -344,6 +484,16 @@ public abstract class GenericVisitorAdapter<R, A> implements GenericVisitor<R, A
         }
         if (n.getComment().isPresent()) {
             result = n.getComment().get().accept(this, arg);
+            if (result != null)
+                return result;
+        }
+        {
+            result = n.getLeadingComments().accept(this, arg);
+            if (result != null)
+                return result;
+        }
+        {
+            result = n.getTrailingComments().accept(this, arg);
             if (result != null)
                 return result;
         }
@@ -389,6 +539,16 @@ public abstract class GenericVisitorAdapter<R, A> implements GenericVisitor<R, A
             if (result != null)
                 return result;
         }
+        {
+            result = n.getLeadingComments().accept(this, arg);
+            if (result != null)
+                return result;
+        }
+        {
+            result = n.getTrailingComments().accept(this, arg);
+            if (result != null)
+                return result;
+        }
         return null;
     }
 
@@ -418,6 +578,16 @@ public abstract class GenericVisitorAdapter<R, A> implements GenericVisitor<R, A
         }
         if (n.getComment().isPresent()) {
             result = n.getComment().get().accept(this, arg);
+            if (result != null)
+                return result;
+        }
+        {
+            result = n.getLeadingComments().accept(this, arg);
+            if (result != null)
+                return result;
+        }
+        {
+            result = n.getTrailingComments().accept(this, arg);
             if (result != null)
                 return result;
         }
@@ -453,6 +623,16 @@ public abstract class GenericVisitorAdapter<R, A> implements GenericVisitor<R, A
             if (result != null)
                 return result;
         }
+        {
+            result = n.getLeadingComments().accept(this, arg);
+            if (result != null)
+                return result;
+        }
+        {
+            result = n.getTrailingComments().accept(this, arg);
+            if (result != null)
+                return result;
+        }
         return null;
     }
 
@@ -477,6 +657,16 @@ public abstract class GenericVisitorAdapter<R, A> implements GenericVisitor<R, A
         }
         if (n.getComment().isPresent()) {
             result = n.getComment().get().accept(this, arg);
+            if (result != null)
+                return result;
+        }
+        {
+            result = n.getLeadingComments().accept(this, arg);
+            if (result != null)
+                return result;
+        }
+        {
+            result = n.getTrailingComments().accept(this, arg);
             if (result != null)
                 return result;
         }
@@ -522,6 +712,16 @@ public abstract class GenericVisitorAdapter<R, A> implements GenericVisitor<R, A
             if (result != null)
                 return result;
         }
+        {
+            result = n.getLeadingComments().accept(this, arg);
+            if (result != null)
+                return result;
+        }
+        {
+            result = n.getTrailingComments().accept(this, arg);
+            if (result != null)
+                return result;
+        }
         return null;
     }
 
@@ -536,6 +736,16 @@ public abstract class GenericVisitorAdapter<R, A> implements GenericVisitor<R, A
         }
         if (n.getComment().isPresent()) {
             result = n.getComment().get().accept(this, arg);
+            if (result != null)
+                return result;
+        }
+        {
+            result = n.getLeadingComments().accept(this, arg);
+            if (result != null)
+                return result;
+        }
+        {
+            result = n.getTrailingComments().accept(this, arg);
             if (result != null)
                 return result;
         }
@@ -561,6 +771,16 @@ public abstract class GenericVisitorAdapter<R, A> implements GenericVisitor<R, A
             if (result != null)
                 return result;
         }
+        {
+            result = n.getLeadingComments().accept(this, arg);
+            if (result != null)
+                return result;
+        }
+        {
+            result = n.getTrailingComments().accept(this, arg);
+            if (result != null)
+                return result;
+        }
         return null;
     }
 
@@ -573,6 +793,16 @@ public abstract class GenericVisitorAdapter<R, A> implements GenericVisitor<R, A
             if (result != null)
                 return result;
         }
+        {
+            result = n.getLeadingComments().accept(this, arg);
+            if (result != null)
+                return result;
+        }
+        {
+            result = n.getTrailingComments().accept(this, arg);
+            if (result != null)
+                return result;
+        }
         return null;
     }
 
@@ -582,6 +812,16 @@ public abstract class GenericVisitorAdapter<R, A> implements GenericVisitor<R, A
         R result;
         if (n.getComment().isPresent()) {
             result = n.getComment().get().accept(this, arg);
+            if (result != null)
+                return result;
+        }
+        {
+            result = n.getLeadingComments().accept(this, arg);
+            if (result != null)
+                return result;
+        }
+        {
+            result = n.getTrailingComments().accept(this, arg);
             if (result != null)
                 return result;
         }
@@ -599,6 +839,16 @@ public abstract class GenericVisitorAdapter<R, A> implements GenericVisitor<R, A
         }
         if (n.getComment().isPresent()) {
             result = n.getComment().get().accept(this, arg);
+            if (result != null)
+                return result;
+        }
+        {
+            result = n.getLeadingComments().accept(this, arg);
+            if (result != null)
+                return result;
+        }
+        {
+            result = n.getTrailingComments().accept(this, arg);
             if (result != null)
                 return result;
         }
@@ -631,6 +881,16 @@ public abstract class GenericVisitorAdapter<R, A> implements GenericVisitor<R, A
         }
         if (n.getComment().isPresent()) {
             result = n.getComment().get().accept(this, arg);
+            if (result != null)
+                return result;
+        }
+        {
+            result = n.getLeadingComments().accept(this, arg);
+            if (result != null)
+                return result;
+        }
+        {
+            result = n.getTrailingComments().accept(this, arg);
             if (result != null)
                 return result;
         }
@@ -671,6 +931,16 @@ public abstract class GenericVisitorAdapter<R, A> implements GenericVisitor<R, A
             if (result != null)
                 return result;
         }
+        {
+            result = n.getLeadingComments().accept(this, arg);
+            if (result != null)
+                return result;
+        }
+        {
+            result = n.getTrailingComments().accept(this, arg);
+            if (result != null)
+                return result;
+        }
         return null;
     }
 
@@ -698,6 +968,16 @@ public abstract class GenericVisitorAdapter<R, A> implements GenericVisitor<R, A
             if (result != null)
                 return result;
         }
+        {
+            result = n.getLeadingComments().accept(this, arg);
+            if (result != null)
+                return result;
+        }
+        {
+            result = n.getTrailingComments().accept(this, arg);
+            if (result != null)
+                return result;
+        }
         return null;
     }
 
@@ -712,6 +992,16 @@ public abstract class GenericVisitorAdapter<R, A> implements GenericVisitor<R, A
         }
         if (n.getComment().isPresent()) {
             result = n.getComment().get().accept(this, arg);
+            if (result != null)
+                return result;
+        }
+        {
+            result = n.getLeadingComments().accept(this, arg);
+            if (result != null)
+                return result;
+        }
+        {
+            result = n.getTrailingComments().accept(this, arg);
             if (result != null)
                 return result;
         }
@@ -742,6 +1032,16 @@ public abstract class GenericVisitorAdapter<R, A> implements GenericVisitor<R, A
             if (result != null)
                 return result;
         }
+        {
+            result = n.getLeadingComments().accept(this, arg);
+            if (result != null)
+                return result;
+        }
+        {
+            result = n.getTrailingComments().accept(this, arg);
+            if (result != null)
+                return result;
+        }
         return null;
     }
 
@@ -761,6 +1061,16 @@ public abstract class GenericVisitorAdapter<R, A> implements GenericVisitor<R, A
         }
         if (n.getComment().isPresent()) {
             result = n.getComment().get().accept(this, arg);
+            if (result != null)
+                return result;
+        }
+        {
+            result = n.getLeadingComments().accept(this, arg);
+            if (result != null)
+                return result;
+        }
+        {
+            result = n.getTrailingComments().accept(this, arg);
             if (result != null)
                 return result;
         }
@@ -788,6 +1098,16 @@ public abstract class GenericVisitorAdapter<R, A> implements GenericVisitor<R, A
         }
         if (n.getComment().isPresent()) {
             result = n.getComment().get().accept(this, arg);
+            if (result != null)
+                return result;
+        }
+        {
+            result = n.getLeadingComments().accept(this, arg);
+            if (result != null)
+                return result;
+        }
+        {
+            result = n.getTrailingComments().accept(this, arg);
             if (result != null)
                 return result;
         }
@@ -823,6 +1143,16 @@ public abstract class GenericVisitorAdapter<R, A> implements GenericVisitor<R, A
             if (result != null)
                 return result;
         }
+        {
+            result = n.getLeadingComments().accept(this, arg);
+            if (result != null)
+                return result;
+        }
+        {
+            result = n.getTrailingComments().accept(this, arg);
+            if (result != null)
+                return result;
+        }
         return null;
     }
 
@@ -850,6 +1180,16 @@ public abstract class GenericVisitorAdapter<R, A> implements GenericVisitor<R, A
             if (result != null)
                 return result;
         }
+        {
+            result = n.getLeadingComments().accept(this, arg);
+            if (result != null)
+                return result;
+        }
+        {
+            result = n.getTrailingComments().accept(this, arg);
+            if (result != null)
+                return result;
+        }
         return null;
     }
 
@@ -869,6 +1209,16 @@ public abstract class GenericVisitorAdapter<R, A> implements GenericVisitor<R, A
         }
         if (n.getComment().isPresent()) {
             result = n.getComment().get().accept(this, arg);
+            if (result != null)
+                return result;
+        }
+        {
+            result = n.getLeadingComments().accept(this, arg);
+            if (result != null)
+                return result;
+        }
+        {
+            result = n.getTrailingComments().accept(this, arg);
             if (result != null)
                 return result;
         }
@@ -894,6 +1244,16 @@ public abstract class GenericVisitorAdapter<R, A> implements GenericVisitor<R, A
             if (result != null)
                 return result;
         }
+        {
+            result = n.getLeadingComments().accept(this, arg);
+            if (result != null)
+                return result;
+        }
+        {
+            result = n.getTrailingComments().accept(this, arg);
+            if (result != null)
+                return result;
+        }
         return null;
     }
 
@@ -906,6 +1266,16 @@ public abstract class GenericVisitorAdapter<R, A> implements GenericVisitor<R, A
             if (result != null)
                 return result;
         }
+        {
+            result = n.getLeadingComments().accept(this, arg);
+            if (result != null)
+                return result;
+        }
+        {
+            result = n.getTrailingComments().accept(this, arg);
+            if (result != null)
+                return result;
+        }
         return null;
     }
 
@@ -915,6 +1285,16 @@ public abstract class GenericVisitorAdapter<R, A> implements GenericVisitor<R, A
         R result;
         if (n.getComment().isPresent()) {
             result = n.getComment().get().accept(this, arg);
+            if (result != null)
+                return result;
+        }
+        {
+            result = n.getLeadingComments().accept(this, arg);
+            if (result != null)
+                return result;
+        }
+        {
+            result = n.getTrailingComments().accept(this, arg);
             if (result != null)
                 return result;
         }
@@ -940,6 +1320,16 @@ public abstract class GenericVisitorAdapter<R, A> implements GenericVisitor<R, A
             if (result != null)
                 return result;
         }
+        {
+            result = n.getLeadingComments().accept(this, arg);
+            if (result != null)
+                return result;
+        }
+        {
+            result = n.getTrailingComments().accept(this, arg);
+            if (result != null)
+                return result;
+        }
         return null;
     }
 
@@ -949,6 +1339,16 @@ public abstract class GenericVisitorAdapter<R, A> implements GenericVisitor<R, A
         R result;
         if (n.getComment().isPresent()) {
             result = n.getComment().get().accept(this, arg);
+            if (result != null)
+                return result;
+        }
+        {
+            result = n.getLeadingComments().accept(this, arg);
+            if (result != null)
+                return result;
+        }
+        {
+            result = n.getTrailingComments().accept(this, arg);
             if (result != null)
                 return result;
         }
@@ -966,6 +1366,16 @@ public abstract class GenericVisitorAdapter<R, A> implements GenericVisitor<R, A
         }
         if (n.getComment().isPresent()) {
             result = n.getComment().get().accept(this, arg);
+            if (result != null)
+                return result;
+        }
+        {
+            result = n.getLeadingComments().accept(this, arg);
+            if (result != null)
+                return result;
+        }
+        {
+            result = n.getTrailingComments().accept(this, arg);
             if (result != null)
                 return result;
         }
@@ -988,6 +1398,16 @@ public abstract class GenericVisitorAdapter<R, A> implements GenericVisitor<R, A
         }
         if (n.getComment().isPresent()) {
             result = n.getComment().get().accept(this, arg);
+            if (result != null)
+                return result;
+        }
+        {
+            result = n.getLeadingComments().accept(this, arg);
+            if (result != null)
+                return result;
+        }
+        {
+            result = n.getTrailingComments().accept(this, arg);
             if (result != null)
                 return result;
         }
@@ -1020,6 +1440,16 @@ public abstract class GenericVisitorAdapter<R, A> implements GenericVisitor<R, A
         }
         if (n.getComment().isPresent()) {
             result = n.getComment().get().accept(this, arg);
+            if (result != null)
+                return result;
+        }
+        {
+            result = n.getLeadingComments().accept(this, arg);
+            if (result != null)
+                return result;
+        }
+        {
+            result = n.getTrailingComments().accept(this, arg);
             if (result != null)
                 return result;
         }
@@ -1070,6 +1500,16 @@ public abstract class GenericVisitorAdapter<R, A> implements GenericVisitor<R, A
             if (result != null)
                 return result;
         }
+        {
+            result = n.getLeadingComments().accept(this, arg);
+            if (result != null)
+                return result;
+        }
+        {
+            result = n.getTrailingComments().accept(this, arg);
+            if (result != null)
+                return result;
+        }
         return null;
     }
 
@@ -1084,6 +1524,16 @@ public abstract class GenericVisitorAdapter<R, A> implements GenericVisitor<R, A
         }
         if (n.getComment().isPresent()) {
             result = n.getComment().get().accept(this, arg);
+            if (result != null)
+                return result;
+        }
+        {
+            result = n.getLeadingComments().accept(this, arg);
+            if (result != null)
+                return result;
+        }
+        {
+            result = n.getTrailingComments().accept(this, arg);
             if (result != null)
                 return result;
         }
@@ -1109,6 +1559,16 @@ public abstract class GenericVisitorAdapter<R, A> implements GenericVisitor<R, A
             if (result != null)
                 return result;
         }
+        {
+            result = n.getLeadingComments().accept(this, arg);
+            if (result != null)
+                return result;
+        }
+        {
+            result = n.getTrailingComments().accept(this, arg);
+            if (result != null)
+                return result;
+        }
         return null;
     }
 
@@ -1118,6 +1578,16 @@ public abstract class GenericVisitorAdapter<R, A> implements GenericVisitor<R, A
         R result;
         if (n.getComment().isPresent()) {
             result = n.getComment().get().accept(this, arg);
+            if (result != null)
+                return result;
+        }
+        {
+            result = n.getLeadingComments().accept(this, arg);
+            if (result != null)
+                return result;
+        }
+        {
+            result = n.getTrailingComments().accept(this, arg);
             if (result != null)
                 return result;
         }
@@ -1158,6 +1628,16 @@ public abstract class GenericVisitorAdapter<R, A> implements GenericVisitor<R, A
             if (result != null)
                 return result;
         }
+        {
+            result = n.getLeadingComments().accept(this, arg);
+            if (result != null)
+                return result;
+        }
+        {
+            result = n.getTrailingComments().accept(this, arg);
+            if (result != null)
+                return result;
+        }
         return null;
     }
 
@@ -1177,6 +1657,16 @@ public abstract class GenericVisitorAdapter<R, A> implements GenericVisitor<R, A
         }
         if (n.getComment().isPresent()) {
             result = n.getComment().get().accept(this, arg);
+            if (result != null)
+                return result;
+        }
+        {
+            result = n.getLeadingComments().accept(this, arg);
+            if (result != null)
+                return result;
+        }
+        {
+            result = n.getTrailingComments().accept(this, arg);
             if (result != null)
                 return result;
         }
@@ -1212,6 +1702,16 @@ public abstract class GenericVisitorAdapter<R, A> implements GenericVisitor<R, A
             if (result != null)
                 return result;
         }
+        {
+            result = n.getLeadingComments().accept(this, arg);
+            if (result != null)
+                return result;
+        }
+        {
+            result = n.getTrailingComments().accept(this, arg);
+            if (result != null)
+                return result;
+        }
         return null;
     }
 
@@ -1226,6 +1726,16 @@ public abstract class GenericVisitorAdapter<R, A> implements GenericVisitor<R, A
         }
         if (n.getComment().isPresent()) {
             result = n.getComment().get().accept(this, arg);
+            if (result != null)
+                return result;
+        }
+        {
+            result = n.getLeadingComments().accept(this, arg);
+            if (result != null)
+                return result;
+        }
+        {
+            result = n.getTrailingComments().accept(this, arg);
             if (result != null)
                 return result;
         }
@@ -1251,6 +1761,16 @@ public abstract class GenericVisitorAdapter<R, A> implements GenericVisitor<R, A
             if (result != null)
                 return result;
         }
+        {
+            result = n.getLeadingComments().accept(this, arg);
+            if (result != null)
+                return result;
+        }
+        {
+            result = n.getTrailingComments().accept(this, arg);
+            if (result != null)
+                return result;
+        }
         return null;
     }
 
@@ -1260,6 +1780,16 @@ public abstract class GenericVisitorAdapter<R, A> implements GenericVisitor<R, A
         R result;
         if (n.getComment().isPresent()) {
             result = n.getComment().get().accept(this, arg);
+            if (result != null)
+                return result;
+        }
+        {
+            result = n.getLeadingComments().accept(this, arg);
+            if (result != null)
+                return result;
+        }
+        {
+            result = n.getTrailingComments().accept(this, arg);
             if (result != null)
                 return result;
         }
@@ -1285,6 +1815,16 @@ public abstract class GenericVisitorAdapter<R, A> implements GenericVisitor<R, A
             if (result != null)
                 return result;
         }
+        {
+            result = n.getLeadingComments().accept(this, arg);
+            if (result != null)
+                return result;
+        }
+        {
+            result = n.getTrailingComments().accept(this, arg);
+            if (result != null)
+                return result;
+        }
         return null;
     }
 
@@ -1304,6 +1844,16 @@ public abstract class GenericVisitorAdapter<R, A> implements GenericVisitor<R, A
         }
         if (n.getComment().isPresent()) {
             result = n.getComment().get().accept(this, arg);
+            if (result != null)
+                return result;
+        }
+        {
+            result = n.getLeadingComments().accept(this, arg);
+            if (result != null)
+                return result;
+        }
+        {
+            result = n.getTrailingComments().accept(this, arg);
             if (result != null)
                 return result;
         }
@@ -1329,6 +1879,16 @@ public abstract class GenericVisitorAdapter<R, A> implements GenericVisitor<R, A
             if (result != null)
                 return result;
         }
+        {
+            result = n.getLeadingComments().accept(this, arg);
+            if (result != null)
+                return result;
+        }
+        {
+            result = n.getTrailingComments().accept(this, arg);
+            if (result != null)
+                return result;
+        }
         return null;
     }
 
@@ -1351,6 +1911,16 @@ public abstract class GenericVisitorAdapter<R, A> implements GenericVisitor<R, A
             if (result != null)
                 return result;
         }
+        {
+            result = n.getLeadingComments().accept(this, arg);
+            if (result != null)
+                return result;
+        }
+        {
+            result = n.getTrailingComments().accept(this, arg);
+            if (result != null)
+                return result;
+        }
         return null;
     }
 
@@ -1365,6 +1935,16 @@ public abstract class GenericVisitorAdapter<R, A> implements GenericVisitor<R, A
         }
         if (n.getComment().isPresent()) {
             result = n.getComment().get().accept(this, arg);
+            if (result != null)
+                return result;
+        }
+        {
+            result = n.getLeadingComments().accept(this, arg);
+            if (result != null)
+                return result;
+        }
+        {
+            result = n.getTrailingComments().accept(this, arg);
             if (result != null)
                 return result;
         }
@@ -1390,6 +1970,16 @@ public abstract class GenericVisitorAdapter<R, A> implements GenericVisitor<R, A
             if (result != null)
                 return result;
         }
+        {
+            result = n.getLeadingComments().accept(this, arg);
+            if (result != null)
+                return result;
+        }
+        {
+            result = n.getTrailingComments().accept(this, arg);
+            if (result != null)
+                return result;
+        }
         return null;
     }
 
@@ -1399,6 +1989,16 @@ public abstract class GenericVisitorAdapter<R, A> implements GenericVisitor<R, A
         R result;
         if (n.getComment().isPresent()) {
             result = n.getComment().get().accept(this, arg);
+            if (result != null)
+                return result;
+        }
+        {
+            result = n.getLeadingComments().accept(this, arg);
+            if (result != null)
+                return result;
+        }
+        {
+            result = n.getTrailingComments().accept(this, arg);
             if (result != null)
                 return result;
         }
@@ -1416,6 +2016,16 @@ public abstract class GenericVisitorAdapter<R, A> implements GenericVisitor<R, A
         }
         if (n.getComment().isPresent()) {
             result = n.getComment().get().accept(this, arg);
+            if (result != null)
+                return result;
+        }
+        {
+            result = n.getLeadingComments().accept(this, arg);
+            if (result != null)
+                return result;
+        }
+        {
+            result = n.getTrailingComments().accept(this, arg);
             if (result != null)
                 return result;
         }
@@ -1441,6 +2051,16 @@ public abstract class GenericVisitorAdapter<R, A> implements GenericVisitor<R, A
             if (result != null)
                 return result;
         }
+        {
+            result = n.getLeadingComments().accept(this, arg);
+            if (result != null)
+                return result;
+        }
+        {
+            result = n.getTrailingComments().accept(this, arg);
+            if (result != null)
+                return result;
+        }
         return null;
     }
 
@@ -1460,6 +2080,16 @@ public abstract class GenericVisitorAdapter<R, A> implements GenericVisitor<R, A
         }
         if (n.getComment().isPresent()) {
             result = n.getComment().get().accept(this, arg);
+            if (result != null)
+                return result;
+        }
+        {
+            result = n.getLeadingComments().accept(this, arg);
+            if (result != null)
+                return result;
+        }
+        {
+            result = n.getTrailingComments().accept(this, arg);
             if (result != null)
                 return result;
         }
@@ -1485,6 +2115,16 @@ public abstract class GenericVisitorAdapter<R, A> implements GenericVisitor<R, A
             if (result != null)
                 return result;
         }
+        {
+            result = n.getLeadingComments().accept(this, arg);
+            if (result != null)
+                return result;
+        }
+        {
+            result = n.getTrailingComments().accept(this, arg);
+            if (result != null)
+                return result;
+        }
         return null;
     }
 
@@ -1502,6 +2142,16 @@ public abstract class GenericVisitorAdapter<R, A> implements GenericVisitor<R, A
             if (result != null)
                 return result;
         }
+        {
+            result = n.getLeadingComments().accept(this, arg);
+            if (result != null)
+                return result;
+        }
+        {
+            result = n.getTrailingComments().accept(this, arg);
+            if (result != null)
+                return result;
+        }
         return null;
     }
 
@@ -1516,6 +2166,16 @@ public abstract class GenericVisitorAdapter<R, A> implements GenericVisitor<R, A
         }
         if (n.getComment().isPresent()) {
             result = n.getComment().get().accept(this, arg);
+            if (result != null)
+                return result;
+        }
+        {
+            result = n.getLeadingComments().accept(this, arg);
+            if (result != null)
+                return result;
+        }
+        {
+            result = n.getTrailingComments().accept(this, arg);
             if (result != null)
                 return result;
         }
@@ -1551,6 +2211,16 @@ public abstract class GenericVisitorAdapter<R, A> implements GenericVisitor<R, A
             if (result != null)
                 return result;
         }
+        {
+            result = n.getLeadingComments().accept(this, arg);
+            if (result != null)
+                return result;
+        }
+        {
+            result = n.getTrailingComments().accept(this, arg);
+            if (result != null)
+                return result;
+        }
         return null;
     }
 
@@ -1565,6 +2235,16 @@ public abstract class GenericVisitorAdapter<R, A> implements GenericVisitor<R, A
         }
         if (n.getComment().isPresent()) {
             result = n.getComment().get().accept(this, arg);
+            if (result != null)
+                return result;
+        }
+        {
+            result = n.getLeadingComments().accept(this, arg);
+            if (result != null)
+                return result;
+        }
+        {
+            result = n.getTrailingComments().accept(this, arg);
             if (result != null)
                 return result;
         }
@@ -1595,6 +2275,16 @@ public abstract class GenericVisitorAdapter<R, A> implements GenericVisitor<R, A
             if (result != null)
                 return result;
         }
+        {
+            result = n.getLeadingComments().accept(this, arg);
+            if (result != null)
+                return result;
+        }
+        {
+            result = n.getTrailingComments().accept(this, arg);
+            if (result != null)
+                return result;
+        }
         return null;
     }
 
@@ -1612,6 +2302,16 @@ public abstract class GenericVisitorAdapter<R, A> implements GenericVisitor<R, A
             if (result != null)
                 return result;
         }
+        {
+            result = n.getLeadingComments().accept(this, arg);
+            if (result != null)
+                return result;
+        }
+        {
+            result = n.getTrailingComments().accept(this, arg);
+            if (result != null)
+                return result;
+        }
         return null;
     }
 
@@ -1626,6 +2326,16 @@ public abstract class GenericVisitorAdapter<R, A> implements GenericVisitor<R, A
         }
         if (n.getComment().isPresent()) {
             result = n.getComment().get().accept(this, arg);
+            if (result != null)
+                return result;
+        }
+        {
+            result = n.getLeadingComments().accept(this, arg);
+            if (result != null)
+                return result;
+        }
+        {
+            result = n.getTrailingComments().accept(this, arg);
             if (result != null)
                 return result;
         }
@@ -1648,6 +2358,16 @@ public abstract class GenericVisitorAdapter<R, A> implements GenericVisitor<R, A
         }
         if (n.getComment().isPresent()) {
             result = n.getComment().get().accept(this, arg);
+            if (result != null)
+                return result;
+        }
+        {
+            result = n.getLeadingComments().accept(this, arg);
+            if (result != null)
+                return result;
+        }
+        {
+            result = n.getTrailingComments().accept(this, arg);
             if (result != null)
                 return result;
         }
@@ -1678,6 +2398,16 @@ public abstract class GenericVisitorAdapter<R, A> implements GenericVisitor<R, A
             if (result != null)
                 return result;
         }
+        {
+            result = n.getLeadingComments().accept(this, arg);
+            if (result != null)
+                return result;
+        }
+        {
+            result = n.getTrailingComments().accept(this, arg);
+            if (result != null)
+                return result;
+        }
         return null;
     }
 
@@ -1692,6 +2422,16 @@ public abstract class GenericVisitorAdapter<R, A> implements GenericVisitor<R, A
         }
         if (n.getComment().isPresent()) {
             result = n.getComment().get().accept(this, arg);
+            if (result != null)
+                return result;
+        }
+        {
+            result = n.getLeadingComments().accept(this, arg);
+            if (result != null)
+                return result;
+        }
+        {
+            result = n.getTrailingComments().accept(this, arg);
             if (result != null)
                 return result;
         }
@@ -1714,6 +2454,16 @@ public abstract class GenericVisitorAdapter<R, A> implements GenericVisitor<R, A
         }
         if (n.getComment().isPresent()) {
             result = n.getComment().get().accept(this, arg);
+            if (result != null)
+                return result;
+        }
+        {
+            result = n.getLeadingComments().accept(this, arg);
+            if (result != null)
+                return result;
+        }
+        {
+            result = n.getTrailingComments().accept(this, arg);
             if (result != null)
                 return result;
         }
@@ -1744,6 +2494,16 @@ public abstract class GenericVisitorAdapter<R, A> implements GenericVisitor<R, A
             if (result != null)
                 return result;
         }
+        {
+            result = n.getLeadingComments().accept(this, arg);
+            if (result != null)
+                return result;
+        }
+        {
+            result = n.getTrailingComments().accept(this, arg);
+            if (result != null)
+                return result;
+        }
         return null;
     }
 
@@ -1763,6 +2523,16 @@ public abstract class GenericVisitorAdapter<R, A> implements GenericVisitor<R, A
         }
         if (n.getComment().isPresent()) {
             result = n.getComment().get().accept(this, arg);
+            if (result != null)
+                return result;
+        }
+        {
+            result = n.getLeadingComments().accept(this, arg);
+            if (result != null)
+                return result;
+        }
+        {
+            result = n.getTrailingComments().accept(this, arg);
             if (result != null)
                 return result;
         }
@@ -1788,6 +2558,16 @@ public abstract class GenericVisitorAdapter<R, A> implements GenericVisitor<R, A
             if (result != null)
                 return result;
         }
+        {
+            result = n.getLeadingComments().accept(this, arg);
+            if (result != null)
+                return result;
+        }
+        {
+            result = n.getTrailingComments().accept(this, arg);
+            if (result != null)
+                return result;
+        }
         return null;
     }
 
@@ -1802,6 +2582,16 @@ public abstract class GenericVisitorAdapter<R, A> implements GenericVisitor<R, A
         }
         if (n.getComment().isPresent()) {
             result = n.getComment().get().accept(this, arg);
+            if (result != null)
+                return result;
+        }
+        {
+            result = n.getLeadingComments().accept(this, arg);
+            if (result != null)
+                return result;
+        }
+        {
+            result = n.getTrailingComments().accept(this, arg);
             if (result != null)
                 return result;
         }
@@ -1822,6 +2612,16 @@ public abstract class GenericVisitorAdapter<R, A> implements GenericVisitor<R, A
             if (result != null)
                 return result;
         }
+        {
+            result = n.getLeadingComments().accept(this, arg);
+            if (result != null)
+                return result;
+        }
+        {
+            result = n.getTrailingComments().accept(this, arg);
+            if (result != null)
+                return result;
+        }
         return null;
     }
 
@@ -1834,6 +2634,16 @@ public abstract class GenericVisitorAdapter<R, A> implements GenericVisitor<R, A
             if (result != null)
                 return result;
         }
+        {
+            result = n.getLeadingComments().accept(this, arg);
+            if (result != null)
+                return result;
+        }
+        {
+            result = n.getTrailingComments().accept(this, arg);
+            if (result != null)
+                return result;
+        }
         return null;
     }
 
@@ -1843,6 +2653,16 @@ public abstract class GenericVisitorAdapter<R, A> implements GenericVisitor<R, A
         R result;
         if (n.getComment().isPresent()) {
             result = n.getComment().get().accept(this, arg);
+            if (result != null)
+                return result;
+        }
+        {
+            result = n.getLeadingComments().accept(this, arg);
+            if (result != null)
+                return result;
+        }
+        {
+            result = n.getTrailingComments().accept(this, arg);
             if (result != null)
                 return result;
         }
@@ -1884,6 +2704,16 @@ public abstract class GenericVisitorAdapter<R, A> implements GenericVisitor<R, A
             if (result != null)
                 return result;
         }
+        {
+            result = n.getLeadingComments().accept(this, arg);
+            if (result != null)
+                return result;
+        }
+        {
+            result = n.getTrailingComments().accept(this, arg);
+            if (result != null)
+                return result;
+        }
         return null;
     }
 
@@ -1898,6 +2728,16 @@ public abstract class GenericVisitorAdapter<R, A> implements GenericVisitor<R, A
         }
         if (n.getComment().isPresent()) {
             result = n.getComment().get().accept(this, arg);
+            if (result != null)
+                return result;
+        }
+        {
+            result = n.getLeadingComments().accept(this, arg);
+            if (result != null)
+                return result;
+        }
+        {
+            result = n.getTrailingComments().accept(this, arg);
             if (result != null)
                 return result;
         }
@@ -1923,6 +2763,16 @@ public abstract class GenericVisitorAdapter<R, A> implements GenericVisitor<R, A
             if (result != null)
                 return result;
         }
+        {
+            result = n.getLeadingComments().accept(this, arg);
+            if (result != null)
+                return result;
+        }
+        {
+            result = n.getTrailingComments().accept(this, arg);
+            if (result != null)
+                return result;
+        }
         return null;
     }
 
@@ -1945,6 +2795,16 @@ public abstract class GenericVisitorAdapter<R, A> implements GenericVisitor<R, A
             if (result != null)
                 return result;
         }
+        {
+            result = n.getLeadingComments().accept(this, arg);
+            if (result != null)
+                return result;
+        }
+        {
+            result = n.getTrailingComments().accept(this, arg);
+            if (result != null)
+                return result;
+        }
         return null;
     }
 
@@ -1959,6 +2819,16 @@ public abstract class GenericVisitorAdapter<R, A> implements GenericVisitor<R, A
         }
         if (n.getComment().isPresent()) {
             result = n.getComment().get().accept(this, arg);
+            if (result != null)
+                return result;
+        }
+        {
+            result = n.getLeadingComments().accept(this, arg);
+            if (result != null)
+                return result;
+        }
+        {
+            result = n.getTrailingComments().accept(this, arg);
             if (result != null)
                 return result;
         }
@@ -1984,6 +2854,16 @@ public abstract class GenericVisitorAdapter<R, A> implements GenericVisitor<R, A
             if (result != null)
                 return result;
         }
+        {
+            result = n.getLeadingComments().accept(this, arg);
+            if (result != null)
+                return result;
+        }
+        {
+            result = n.getTrailingComments().accept(this, arg);
+            if (result != null)
+                return result;
+        }
         return null;
     }
 
@@ -1993,6 +2873,16 @@ public abstract class GenericVisitorAdapter<R, A> implements GenericVisitor<R, A
         R result;
         if (n.getComment().isPresent()) {
             result = n.getComment().get().accept(this, arg);
+            if (result != null)
+                return result;
+        }
+        {
+            result = n.getLeadingComments().accept(this, arg);
+            if (result != null)
+                return result;
+        }
+        {
+            result = n.getTrailingComments().accept(this, arg);
             if (result != null)
                 return result;
         }

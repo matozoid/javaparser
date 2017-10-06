@@ -183,6 +183,10 @@ public class NoCommentEqualsVisitor implements GenericVisitor<Boolean, Visitable
             return false;
         if (!nodesEquals(n.getTypes(), n2.getTypes()))
             return false;
+        if (!nodesEquals(n.getLeadingComments(), n2.getLeadingComments()))
+            return false;
+        if (!nodesEquals(n.getTrailingComments(), n2.getTrailingComments()))
+            return false;
         return true;
     }
 
@@ -193,6 +197,10 @@ public class NoCommentEqualsVisitor implements GenericVisitor<Boolean, Visitable
         if (!nodesEquals(n.getAnnotations(), n2.getAnnotations()))
             return false;
         if (!nodeEquals(n.getName(), n2.getName()))
+            return false;
+        if (!nodesEquals(n.getLeadingComments(), n2.getLeadingComments()))
+            return false;
+        if (!nodesEquals(n.getTrailingComments(), n2.getTrailingComments()))
             return false;
         return true;
     }
@@ -206,6 +214,10 @@ public class NoCommentEqualsVisitor implements GenericVisitor<Boolean, Visitable
         if (!nodesEquals(n.getTypeBound(), n2.getTypeBound()))
             return false;
         if (!nodesEquals(n.getAnnotations(), n2.getAnnotations()))
+            return false;
+        if (!nodesEquals(n.getLeadingComments(), n2.getLeadingComments()))
+            return false;
+        if (!nodesEquals(n.getTrailingComments(), n2.getTrailingComments()))
             return false;
         return true;
     }
@@ -242,6 +254,10 @@ public class NoCommentEqualsVisitor implements GenericVisitor<Boolean, Visitable
             return false;
         if (!nodesEquals(n.getAnnotations(), n2.getAnnotations()))
             return false;
+        if (!nodesEquals(n.getLeadingComments(), n2.getLeadingComments()))
+            return false;
+        if (!nodesEquals(n.getTrailingComments(), n2.getTrailingComments()))
+            return false;
         return true;
     }
 
@@ -261,6 +277,10 @@ public class NoCommentEqualsVisitor implements GenericVisitor<Boolean, Visitable
             return false;
         if (!nodesEquals(n.getAnnotations(), n2.getAnnotations()))
             return false;
+        if (!nodesEquals(n.getLeadingComments(), n2.getLeadingComments()))
+            return false;
+        if (!nodesEquals(n.getTrailingComments(), n2.getTrailingComments()))
+            return false;
         return true;
     }
 
@@ -276,6 +296,10 @@ public class NoCommentEqualsVisitor implements GenericVisitor<Boolean, Visitable
             return false;
         if (!nodesEquals(n.getAnnotations(), n2.getAnnotations()))
             return false;
+        if (!nodesEquals(n.getLeadingComments(), n2.getLeadingComments()))
+            return false;
+        if (!nodesEquals(n.getTrailingComments(), n2.getTrailingComments()))
+            return false;
         return true;
     }
 
@@ -290,6 +314,10 @@ public class NoCommentEqualsVisitor implements GenericVisitor<Boolean, Visitable
         if (!nodeEquals(n.getName(), n2.getName()))
             return false;
         if (!nodesEquals(n.getAnnotations(), n2.getAnnotations()))
+            return false;
+        if (!nodesEquals(n.getLeadingComments(), n2.getLeadingComments()))
+            return false;
+        if (!nodesEquals(n.getTrailingComments(), n2.getTrailingComments()))
             return false;
         return true;
     }
@@ -308,6 +336,10 @@ public class NoCommentEqualsVisitor implements GenericVisitor<Boolean, Visitable
             return false;
         if (!nodesEquals(n.getAnnotations(), n2.getAnnotations()))
             return false;
+        if (!nodesEquals(n.getLeadingComments(), n2.getLeadingComments()))
+            return false;
+        if (!nodesEquals(n.getTrailingComments(), n2.getTrailingComments()))
+            return false;
         return true;
     }
 
@@ -321,6 +353,10 @@ public class NoCommentEqualsVisitor implements GenericVisitor<Boolean, Visitable
             return false;
         if (!nodesEquals(n.getAnnotations(), n2.getAnnotations()))
             return false;
+        if (!nodesEquals(n.getLeadingComments(), n2.getLeadingComments()))
+            return false;
+        if (!nodesEquals(n.getTrailingComments(), n2.getTrailingComments()))
+            return false;
         return true;
     }
 
@@ -333,6 +369,10 @@ public class NoCommentEqualsVisitor implements GenericVisitor<Boolean, Visitable
         if (!nodeEquals(n.getName(), n2.getName()))
             return false;
         if (!nodeEquals(n.getType(), n2.getType()))
+            return false;
+        if (!nodesEquals(n.getLeadingComments(), n2.getLeadingComments()))
+            return false;
+        if (!nodesEquals(n.getTrailingComments(), n2.getTrailingComments()))
             return false;
         return true;
     }
@@ -354,6 +394,10 @@ public class NoCommentEqualsVisitor implements GenericVisitor<Boolean, Visitable
         if (!nodesEquals(n.getTypeParameters(), n2.getTypeParameters()))
             return false;
         if (!nodesEquals(n.getAnnotations(), n2.getAnnotations()))
+            return false;
+        if (!nodesEquals(n.getLeadingComments(), n2.getLeadingComments()))
+            return false;
+        if (!nodesEquals(n.getTrailingComments(), n2.getTrailingComments()))
             return false;
         return true;
     }
@@ -378,6 +422,10 @@ public class NoCommentEqualsVisitor implements GenericVisitor<Boolean, Visitable
             return false;
         if (!nodesEquals(n.getAnnotations(), n2.getAnnotations()))
             return false;
+        if (!nodesEquals(n.getLeadingComments(), n2.getLeadingComments()))
+            return false;
+        if (!nodesEquals(n.getTrailingComments(), n2.getTrailingComments()))
+            return false;
         return true;
     }
 
@@ -397,6 +445,10 @@ public class NoCommentEqualsVisitor implements GenericVisitor<Boolean, Visitable
             return false;
         if (!nodesEquals(n.getVarArgsAnnotations(), n2.getVarArgsAnnotations()))
             return false;
+        if (!nodesEquals(n.getLeadingComments(), n2.getLeadingComments()))
+            return false;
+        if (!nodesEquals(n.getTrailingComments(), n2.getTrailingComments()))
+            return false;
         return true;
     }
 
@@ -409,6 +461,10 @@ public class NoCommentEqualsVisitor implements GenericVisitor<Boolean, Visitable
         if (!objEquals(n.isStatic(), n2.isStatic()))
             return false;
         if (!nodesEquals(n.getAnnotations(), n2.getAnnotations()))
+            return false;
+        if (!nodesEquals(n.getLeadingComments(), n2.getLeadingComments()))
+            return false;
+        if (!nodesEquals(n.getTrailingComments(), n2.getTrailingComments()))
             return false;
         return true;
     }
@@ -431,6 +487,10 @@ public class NoCommentEqualsVisitor implements GenericVisitor<Boolean, Visitable
             return false;
         if (!nodesEquals(n.getAnnotations(), n2.getAnnotations()))
             return false;
+        if (!nodesEquals(n.getLeadingComments(), n2.getLeadingComments()))
+            return false;
+        if (!nodesEquals(n.getTrailingComments(), n2.getTrailingComments()))
+            return false;
         return true;
     }
 
@@ -441,6 +501,10 @@ public class NoCommentEqualsVisitor implements GenericVisitor<Boolean, Visitable
         if (!objEquals(n.getType(), n2.getType()))
             return false;
         if (!nodesEquals(n.getAnnotations(), n2.getAnnotations()))
+            return false;
+        if (!nodesEquals(n.getLeadingComments(), n2.getLeadingComments()))
+            return false;
+        if (!nodesEquals(n.getTrailingComments(), n2.getTrailingComments()))
             return false;
         return true;
     }
@@ -455,6 +519,10 @@ public class NoCommentEqualsVisitor implements GenericVisitor<Boolean, Visitable
             return false;
         if (!nodesEquals(n.getAnnotations(), n2.getAnnotations()))
             return false;
+        if (!nodesEquals(n.getLeadingComments(), n2.getLeadingComments()))
+            return false;
+        if (!nodesEquals(n.getTrailingComments(), n2.getTrailingComments()))
+            return false;
         return true;
     }
 
@@ -465,6 +533,10 @@ public class NoCommentEqualsVisitor implements GenericVisitor<Boolean, Visitable
         if (!nodesEquals(n.getAnnotations(), n2.getAnnotations()))
             return false;
         if (!nodeEquals(n.getDimension(), n2.getDimension()))
+            return false;
+        if (!nodesEquals(n.getLeadingComments(), n2.getLeadingComments()))
+            return false;
+        if (!nodesEquals(n.getTrailingComments(), n2.getTrailingComments()))
             return false;
         return true;
     }
@@ -477,6 +549,10 @@ public class NoCommentEqualsVisitor implements GenericVisitor<Boolean, Visitable
             return false;
         if (!nodesEquals(n.getAnnotations(), n2.getAnnotations()))
             return false;
+        if (!nodesEquals(n.getLeadingComments(), n2.getLeadingComments()))
+            return false;
+        if (!nodesEquals(n.getTrailingComments(), n2.getTrailingComments()))
+            return false;
         return true;
     }
 
@@ -488,6 +564,10 @@ public class NoCommentEqualsVisitor implements GenericVisitor<Boolean, Visitable
             return false;
         if (!nodesEquals(n.getAnnotations(), n2.getAnnotations()))
             return false;
+        if (!nodesEquals(n.getLeadingComments(), n2.getLeadingComments()))
+            return false;
+        if (!nodesEquals(n.getTrailingComments(), n2.getTrailingComments()))
+            return false;
         return true;
     }
 
@@ -496,6 +576,10 @@ public class NoCommentEqualsVisitor implements GenericVisitor<Boolean, Visitable
     public Boolean visit(final VoidType n, final Visitable arg) {
         final VoidType n2 = (VoidType) arg;
         if (!nodesEquals(n.getAnnotations(), n2.getAnnotations()))
+            return false;
+        if (!nodesEquals(n.getLeadingComments(), n2.getLeadingComments()))
+            return false;
+        if (!nodesEquals(n.getTrailingComments(), n2.getTrailingComments()))
             return false;
         return true;
     }
@@ -510,6 +594,10 @@ public class NoCommentEqualsVisitor implements GenericVisitor<Boolean, Visitable
             return false;
         if (!nodesEquals(n.getAnnotations(), n2.getAnnotations()))
             return false;
+        if (!nodesEquals(n.getLeadingComments(), n2.getLeadingComments()))
+            return false;
+        if (!nodesEquals(n.getTrailingComments(), n2.getTrailingComments()))
+            return false;
         return true;
     }
 
@@ -518,6 +606,10 @@ public class NoCommentEqualsVisitor implements GenericVisitor<Boolean, Visitable
     public Boolean visit(final UnknownType n, final Visitable arg) {
         final UnknownType n2 = (UnknownType) arg;
         if (!nodesEquals(n.getAnnotations(), n2.getAnnotations()))
+            return false;
+        if (!nodesEquals(n.getLeadingComments(), n2.getLeadingComments()))
+            return false;
+        if (!nodesEquals(n.getTrailingComments(), n2.getTrailingComments()))
             return false;
         return true;
     }
@@ -529,6 +621,10 @@ public class NoCommentEqualsVisitor implements GenericVisitor<Boolean, Visitable
         if (!nodeEquals(n.getIndex(), n2.getIndex()))
             return false;
         if (!nodeEquals(n.getName(), n2.getName()))
+            return false;
+        if (!nodesEquals(n.getLeadingComments(), n2.getLeadingComments()))
+            return false;
+        if (!nodesEquals(n.getTrailingComments(), n2.getTrailingComments()))
             return false;
         return true;
     }
@@ -543,6 +639,10 @@ public class NoCommentEqualsVisitor implements GenericVisitor<Boolean, Visitable
             return false;
         if (!nodesEquals(n.getLevels(), n2.getLevels()))
             return false;
+        if (!nodesEquals(n.getLeadingComments(), n2.getLeadingComments()))
+            return false;
+        if (!nodesEquals(n.getTrailingComments(), n2.getTrailingComments()))
+            return false;
         return true;
     }
 
@@ -551,6 +651,10 @@ public class NoCommentEqualsVisitor implements GenericVisitor<Boolean, Visitable
     public Boolean visit(final ArrayInitializerExpr n, final Visitable arg) {
         final ArrayInitializerExpr n2 = (ArrayInitializerExpr) arg;
         if (!nodesEquals(n.getValues(), n2.getValues()))
+            return false;
+        if (!nodesEquals(n.getLeadingComments(), n2.getLeadingComments()))
+            return false;
+        if (!nodesEquals(n.getTrailingComments(), n2.getTrailingComments()))
             return false;
         return true;
     }
@@ -565,6 +669,10 @@ public class NoCommentEqualsVisitor implements GenericVisitor<Boolean, Visitable
             return false;
         if (!nodeEquals(n.getValue(), n2.getValue()))
             return false;
+        if (!nodesEquals(n.getLeadingComments(), n2.getLeadingComments()))
+            return false;
+        if (!nodesEquals(n.getTrailingComments(), n2.getTrailingComments()))
+            return false;
         return true;
     }
 
@@ -578,6 +686,10 @@ public class NoCommentEqualsVisitor implements GenericVisitor<Boolean, Visitable
             return false;
         if (!nodeEquals(n.getRight(), n2.getRight()))
             return false;
+        if (!nodesEquals(n.getLeadingComments(), n2.getLeadingComments()))
+            return false;
+        if (!nodesEquals(n.getTrailingComments(), n2.getTrailingComments()))
+            return false;
         return true;
     }
 
@@ -589,6 +701,10 @@ public class NoCommentEqualsVisitor implements GenericVisitor<Boolean, Visitable
             return false;
         if (!nodeEquals(n.getType(), n2.getType()))
             return false;
+        if (!nodesEquals(n.getLeadingComments(), n2.getLeadingComments()))
+            return false;
+        if (!nodesEquals(n.getTrailingComments(), n2.getTrailingComments()))
+            return false;
         return true;
     }
 
@@ -597,6 +713,10 @@ public class NoCommentEqualsVisitor implements GenericVisitor<Boolean, Visitable
     public Boolean visit(final ClassExpr n, final Visitable arg) {
         final ClassExpr n2 = (ClassExpr) arg;
         if (!nodeEquals(n.getType(), n2.getType()))
+            return false;
+        if (!nodesEquals(n.getLeadingComments(), n2.getLeadingComments()))
+            return false;
+        if (!nodesEquals(n.getTrailingComments(), n2.getTrailingComments()))
             return false;
         return true;
     }
@@ -611,6 +731,10 @@ public class NoCommentEqualsVisitor implements GenericVisitor<Boolean, Visitable
             return false;
         if (!nodeEquals(n.getThenExpr(), n2.getThenExpr()))
             return false;
+        if (!nodesEquals(n.getLeadingComments(), n2.getLeadingComments()))
+            return false;
+        if (!nodesEquals(n.getTrailingComments(), n2.getTrailingComments()))
+            return false;
         return true;
     }
 
@@ -619,6 +743,10 @@ public class NoCommentEqualsVisitor implements GenericVisitor<Boolean, Visitable
     public Boolean visit(final EnclosedExpr n, final Visitable arg) {
         final EnclosedExpr n2 = (EnclosedExpr) arg;
         if (!nodeEquals(n.getInner(), n2.getInner()))
+            return false;
+        if (!nodesEquals(n.getLeadingComments(), n2.getLeadingComments()))
+            return false;
+        if (!nodesEquals(n.getTrailingComments(), n2.getTrailingComments()))
             return false;
         return true;
     }
@@ -633,6 +761,10 @@ public class NoCommentEqualsVisitor implements GenericVisitor<Boolean, Visitable
             return false;
         if (!nodesEquals(n.getTypeArguments(), n2.getTypeArguments()))
             return false;
+        if (!nodesEquals(n.getLeadingComments(), n2.getLeadingComments()))
+            return false;
+        if (!nodesEquals(n.getTrailingComments(), n2.getTrailingComments()))
+            return false;
         return true;
     }
 
@@ -644,6 +776,10 @@ public class NoCommentEqualsVisitor implements GenericVisitor<Boolean, Visitable
             return false;
         if (!nodeEquals(n.getType(), n2.getType()))
             return false;
+        if (!nodesEquals(n.getLeadingComments(), n2.getLeadingComments()))
+            return false;
+        if (!nodesEquals(n.getTrailingComments(), n2.getTrailingComments()))
+            return false;
         return true;
     }
 
@@ -652,6 +788,10 @@ public class NoCommentEqualsVisitor implements GenericVisitor<Boolean, Visitable
     public Boolean visit(final StringLiteralExpr n, final Visitable arg) {
         final StringLiteralExpr n2 = (StringLiteralExpr) arg;
         if (!objEquals(n.getValue(), n2.getValue()))
+            return false;
+        if (!nodesEquals(n.getLeadingComments(), n2.getLeadingComments()))
+            return false;
+        if (!nodesEquals(n.getTrailingComments(), n2.getTrailingComments()))
             return false;
         return true;
     }
@@ -662,6 +802,10 @@ public class NoCommentEqualsVisitor implements GenericVisitor<Boolean, Visitable
         final IntegerLiteralExpr n2 = (IntegerLiteralExpr) arg;
         if (!objEquals(n.getValue(), n2.getValue()))
             return false;
+        if (!nodesEquals(n.getLeadingComments(), n2.getLeadingComments()))
+            return false;
+        if (!nodesEquals(n.getTrailingComments(), n2.getTrailingComments()))
+            return false;
         return true;
     }
 
@@ -670,6 +814,10 @@ public class NoCommentEqualsVisitor implements GenericVisitor<Boolean, Visitable
     public Boolean visit(final LongLiteralExpr n, final Visitable arg) {
         final LongLiteralExpr n2 = (LongLiteralExpr) arg;
         if (!objEquals(n.getValue(), n2.getValue()))
+            return false;
+        if (!nodesEquals(n.getLeadingComments(), n2.getLeadingComments()))
+            return false;
+        if (!nodesEquals(n.getTrailingComments(), n2.getTrailingComments()))
             return false;
         return true;
     }
@@ -680,6 +828,10 @@ public class NoCommentEqualsVisitor implements GenericVisitor<Boolean, Visitable
         final CharLiteralExpr n2 = (CharLiteralExpr) arg;
         if (!objEquals(n.getValue(), n2.getValue()))
             return false;
+        if (!nodesEquals(n.getLeadingComments(), n2.getLeadingComments()))
+            return false;
+        if (!nodesEquals(n.getTrailingComments(), n2.getTrailingComments()))
+            return false;
         return true;
     }
 
@@ -688,6 +840,10 @@ public class NoCommentEqualsVisitor implements GenericVisitor<Boolean, Visitable
     public Boolean visit(final DoubleLiteralExpr n, final Visitable arg) {
         final DoubleLiteralExpr n2 = (DoubleLiteralExpr) arg;
         if (!objEquals(n.getValue(), n2.getValue()))
+            return false;
+        if (!nodesEquals(n.getLeadingComments(), n2.getLeadingComments()))
+            return false;
+        if (!nodesEquals(n.getTrailingComments(), n2.getTrailingComments()))
             return false;
         return true;
     }
@@ -698,12 +854,21 @@ public class NoCommentEqualsVisitor implements GenericVisitor<Boolean, Visitable
         final BooleanLiteralExpr n2 = (BooleanLiteralExpr) arg;
         if (!objEquals(n.getValue(), n2.getValue()))
             return false;
+        if (!nodesEquals(n.getLeadingComments(), n2.getLeadingComments()))
+            return false;
+        if (!nodesEquals(n.getTrailingComments(), n2.getTrailingComments()))
+            return false;
         return true;
     }
 
     @Override
     @Generated("com.github.javaparser.generator.core.visitor.NoCommentEqualsVisitorGenerator")
     public Boolean visit(final NullLiteralExpr n, final Visitable arg) {
+        final NullLiteralExpr n2 = (NullLiteralExpr) arg;
+        if (!nodesEquals(n.getLeadingComments(), n2.getLeadingComments()))
+            return false;
+        if (!nodesEquals(n.getTrailingComments(), n2.getTrailingComments()))
+            return false;
         return true;
     }
 
@@ -719,6 +884,10 @@ public class NoCommentEqualsVisitor implements GenericVisitor<Boolean, Visitable
             return false;
         if (!nodesEquals(n.getTypeArguments(), n2.getTypeArguments()))
             return false;
+        if (!nodesEquals(n.getLeadingComments(), n2.getLeadingComments()))
+            return false;
+        if (!nodesEquals(n.getTrailingComments(), n2.getTrailingComments()))
+            return false;
         return true;
     }
 
@@ -727,6 +896,10 @@ public class NoCommentEqualsVisitor implements GenericVisitor<Boolean, Visitable
     public Boolean visit(final NameExpr n, final Visitable arg) {
         final NameExpr n2 = (NameExpr) arg;
         if (!nodeEquals(n.getName(), n2.getName()))
+            return false;
+        if (!nodesEquals(n.getLeadingComments(), n2.getLeadingComments()))
+            return false;
+        if (!nodesEquals(n.getTrailingComments(), n2.getTrailingComments()))
             return false;
         return true;
     }
@@ -745,6 +918,10 @@ public class NoCommentEqualsVisitor implements GenericVisitor<Boolean, Visitable
             return false;
         if (!nodesEquals(n.getTypeArguments(), n2.getTypeArguments()))
             return false;
+        if (!nodesEquals(n.getLeadingComments(), n2.getLeadingComments()))
+            return false;
+        if (!nodesEquals(n.getTrailingComments(), n2.getTrailingComments()))
+            return false;
         return true;
     }
 
@@ -758,6 +935,10 @@ public class NoCommentEqualsVisitor implements GenericVisitor<Boolean, Visitable
             return false;
         if (!nodeEquals(n.getQualifier(), n2.getQualifier()))
             return false;
+        if (!nodesEquals(n.getLeadingComments(), n2.getLeadingComments()))
+            return false;
+        if (!nodesEquals(n.getTrailingComments(), n2.getTrailingComments()))
+            return false;
         return true;
     }
 
@@ -766,6 +947,10 @@ public class NoCommentEqualsVisitor implements GenericVisitor<Boolean, Visitable
     public Boolean visit(final SimpleName n, final Visitable arg) {
         final SimpleName n2 = (SimpleName) arg;
         if (!objEquals(n.getIdentifier(), n2.getIdentifier()))
+            return false;
+        if (!nodesEquals(n.getLeadingComments(), n2.getLeadingComments()))
+            return false;
+        if (!nodesEquals(n.getTrailingComments(), n2.getTrailingComments()))
             return false;
         return true;
     }
@@ -776,6 +961,10 @@ public class NoCommentEqualsVisitor implements GenericVisitor<Boolean, Visitable
         final ThisExpr n2 = (ThisExpr) arg;
         if (!nodeEquals(n.getClassExpr(), n2.getClassExpr()))
             return false;
+        if (!nodesEquals(n.getLeadingComments(), n2.getLeadingComments()))
+            return false;
+        if (!nodesEquals(n.getTrailingComments(), n2.getTrailingComments()))
+            return false;
         return true;
     }
 
@@ -784,6 +973,10 @@ public class NoCommentEqualsVisitor implements GenericVisitor<Boolean, Visitable
     public Boolean visit(final SuperExpr n, final Visitable arg) {
         final SuperExpr n2 = (SuperExpr) arg;
         if (!nodeEquals(n.getClassExpr(), n2.getClassExpr()))
+            return false;
+        if (!nodesEquals(n.getLeadingComments(), n2.getLeadingComments()))
+            return false;
+        if (!nodesEquals(n.getTrailingComments(), n2.getTrailingComments()))
             return false;
         return true;
     }
@@ -795,6 +988,10 @@ public class NoCommentEqualsVisitor implements GenericVisitor<Boolean, Visitable
         if (!nodeEquals(n.getExpression(), n2.getExpression()))
             return false;
         if (!objEquals(n.getOperator(), n2.getOperator()))
+            return false;
+        if (!nodesEquals(n.getLeadingComments(), n2.getLeadingComments()))
+            return false;
+        if (!nodesEquals(n.getTrailingComments(), n2.getTrailingComments()))
             return false;
         return true;
     }
@@ -809,6 +1006,10 @@ public class NoCommentEqualsVisitor implements GenericVisitor<Boolean, Visitable
             return false;
         if (!nodesEquals(n.getVariables(), n2.getVariables()))
             return false;
+        if (!nodesEquals(n.getLeadingComments(), n2.getLeadingComments()))
+            return false;
+        if (!nodesEquals(n.getTrailingComments(), n2.getTrailingComments()))
+            return false;
         return true;
     }
 
@@ -817,6 +1018,10 @@ public class NoCommentEqualsVisitor implements GenericVisitor<Boolean, Visitable
     public Boolean visit(final MarkerAnnotationExpr n, final Visitable arg) {
         final MarkerAnnotationExpr n2 = (MarkerAnnotationExpr) arg;
         if (!nodeEquals(n.getName(), n2.getName()))
+            return false;
+        if (!nodesEquals(n.getLeadingComments(), n2.getLeadingComments()))
+            return false;
+        if (!nodesEquals(n.getTrailingComments(), n2.getTrailingComments()))
             return false;
         return true;
     }
@@ -829,6 +1034,10 @@ public class NoCommentEqualsVisitor implements GenericVisitor<Boolean, Visitable
             return false;
         if (!nodeEquals(n.getName(), n2.getName()))
             return false;
+        if (!nodesEquals(n.getLeadingComments(), n2.getLeadingComments()))
+            return false;
+        if (!nodesEquals(n.getTrailingComments(), n2.getTrailingComments()))
+            return false;
         return true;
     }
 
@@ -840,6 +1049,10 @@ public class NoCommentEqualsVisitor implements GenericVisitor<Boolean, Visitable
             return false;
         if (!nodeEquals(n.getName(), n2.getName()))
             return false;
+        if (!nodesEquals(n.getLeadingComments(), n2.getLeadingComments()))
+            return false;
+        if (!nodesEquals(n.getTrailingComments(), n2.getTrailingComments()))
+            return false;
         return true;
     }
 
@@ -850,6 +1063,10 @@ public class NoCommentEqualsVisitor implements GenericVisitor<Boolean, Visitable
         if (!nodeEquals(n.getName(), n2.getName()))
             return false;
         if (!nodeEquals(n.getValue(), n2.getValue()))
+            return false;
+        if (!nodesEquals(n.getLeadingComments(), n2.getLeadingComments()))
+            return false;
+        if (!nodesEquals(n.getTrailingComments(), n2.getTrailingComments()))
             return false;
         return true;
     }
@@ -866,6 +1083,10 @@ public class NoCommentEqualsVisitor implements GenericVisitor<Boolean, Visitable
             return false;
         if (!nodesEquals(n.getTypeArguments(), n2.getTypeArguments()))
             return false;
+        if (!nodesEquals(n.getLeadingComments(), n2.getLeadingComments()))
+            return false;
+        if (!nodesEquals(n.getTrailingComments(), n2.getTrailingComments()))
+            return false;
         return true;
     }
 
@@ -874,6 +1095,10 @@ public class NoCommentEqualsVisitor implements GenericVisitor<Boolean, Visitable
     public Boolean visit(final LocalClassDeclarationStmt n, final Visitable arg) {
         final LocalClassDeclarationStmt n2 = (LocalClassDeclarationStmt) arg;
         if (!nodeEquals(n.getClassDeclaration(), n2.getClassDeclaration()))
+            return false;
+        if (!nodesEquals(n.getLeadingComments(), n2.getLeadingComments()))
+            return false;
+        if (!nodesEquals(n.getTrailingComments(), n2.getTrailingComments()))
             return false;
         return true;
     }
@@ -886,6 +1111,10 @@ public class NoCommentEqualsVisitor implements GenericVisitor<Boolean, Visitable
             return false;
         if (!nodeEquals(n.getMessage(), n2.getMessage()))
             return false;
+        if (!nodesEquals(n.getLeadingComments(), n2.getLeadingComments()))
+            return false;
+        if (!nodesEquals(n.getTrailingComments(), n2.getTrailingComments()))
+            return false;
         return true;
     }
 
@@ -894,6 +1123,10 @@ public class NoCommentEqualsVisitor implements GenericVisitor<Boolean, Visitable
     public Boolean visit(final BlockStmt n, final Visitable arg) {
         final BlockStmt n2 = (BlockStmt) arg;
         if (!nodesEquals(n.getStatements(), n2.getStatements()))
+            return false;
+        if (!nodesEquals(n.getLeadingComments(), n2.getLeadingComments()))
+            return false;
+        if (!nodesEquals(n.getTrailingComments(), n2.getTrailingComments()))
             return false;
         return true;
     }
@@ -906,12 +1139,21 @@ public class NoCommentEqualsVisitor implements GenericVisitor<Boolean, Visitable
             return false;
         if (!nodeEquals(n.getStatement(), n2.getStatement()))
             return false;
+        if (!nodesEquals(n.getLeadingComments(), n2.getLeadingComments()))
+            return false;
+        if (!nodesEquals(n.getTrailingComments(), n2.getTrailingComments()))
+            return false;
         return true;
     }
 
     @Override
     @Generated("com.github.javaparser.generator.core.visitor.NoCommentEqualsVisitorGenerator")
     public Boolean visit(final EmptyStmt n, final Visitable arg) {
+        final EmptyStmt n2 = (EmptyStmt) arg;
+        if (!nodesEquals(n.getLeadingComments(), n2.getLeadingComments()))
+            return false;
+        if (!nodesEquals(n.getTrailingComments(), n2.getTrailingComments()))
+            return false;
         return true;
     }
 
@@ -920,6 +1162,10 @@ public class NoCommentEqualsVisitor implements GenericVisitor<Boolean, Visitable
     public Boolean visit(final ExpressionStmt n, final Visitable arg) {
         final ExpressionStmt n2 = (ExpressionStmt) arg;
         if (!nodeEquals(n.getExpression(), n2.getExpression()))
+            return false;
+        if (!nodesEquals(n.getLeadingComments(), n2.getLeadingComments()))
+            return false;
+        if (!nodesEquals(n.getTrailingComments(), n2.getTrailingComments()))
             return false;
         return true;
     }
@@ -932,6 +1178,10 @@ public class NoCommentEqualsVisitor implements GenericVisitor<Boolean, Visitable
             return false;
         if (!nodeEquals(n.getSelector(), n2.getSelector()))
             return false;
+        if (!nodesEquals(n.getLeadingComments(), n2.getLeadingComments()))
+            return false;
+        if (!nodesEquals(n.getTrailingComments(), n2.getTrailingComments()))
+            return false;
         return true;
     }
 
@@ -943,6 +1193,10 @@ public class NoCommentEqualsVisitor implements GenericVisitor<Boolean, Visitable
             return false;
         if (!nodesEquals(n.getStatements(), n2.getStatements()))
             return false;
+        if (!nodesEquals(n.getLeadingComments(), n2.getLeadingComments()))
+            return false;
+        if (!nodesEquals(n.getTrailingComments(), n2.getTrailingComments()))
+            return false;
         return true;
     }
 
@@ -952,6 +1206,10 @@ public class NoCommentEqualsVisitor implements GenericVisitor<Boolean, Visitable
         final BreakStmt n2 = (BreakStmt) arg;
         if (!nodeEquals(n.getLabel(), n2.getLabel()))
             return false;
+        if (!nodesEquals(n.getLeadingComments(), n2.getLeadingComments()))
+            return false;
+        if (!nodesEquals(n.getTrailingComments(), n2.getTrailingComments()))
+            return false;
         return true;
     }
 
@@ -960,6 +1218,10 @@ public class NoCommentEqualsVisitor implements GenericVisitor<Boolean, Visitable
     public Boolean visit(final ReturnStmt n, final Visitable arg) {
         final ReturnStmt n2 = (ReturnStmt) arg;
         if (!nodeEquals(n.getExpression(), n2.getExpression()))
+            return false;
+        if (!nodesEquals(n.getLeadingComments(), n2.getLeadingComments()))
+            return false;
+        if (!nodesEquals(n.getTrailingComments(), n2.getTrailingComments()))
             return false;
         return true;
     }
@@ -974,6 +1236,10 @@ public class NoCommentEqualsVisitor implements GenericVisitor<Boolean, Visitable
             return false;
         if (!nodeEquals(n.getThenStmt(), n2.getThenStmt()))
             return false;
+        if (!nodesEquals(n.getLeadingComments(), n2.getLeadingComments()))
+            return false;
+        if (!nodesEquals(n.getTrailingComments(), n2.getTrailingComments()))
+            return false;
         return true;
     }
 
@@ -985,6 +1251,10 @@ public class NoCommentEqualsVisitor implements GenericVisitor<Boolean, Visitable
             return false;
         if (!nodeEquals(n.getCondition(), n2.getCondition()))
             return false;
+        if (!nodesEquals(n.getLeadingComments(), n2.getLeadingComments()))
+            return false;
+        if (!nodesEquals(n.getTrailingComments(), n2.getTrailingComments()))
+            return false;
         return true;
     }
 
@@ -993,6 +1263,10 @@ public class NoCommentEqualsVisitor implements GenericVisitor<Boolean, Visitable
     public Boolean visit(final ContinueStmt n, final Visitable arg) {
         final ContinueStmt n2 = (ContinueStmt) arg;
         if (!nodeEquals(n.getLabel(), n2.getLabel()))
+            return false;
+        if (!nodesEquals(n.getLeadingComments(), n2.getLeadingComments()))
+            return false;
+        if (!nodesEquals(n.getTrailingComments(), n2.getTrailingComments()))
             return false;
         return true;
     }
@@ -1004,6 +1278,10 @@ public class NoCommentEqualsVisitor implements GenericVisitor<Boolean, Visitable
         if (!nodeEquals(n.getBody(), n2.getBody()))
             return false;
         if (!nodeEquals(n.getCondition(), n2.getCondition()))
+            return false;
+        if (!nodesEquals(n.getLeadingComments(), n2.getLeadingComments()))
+            return false;
+        if (!nodesEquals(n.getTrailingComments(), n2.getTrailingComments()))
             return false;
         return true;
     }
@@ -1017,6 +1295,10 @@ public class NoCommentEqualsVisitor implements GenericVisitor<Boolean, Visitable
         if (!nodeEquals(n.getIterable(), n2.getIterable()))
             return false;
         if (!nodeEquals(n.getVariable(), n2.getVariable()))
+            return false;
+        if (!nodesEquals(n.getLeadingComments(), n2.getLeadingComments()))
+            return false;
+        if (!nodesEquals(n.getTrailingComments(), n2.getTrailingComments()))
             return false;
         return true;
     }
@@ -1033,6 +1315,10 @@ public class NoCommentEqualsVisitor implements GenericVisitor<Boolean, Visitable
             return false;
         if (!nodesEquals(n.getUpdate(), n2.getUpdate()))
             return false;
+        if (!nodesEquals(n.getLeadingComments(), n2.getLeadingComments()))
+            return false;
+        if (!nodesEquals(n.getTrailingComments(), n2.getTrailingComments()))
+            return false;
         return true;
     }
 
@@ -1041,6 +1327,10 @@ public class NoCommentEqualsVisitor implements GenericVisitor<Boolean, Visitable
     public Boolean visit(final ThrowStmt n, final Visitable arg) {
         final ThrowStmt n2 = (ThrowStmt) arg;
         if (!nodeEquals(n.getExpression(), n2.getExpression()))
+            return false;
+        if (!nodesEquals(n.getLeadingComments(), n2.getLeadingComments()))
+            return false;
+        if (!nodesEquals(n.getTrailingComments(), n2.getTrailingComments()))
             return false;
         return true;
     }
@@ -1052,6 +1342,10 @@ public class NoCommentEqualsVisitor implements GenericVisitor<Boolean, Visitable
         if (!nodeEquals(n.getBody(), n2.getBody()))
             return false;
         if (!nodeEquals(n.getExpression(), n2.getExpression()))
+            return false;
+        if (!nodesEquals(n.getLeadingComments(), n2.getLeadingComments()))
+            return false;
+        if (!nodesEquals(n.getTrailingComments(), n2.getTrailingComments()))
             return false;
         return true;
     }
@@ -1068,6 +1362,10 @@ public class NoCommentEqualsVisitor implements GenericVisitor<Boolean, Visitable
             return false;
         if (!nodeEquals(n.getTryBlock(), n2.getTryBlock()))
             return false;
+        if (!nodesEquals(n.getLeadingComments(), n2.getLeadingComments()))
+            return false;
+        if (!nodesEquals(n.getTrailingComments(), n2.getTrailingComments()))
+            return false;
         return true;
     }
 
@@ -1078,6 +1376,10 @@ public class NoCommentEqualsVisitor implements GenericVisitor<Boolean, Visitable
         if (!nodeEquals(n.getBody(), n2.getBody()))
             return false;
         if (!nodeEquals(n.getParameter(), n2.getParameter()))
+            return false;
+        if (!nodesEquals(n.getLeadingComments(), n2.getLeadingComments()))
+            return false;
+        if (!nodesEquals(n.getTrailingComments(), n2.getTrailingComments()))
             return false;
         return true;
     }
@@ -1092,6 +1394,10 @@ public class NoCommentEqualsVisitor implements GenericVisitor<Boolean, Visitable
             return false;
         if (!nodesEquals(n.getParameters(), n2.getParameters()))
             return false;
+        if (!nodesEquals(n.getLeadingComments(), n2.getLeadingComments()))
+            return false;
+        if (!nodesEquals(n.getTrailingComments(), n2.getTrailingComments()))
+            return false;
         return true;
     }
 
@@ -1105,6 +1411,10 @@ public class NoCommentEqualsVisitor implements GenericVisitor<Boolean, Visitable
             return false;
         if (!nodesEquals(n.getTypeArguments(), n2.getTypeArguments()))
             return false;
+        if (!nodesEquals(n.getLeadingComments(), n2.getLeadingComments()))
+            return false;
+        if (!nodesEquals(n.getTrailingComments(), n2.getTrailingComments()))
+            return false;
         return true;
     }
 
@@ -1113,6 +1423,10 @@ public class NoCommentEqualsVisitor implements GenericVisitor<Boolean, Visitable
     public Boolean visit(final TypeExpr n, final Visitable arg) {
         final TypeExpr n2 = (TypeExpr) arg;
         if (!nodeEquals(n.getType(), n2.getType()))
+            return false;
+        if (!nodesEquals(n.getLeadingComments(), n2.getLeadingComments()))
+            return false;
+        if (!nodesEquals(n.getTrailingComments(), n2.getTrailingComments()))
             return false;
         return true;
     }
@@ -1126,6 +1440,10 @@ public class NoCommentEqualsVisitor implements GenericVisitor<Boolean, Visitable
         if (!objEquals(n.isStatic(), n2.isStatic()))
             return false;
         if (!nodeEquals(n.getName(), n2.getName()))
+            return false;
+        if (!nodesEquals(n.getLeadingComments(), n2.getLeadingComments()))
+            return false;
+        if (!nodesEquals(n.getTrailingComments(), n2.getTrailingComments()))
             return false;
         return true;
     }
@@ -1147,6 +1465,10 @@ public class NoCommentEqualsVisitor implements GenericVisitor<Boolean, Visitable
             return false;
         if (!nodeEquals(n.getName(), n2.getName()))
             return false;
+        if (!nodesEquals(n.getLeadingComments(), n2.getLeadingComments()))
+            return false;
+        if (!nodesEquals(n.getTrailingComments(), n2.getTrailingComments()))
+            return false;
         return true;
     }
 
@@ -1157,6 +1479,10 @@ public class NoCommentEqualsVisitor implements GenericVisitor<Boolean, Visitable
         if (!objEquals(n.getModifiers(), n2.getModifiers()))
             return false;
         if (!nodeEquals(n.getName(), n2.getName()))
+            return false;
+        if (!nodesEquals(n.getLeadingComments(), n2.getLeadingComments()))
+            return false;
+        if (!nodesEquals(n.getTrailingComments(), n2.getTrailingComments()))
             return false;
         return true;
     }
@@ -1169,6 +1495,10 @@ public class NoCommentEqualsVisitor implements GenericVisitor<Boolean, Visitable
             return false;
         if (!nodeEquals(n.getName(), n2.getName()))
             return false;
+        if (!nodesEquals(n.getLeadingComments(), n2.getLeadingComments()))
+            return false;
+        if (!nodesEquals(n.getTrailingComments(), n2.getTrailingComments()))
+            return false;
         return true;
     }
 
@@ -1180,6 +1510,10 @@ public class NoCommentEqualsVisitor implements GenericVisitor<Boolean, Visitable
             return false;
         if (!nodesEquals(n.getWithTypes(), n2.getWithTypes()))
             return false;
+        if (!nodesEquals(n.getLeadingComments(), n2.getLeadingComments()))
+            return false;
+        if (!nodesEquals(n.getTrailingComments(), n2.getTrailingComments()))
+            return false;
         return true;
     }
 
@@ -1188,6 +1522,10 @@ public class NoCommentEqualsVisitor implements GenericVisitor<Boolean, Visitable
     public Boolean visit(final ModuleUsesStmt n, final Visitable arg) {
         final ModuleUsesStmt n2 = (ModuleUsesStmt) arg;
         if (!nodeEquals(n.getType(), n2.getType()))
+            return false;
+        if (!nodesEquals(n.getLeadingComments(), n2.getLeadingComments()))
+            return false;
+        if (!nodesEquals(n.getTrailingComments(), n2.getTrailingComments()))
             return false;
         return true;
     }
@@ -1200,12 +1538,21 @@ public class NoCommentEqualsVisitor implements GenericVisitor<Boolean, Visitable
             return false;
         if (!nodeEquals(n.getName(), n2.getName()))
             return false;
+        if (!nodesEquals(n.getLeadingComments(), n2.getLeadingComments()))
+            return false;
+        if (!nodesEquals(n.getTrailingComments(), n2.getTrailingComments()))
+            return false;
         return true;
     }
 
     @Override
     @Generated("com.github.javaparser.generator.core.visitor.NoCommentEqualsVisitorGenerator")
     public Boolean visit(final UnparsableStmt n, final Visitable arg) {
+        final UnparsableStmt n2 = (UnparsableStmt) arg;
+        if (!nodesEquals(n.getLeadingComments(), n2.getLeadingComments()))
+            return false;
+        if (!nodesEquals(n.getTrailingComments(), n2.getTrailingComments()))
+            return false;
         return true;
     }
 }

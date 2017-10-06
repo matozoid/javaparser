@@ -352,6 +352,10 @@ public final class JavaParserMetaModel {
     private static void initializePropertyMetaModels() {
         nodeMetaModel.commentPropertyMetaModel = new PropertyMetaModel(nodeMetaModel, "comment", com.github.javaparser.ast.comments.Comment.class, Optional.of(commentMetaModel), true, false, false, false, false);
         nodeMetaModel.getDeclaredPropertyMetaModels().add(nodeMetaModel.commentPropertyMetaModel);
+        nodeMetaModel.leadingCommentsPropertyMetaModel = new PropertyMetaModel(nodeMetaModel, "leadingComments", com.github.javaparser.ast.comments.Comment.class, Optional.of(commentMetaModel), false, false, true, false, false);
+        nodeMetaModel.getDeclaredPropertyMetaModels().add(nodeMetaModel.leadingCommentsPropertyMetaModel);
+        nodeMetaModel.trailingCommentsPropertyMetaModel = new PropertyMetaModel(nodeMetaModel, "trailingComments", com.github.javaparser.ast.comments.Comment.class, Optional.of(commentMetaModel), false, false, true, false, false);
+        nodeMetaModel.getDeclaredPropertyMetaModels().add(nodeMetaModel.trailingCommentsPropertyMetaModel);
         bodyDeclarationMetaModel.annotationsPropertyMetaModel = new PropertyMetaModel(bodyDeclarationMetaModel, "annotations", com.github.javaparser.ast.expr.AnnotationExpr.class, Optional.of(annotationExprMetaModel), false, false, true, false, false);
         bodyDeclarationMetaModel.getDeclaredPropertyMetaModels().add(bodyDeclarationMetaModel.annotationsPropertyMetaModel);
         callableDeclarationMetaModel.modifiersPropertyMetaModel = new PropertyMetaModel(callableDeclarationMetaModel, "modifiers", com.github.javaparser.ast.Modifier.class, Optional.empty(), false, false, false, true, false);

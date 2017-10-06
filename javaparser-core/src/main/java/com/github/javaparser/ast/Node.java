@@ -42,12 +42,12 @@ import com.github.javaparser.metamodel.PropertyMetaModel;
 import com.github.javaparser.printer.PrettyPrinter;
 import com.github.javaparser.printer.PrettyPrinterConfiguration;
 import com.github.javaparser.resolution.SymbolResolver;
-
 import javax.annotation.Generated;
 import java.util.*;
-
 import static com.github.javaparser.ast.Node.Parsedness.PARSED;
+import static com.github.javaparser.utils.Utils.assertNotNull;
 import static java.util.Collections.unmodifiableList;
+import com.github.javaparser.ast.Node;
 
 /**
  * Base class for all nodes of the abstract syntax tree.
@@ -153,6 +153,10 @@ public abstract class Node implements Cloneable, HasParentNode<Node>, Visitable,
 
     @InternalProperty
     private List<Comment> orphanComments = new LinkedList<>();
+
+    private NodeList<Comment> leadingComments = new NodeList<>();
+
+    private NodeList<Comment> trailingComments = new NodeList<>();
 
     @InternalProperty
     private IdentityHashMap<DataKey<?>, Object> data = null;
@@ -592,6 +596,18 @@ public abstract class Node implements Cloneable, HasParentNode<Node>, Visitable,
                 return true;
             }
         }
+        for (int i = 0; i < leadingComments.size(); i++) {
+            if (leadingComments.get(i) == node) {
+                leadingComments.remove(i);
+                return true;
+            }
+        }
+        for (int i = 0; i < trailingComments.size(); i++) {
+            if (trailingComments.get(i) == node) {
+                trailingComments.remove(i);
+                return true;
+            }
+        }
         return false;
     }
 
@@ -640,6 +656,18 @@ public abstract class Node implements Cloneable, HasParentNode<Node>, Visitable,
                 return true;
             }
         }
+        for (int i = 0; i < leadingComments.size(); i++) {
+            if (leadingComments.get(i) == node) {
+                leadingComments.set(i, (Comment) replacementNode);
+                return true;
+            }
+        }
+        for (int i = 0; i < trailingComments.size(); i++) {
+            if (trailingComments.get(i) == node) {
+                trailingComments.set(i, (Comment) replacementNode);
+                return true;
+            }
+        }
         return false;
     }
 
@@ -676,5 +704,44 @@ public abstract class Node implements Cloneable, HasParentNode<Node>, Visitable,
     }
 
     // We need to expose it because we will need to use it to inject the SymbolSolver
-    public static final DataKey<SymbolResolver> SYMBOL_RESOLVER_KEY = new DataKey<SymbolResolver>() { };
+    public static final DataKey<SymbolResolver> SYMBOL_RESOLVER_KEY = new DataKey<SymbolResolver>() {
+    };
+
+    @Generated("com.github.javaparser.generator.core.node.PropertyGenerator")
+    public NodeList<Comment> getLeadingComments() {
+        return leadingComments;
+    }
+
+    @Generated("com.github.javaparser.generator.core.node.PropertyGenerator")
+    public NodeList<Comment> getTrailingComments() {
+        return trailingComments;
+    }
+
+    @Generated("com.github.javaparser.generator.core.node.PropertyGenerator")
+    public Node setLeadingComments(final NodeList<Comment> leadingComments) {
+        assertNotNull(leadingComments);
+        if (leadingComments == this.leadingComments) {
+            return (Node) this;
+        }
+        notifyPropertyChange(ObservableProperty.LEADING_COMMENTS, this.leadingComments, leadingComments);
+        if (this.leadingComments != null)
+            this.leadingComments.setParentNode(null);
+        this.leadingComments = leadingComments;
+        setAsParentNodeOf(leadingComments);
+        return this;
+    }
+
+    @Generated("com.github.javaparser.generator.core.node.PropertyGenerator")
+    public Node setTrailingComments(final NodeList<Comment> trailingComments) {
+        assertNotNull(trailingComments);
+        if (trailingComments == this.trailingComments) {
+            return (Node) this;
+        }
+        notifyPropertyChange(ObservableProperty.TRAILING_COMMENTS, this.trailingComments, trailingComments);
+        if (this.trailingComments != null)
+            this.trailingComments.setParentNode(null);
+        this.trailingComments = trailingComments;
+        setAsParentNodeOf(trailingComments);
+        return this;
+    }
 }
