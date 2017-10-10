@@ -80,6 +80,41 @@ final class GeneratedJavaParser {
         token_source.reset();
     }
 
+    <T extends Node> T comments(T node, Token commentRangeBegin, Token commentRangeEnd) {
+        CustomToken t;
+        if(!(commentRangeBegin instanceof CustomToken)) {
+            commentRangeBegin = token_source.firstNormalTokenInFile;
+            t = (CustomToken) commentRangeBegin;
+        } else {
+            t = (CustomToken) commentRangeBegin.next;
+        }
+        while (true) {
+            CustomToken specialToken = (CustomToken) t.specialToken;
+            while (specialToken != null) {
+                if (TokenTypes.getCategory(specialToken.kind) == JavaToken.Category.COMMENT &&
+                        !specialToken.commentInAst) {
+                    node.getLeadingComments().add(createCommentFromToken(specialToken));
+                    specialToken.commentInAst = true;
+                }
+                specialToken = (CustomToken) specialToken.specialToken;
+            }
+            if (t == commentRangeEnd && t.next !=null) {
+                t = (CustomToken) t.next;
+                specialToken = (CustomToken) t.specialToken;
+                while (specialToken != null) {
+                    if (TokenTypes.getCategory(specialToken.kind) == JavaToken.Category.COMMENT &&
+                            !specialToken.commentInAst) {
+                        node.getTrailingComments().add(createCommentFromToken(specialToken));
+                        specialToken.commentInAst = true;
+                    }
+                    specialToken = (CustomToken) specialToken.specialToken;
+                }
+                return node;
+            }
+            t = (CustomToken) t.next;
+        }
+    }
+
     /* Called from within a catch block to skip forward to a known token,
         and report the occurred exception as a problem. */
     TokenRange recover(int recoveryTokenType, ParseException p) {
@@ -132,6 +167,7 @@ final class GeneratedJavaParser {
     static final class CustomToken extends Token {
         int realKind = GeneratedJavaParserConstants.GT;
         JavaToken javaToken;
+        boolean commentInAst = false;
 
         CustomToken(int kind, String image) {
             this.kind = kind;
@@ -260,14 +296,16 @@ TOKEN_MGR_DECLS :
 {
     private List<JavaToken> tokens = new ArrayList<JavaToken>();
     private CommentsCollection commentsCollection = new CommentsCollection();
-    private JavaToken homeToken;
+    CustomToken firstTokenInFile;
+    CustomToken firstNormalTokenInFile;
     private Stack<CustomToken> tokenWorkStack = new Stack<CustomToken>();
     private boolean storeTokens;
 
     void reset() {
         tokens = new ArrayList<JavaToken>();
         commentsCollection = new CommentsCollection();
-        homeToken = null;
+        firstTokenInFile = null;
+        firstNormalTokenInFile = null;
     }
 
     List<JavaToken> getTokens() {
@@ -281,19 +319,17 @@ TOKEN_MGR_DECLS :
         return commentsCollection;
     }
 
-    /* Get the very first token in the file */
-    JavaToken getHomeToken() {
-        return homeToken;
-    }
-
     /* Makes the parser keep a list of tokens */
     public void setStoreTokens(boolean storeTokens) {
         this.storeTokens = storeTokens;
     }
 
     private void CommonTokenAction(Token rawToken) {
-        // Use an intermediary stack to avoid recursion, see issue 1003
         CustomToken token = (CustomToken) rawToken;
+        if (firstNormalTokenInFile == null) {
+            firstNormalTokenInFile = token;
+        }
+        // Use an intermediary stack to avoid recursion, see issue 1003
         do {
             tokenWorkStack.push(token);
             token = (CustomToken) token.specialToken;
@@ -306,8 +342,8 @@ TOKEN_MGR_DECLS :
             if(storeTokens) {
                 tokens.add(token.javaToken);
             }
-            if (homeToken == null) {
-                homeToken = token.javaToken;
+            if (firstTokenInFile == null) {
+                firstTokenInFile = token;
             }
 
             if(TokenTypes.isComment(token.kind)) {
@@ -762,6 +798,7 @@ CompilationUnit CompilationUnit():
    ModifierHolder modifier;
 	TypeDeclaration tn = null;
 	ModuleDeclaration module = null;
+    Token commentRangeBegin = token;
 }
 {
     try {
@@ -786,10 +823,10 @@ CompilationUnit CompilationUnit():
             )
         )*
         (<EOF> | "\u001A" /** ctrl+z char **/)
-        { return new CompilationUnit(range(token_source.getHomeToken(), token()), pakage, imports, types, module); }
+        { return comments(new CompilationUnit(range(token_source.firstTokenInFile.javaToken, token()), pakage, imports, types, module), commentRangeBegin, token); }
     } catch (ParseException e) {
         recover(EOF, e);
-        final CompilationUnit compilationUnit = new CompilationUnit(range(token_source.getHomeToken(), token()), null, new NodeList<ImportDeclaration>(), new NodeList<TypeDeclaration<?>>(), null);
+        final CompilationUnit compilationUnit = comments(new CompilationUnit(range(token_source.firstTokenInFile.javaToken, token()), null, new NodeList<ImportDeclaration>(), new NodeList<TypeDeclaration<?>>(), null), commentRangeBegin, token);
         compilationUnit.setParsed(UNPARSABLE);
         return compilationUnit;
     }
@@ -888,6 +925,7 @@ ClassOrInterfaceDeclaration ClassOrInterfaceDeclaration(ModifierHolder modifier)
     NodeList<ClassOrInterfaceType> impList = emptyList();
     NodeList<BodyDeclaration<?>> members = emptyList();
     JavaToken begin = modifier.begin;
+    Token commentRangeBegin = token;
 }
 {
   ( "class" | "interface" { isInterface = true; } ) { begin = orIfInvalid(begin, token()); }
@@ -897,7 +935,7 @@ ClassOrInterfaceDeclaration ClassOrInterfaceDeclaration(ModifierHolder modifier)
   [ impList = ImplementsList() ]
   members = ClassOrInterfaceBody()
 
-	{ return new ClassOrInterfaceDeclaration(range(begin, token()), modifier.modifiers, modifier.annotations, isInterface, name, typePar.list, extList, impList, members); }
+	{ return comments(new ClassOrInterfaceDeclaration(range(begin, token()), modifier.modifiers, modifier.annotations, isInterface, name, typePar.list, extList, impList, members), commentRangeBegin, token); }
 }
 
 NodeList<ClassOrInterfaceType> ExtendsList():
@@ -1141,6 +1179,7 @@ MethodDeclaration MethodDeclaration(ModifierHolder modifier):
 	NodeList<AnnotationExpr> annotations;
 	JavaToken begin = modifier.begin;
 	ReferenceType throwType;
+    Token commentRangeBegin = token;
 }
 {
     // Modifiers already matched in the caller!
@@ -1153,7 +1192,7 @@ MethodDeclaration MethodDeclaration(ModifierHolder modifier):
     ( body = Block() | ";" )
     { 
         type = juggleArrayType(type, arrayBracketPairs);
-        return new MethodDeclaration(range(begin, token()), modifier.modifiers, modifier.annotations, typeParameters.list, type, name, parameters, throws_, body);
+        return comments(new MethodDeclaration(range(begin, token()), modifier.modifiers, modifier.annotations, typeParameters.list, type, name, parameters, throws_, body), commentRangeBegin, token);
     }
 }
 
@@ -1475,6 +1514,7 @@ WildcardType Wildcard(NodeList<AnnotationExpr> firstAnnotations):
 PrimitiveType PrimitiveType(NodeList<AnnotationExpr> annotations):
 {
 	PrimitiveType ret;
+    Token commentRangeBegin = token;
 }
 {
 (
@@ -1486,7 +1526,7 @@ PrimitiveType PrimitiveType(NodeList<AnnotationExpr> annotations):
 |
   "short" { ret = new PrimitiveType(tokenRange(), PrimitiveType.Primitive.SHORT, annotations); }
 |
-  "int" { ret = new PrimitiveType(tokenRange(), PrimitiveType.Primitive.INT, annotations); }
+  "int" { ret = comments(new PrimitiveType(tokenRange(), PrimitiveType.Primitive.INT, annotations), commentRangeBegin, token); }
 |
   "long" { ret = new PrimitiveType(tokenRange(), PrimitiveType.Primitive.LONG, annotations); }
 |
@@ -1529,9 +1569,10 @@ Name Name():
 SimpleName SimpleName():
 {
     SimpleName ret;
+    Token commentRangeBegin = token;
 }
 {
-  Identifier() { ret = new SimpleName(tokenRange(), token.image); }
+  Identifier() { ret = comments(new SimpleName(tokenRange(), token.image), commentRangeBegin, token); }
   { return ret; }
 }
 
@@ -2237,16 +2278,17 @@ BlockStmt Block():
 {
 	NodeList<Statement> stmts = emptyList();
 	JavaToken begin;
+    Token commentRangeBegin = token;
 }
 {
     "{" {begin=token();}
     try {
         stmts = Statements()
         "}"
-        { return new BlockStmt(range(begin, token()), stmts); }
+        { return comments(new BlockStmt(range(begin, token()), stmts), commentRangeBegin, token); }
     } catch (ParseException e) {
         recover(RBRACE, e);
-        BlockStmt block = new BlockStmt(range(begin, token()), new NodeList<Statement>());
+        BlockStmt block = comments(new BlockStmt(range(begin, token()), new NodeList<Statement>()), commentRangeBegin, token);
         block.setParsed(UNPARSABLE);
         return block;
     }
