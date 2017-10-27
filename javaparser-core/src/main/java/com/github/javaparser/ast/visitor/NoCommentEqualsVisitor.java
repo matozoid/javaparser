@@ -1141,4 +1141,13 @@ public class NoCommentEqualsVisitor implements GenericVisitor<Boolean, Visitable
             return false;
         return true;
     }
+
+    @Override
+    @Generated("com.github.javaparser.generator.core.visitor.NoCommentEqualsVisitorGenerator")
+    public Boolean visit(final PlaceholderStmt n, final Visitable arg) {
+        final PlaceholderStmt n2 = (PlaceholderStmt) arg;
+        if (!nodeEquals(n.getLabel(), n2.getLabel()))
+            return false;
+        return true;
+    }
 }

@@ -758,6 +758,7 @@ TOKEN :
 | < GT: ">" >
 }
 
+TOKEN : {<PLACEHOLDER: "\\">}
 
 /*****************************************
  * THE JAVA LANGUAGE GRAMMAR STARTS HERE *
@@ -2231,6 +2232,8 @@ Statement Statement():
             ret = SynchronizedStatement()
         |
             ret = TryStatement()
+        |
+            ret = PlaceholderStatement()
         )
         { return ret; }
     } catch (ParseException e) {
@@ -2248,6 +2251,16 @@ AssertStmt AssertStatement():
 {
   "assert" {begin=token();} check = Expression() [ ":" msg = Expression() ] ";"
   { return new AssertStmt(range(begin, token()), check, msg);  }
+}
+
+PlaceholderStmt PlaceholderStatement():
+{
+    SimpleName name;
+	JavaToken begin;
+}
+{
+  "\\" {begin=token();} name = SimpleName() ";"
+  { return new PlaceholderStmt(range(begin, token()), name);  }
 }
 
 LabeledStmt LabeledStatement():

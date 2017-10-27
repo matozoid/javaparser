@@ -130,6 +130,7 @@ public class MetaModelGenerator {
         add(LocalClassDeclarationStmt.class);
         add(WhileStmt.class);
         add(UnparsableStmt.class);
+        add(PlaceholderStmt.class);
 
         add(ArrayType.class);
         add(ClassOrInterfaceType.class);
