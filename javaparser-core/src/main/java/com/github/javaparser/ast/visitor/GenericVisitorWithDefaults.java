@@ -601,4 +601,10 @@ public abstract class GenericVisitorWithDefaults<R, A> implements GenericVisitor
     public R visit(final PlaceholderStmt n, final A arg) {
         return defaultAction(n, arg);
     }
+
+    @Override
+    @Generated("com.github.javaparser.generator.core.visitor.GenericVisitorWithDefaultsGenerator")
+    public R visit(final PlaceholderExpr n, final A arg) {
+        return defaultAction(n, arg);
+    }
 }

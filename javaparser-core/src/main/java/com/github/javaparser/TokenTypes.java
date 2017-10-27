@@ -183,6 +183,7 @@ public class TokenTypes {
             case COMMA:
             case DOT:
             case AT:
+            case PLACEHOLDER:
                 return JavaToken.Category.SEPARATOR;
             case ASSIGN:
             case LT:
