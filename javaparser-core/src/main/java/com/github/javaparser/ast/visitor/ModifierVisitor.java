@@ -1289,9 +1289,23 @@ public class ModifierVisitor<A> implements GenericVisitor<Visitable, A> {
     @Override
     @Generated("com.github.javaparser.generator.core.visitor.ModifierVisitorGenerator")
     public Visitable visit(final PlaceholderStmt n, final A arg) {
-        SimpleName label = n.getLabel().map(s -> (SimpleName) s.accept(this, arg)).orElse(null);
+        SimpleName name = (SimpleName) n.getName().accept(this, arg);
         Comment comment = n.getComment().map(s -> (Comment) s.accept(this, arg)).orElse(null);
-        n.setLabel(label);
+        if (name == null)
+            return null;
+        n.setName(name);
+        n.setComment(comment);
+        return n;
+    }
+
+    @Override
+    @Generated("com.github.javaparser.generator.core.visitor.ModifierVisitorGenerator")
+    public Visitable visit(final PlaceholderExpr n, final A arg) {
+        SimpleName name = (SimpleName) n.getName().accept(this, arg);
+        Comment comment = n.getComment().map(s -> (Comment) s.accept(this, arg)).orElse(null);
+        if (name == null)
+            return null;
+        n.setName(name);
         n.setComment(comment);
         return n;
     }

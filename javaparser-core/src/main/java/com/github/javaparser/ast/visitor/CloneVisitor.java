@@ -1072,9 +1072,19 @@ public class CloneVisitor implements GenericVisitor<Visitable, Object> {
     @Override
     @Generated("com.github.javaparser.generator.core.visitor.CloneVisitorGenerator")
     public Visitable visit(final PlaceholderStmt n, final Object arg) {
-        SimpleName label = cloneNode(n.getLabel(), arg);
+        SimpleName name = cloneNode(n.getName(), arg);
         Comment comment = cloneNode(n.getComment(), arg);
-        PlaceholderStmt r = new PlaceholderStmt(n.getTokenRange().orElse(null), label);
+        PlaceholderStmt r = new PlaceholderStmt(n.getTokenRange().orElse(null), name);
+        r.setComment(comment);
+        return r;
+    }
+
+    @Override
+    @Generated("com.github.javaparser.generator.core.visitor.CloneVisitorGenerator")
+    public Visitable visit(final PlaceholderExpr n, final Object arg) {
+        SimpleName name = cloneNode(n.getName(), arg);
+        Comment comment = cloneNode(n.getComment(), arg);
+        PlaceholderExpr r = new PlaceholderExpr(n.getTokenRange().orElse(null), name);
         r.setComment(comment);
         return r;
     }

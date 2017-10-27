@@ -588,7 +588,7 @@ TOKEN :
 | < GT: ">" >
 }
 
-TOKEN : {<PLACEHOLDER: "\\">}
+TOKEN : {<PLACEHOLDER: "`">}
 
 /*****************************************
  * THE JAVA LANGUAGE GRAMMAR STARTS HERE *
@@ -1921,6 +1921,8 @@ Expression Literal():
 	  ret = BooleanLiteral()
 	|
 	  ret = NullLiteral()
+	|
+	    ret = PlaceholderExpression()
   )
   { return ret; }
 }
@@ -1943,6 +1945,16 @@ Expression NullLiteral():
 {
   "null"
   { return new NullLiteralExpr(tokenRange()); }
+}
+
+PlaceholderExpr PlaceholderExpression():
+{
+    SimpleName name;
+	JavaToken begin;
+}
+{
+  <PLACEHOLDER> {begin=token();} name = SimpleName() <PLACEHOLDER>
+  { return new PlaceholderExpr(range(begin, token()), name);  }
 }
 
 NodeList<Expression> Arguments():
@@ -2036,6 +2048,8 @@ Statement Statement():
         |
             ret = EmptyStatement()
         |
+            ret = PlaceholderStatement()
+        |
             ret = StatementExpression()
         |
             ret = SwitchStatement()
@@ -2059,8 +2073,6 @@ Statement Statement():
             ret = SynchronizedStatement()
         |
             ret = TryStatement()
-        |
-            ret = PlaceholderStatement()
         )
         { return ret; }
     } catch (ParseException e) {
@@ -2086,19 +2098,19 @@ PlaceholderStmt PlaceholderStatement():
 	JavaToken begin;
 }
 {
-  "\\" {begin=token();} name = SimpleName() ";"
+  <PLACEHOLDER> {begin=token();} name = SimpleName() <PLACEHOLDER>
   { return new PlaceholderStmt(range(begin, token()), name);  }
 }
 
 LabeledStmt LabeledStatement():
 {
-	SimpleName label;
+	SimpleName name;
 	Statement stmt;
 	JavaToken begin;
 }
 {
-  label = SimpleName() {begin=token();} ":" stmt = Statement()
-  { return new LabeledStmt(range(begin, token()), label, stmt); }
+  name = SimpleName() {begin=token();} ":" stmt = Statement()
+  { return new LabeledStmt(range(begin, token()), name, stmt); }
 }
 
 BlockStmt Block():

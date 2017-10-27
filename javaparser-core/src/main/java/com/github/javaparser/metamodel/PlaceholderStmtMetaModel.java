@@ -8,5 +8,5 @@ public class PlaceholderStmtMetaModel extends StatementMetaModel {
         super(superBaseNodeMetaModel, com.github.javaparser.ast.stmt.PlaceholderStmt.class, "PlaceholderStmt", "com.github.javaparser.ast.stmt", false, false);
     }
 
-    public PropertyMetaModel labelPropertyMetaModel;
+    public PropertyMetaModel namePropertyMetaModel;
 }

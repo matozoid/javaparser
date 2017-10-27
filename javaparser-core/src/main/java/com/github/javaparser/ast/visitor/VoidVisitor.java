@@ -312,4 +312,7 @@ public interface VoidVisitor<A> {
 
     @Generated("com.github.javaparser.generator.core.visitor.VoidVisitorGenerator")
     void visit(PlaceholderStmt n, A arg);
+
+    @Generated("com.github.javaparser.generator.core.visitor.VoidVisitorGenerator")
+    void visit(PlaceholderExpr n, A arg);
 }

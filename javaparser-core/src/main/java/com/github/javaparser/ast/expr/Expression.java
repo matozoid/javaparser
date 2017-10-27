@@ -559,4 +559,18 @@ public abstract class Expression extends Node {
     public ResolvedType calculateResolvedType() {
         return getSymbolResolver().calculateType(this);
     }
+
+    @Generated("com.github.javaparser.generator.core.node.TypeCastingGenerator")
+    public boolean isPlaceholderExpr() {
+        return false;
+    }
+
+    @Generated("com.github.javaparser.generator.core.node.TypeCastingGenerator")
+    public PlaceholderExpr asPlaceholderExpr() {
+        throw new IllegalStateException(f("%s is not an PlaceholderExpr", this));
+    }
+
+    @Generated("com.github.javaparser.generator.core.node.TypeCastingGenerator")
+    public void ifPlaceholderExpr(Consumer<PlaceholderExpr> action) {
+    }
 }

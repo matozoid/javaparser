@@ -317,4 +317,7 @@ public interface GenericVisitor<R, A> {
 
     @Generated("com.github.javaparser.generator.core.visitor.GenericVisitorGenerator")
     R visit(PlaceholderStmt n, A arg);
+
+    @Generated("com.github.javaparser.generator.core.visitor.GenericVisitorGenerator")
+    R visit(PlaceholderExpr n, A arg);
 }

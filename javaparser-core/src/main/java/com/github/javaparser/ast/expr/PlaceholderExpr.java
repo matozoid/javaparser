@@ -18,43 +18,44 @@
  * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
  * GNU Lesser General Public License for more details.
  */
-package com.github.javaparser.ast.stmt;
+package com.github.javaparser.ast.expr;
 
 import com.github.javaparser.TokenRange;
 import com.github.javaparser.ast.AllFieldsConstructor;
 import com.github.javaparser.ast.Node;
-import com.github.javaparser.ast.expr.SimpleName;
 import com.github.javaparser.ast.nodeTypes.NodeWithSimpleName;
 import com.github.javaparser.ast.observer.ObservableProperty;
+import com.github.javaparser.ast.stmt.Statement;
 import com.github.javaparser.ast.visitor.CloneVisitor;
 import com.github.javaparser.ast.visitor.GenericVisitor;
 import com.github.javaparser.ast.visitor.VoidVisitor;
 import com.github.javaparser.metamodel.JavaParserMetaModel;
+import com.github.javaparser.metamodel.PlaceholderStmtMetaModel;
 import javax.annotation.Generated;
 import java.util.Optional;
 import java.util.function.Consumer;
-import com.github.javaparser.metamodel.PlaceholderStmtMetaModel;
+import com.github.javaparser.metamodel.PlaceholderExprMetaModel;
 
 import static com.github.javaparser.utils.Utils.assertNotNull;
 
 /**
- * A general purpose placeholder. This is not Java syntax. It is created by inserting a backslash and a name where a
- * statement would normally be.
+ * A general purpose placeholder. This is not Java syntax. It is created by inserting a backslash and a name where an
+ * expression would normally be.
  */
-public final class PlaceholderStmt extends Statement implements NodeWithSimpleName<PlaceholderStmt> {
+public final class PlaceholderExpr extends Expression implements NodeWithSimpleName<PlaceholderExpr> {
 
     private SimpleName name;
 
-    public PlaceholderStmt() {
+    public PlaceholderExpr() {
         this(null, new SimpleName());
     }
 
-    public PlaceholderStmt(final String name) {
+    public PlaceholderExpr(final String name) {
         this(null, new SimpleName(name));
     }
 
     @AllFieldsConstructor
-    public PlaceholderStmt(final SimpleName name) {
+    public PlaceholderExpr(final SimpleName name) {
         this(null, name);
     }
 
@@ -62,7 +63,7 @@ public final class PlaceholderStmt extends Statement implements NodeWithSimpleNa
      * This constructor is used by the parser and is considered private.
      */
     @Generated("com.github.javaparser.generator.core.node.MainConstructorGenerator")
-    public PlaceholderStmt(TokenRange tokenRange, SimpleName name) {
+    public PlaceholderExpr(TokenRange tokenRange, SimpleName name) {
         super(tokenRange);
         setName(name);
         customInitialization();
@@ -88,14 +89,14 @@ public final class PlaceholderStmt extends Statement implements NodeWithSimpleNa
     /**
      * Sets the name
      *
-     * @param name the name, can be null
+     * @param label the name, can be null
      * @return this, the BreakStmt
      */
     @Generated("com.github.javaparser.generator.core.node.PropertyGenerator")
-    public PlaceholderStmt setName(final SimpleName name) {
+    public PlaceholderExpr setName(final SimpleName name) {
         assertNotNull(name);
         if (name == this.name) {
-            return (PlaceholderStmt) this;
+            return (PlaceholderExpr) this;
         }
         notifyPropertyChange(ObservableProperty.NAME, this.name, name);
         if (this.name != null)
@@ -106,28 +107,28 @@ public final class PlaceholderStmt extends Statement implements NodeWithSimpleNa
     }
 
     @Override
+    @Generated("com.github.javaparser.generator.core.node.TypeCastingGenerator")
+    public boolean isPlaceholderExpr() {
+        return true;
+    }
+
+    @Override
+    @Generated("com.github.javaparser.generator.core.node.TypeCastingGenerator")
+    public PlaceholderExpr asPlaceholderExpr() {
+        return this;
+    }
+
+    @Generated("com.github.javaparser.generator.core.node.TypeCastingGenerator")
+    public void ifPlaceholderExpr(Consumer<PlaceholderExpr> action) {
+        action.accept(this);
+    }
+
+    @Override
     @Generated("com.github.javaparser.generator.core.node.RemoveMethodGenerator")
     public boolean remove(Node node) {
         if (node == null)
             return false;
         return super.remove(node);
-    }
-
-    @Generated("com.github.javaparser.generator.core.node.RemoveMethodGenerator")
-    public PlaceholderStmt removeLabel() {
-        return setName((SimpleName) null);
-    }
-
-    @Override
-    @Generated("com.github.javaparser.generator.core.node.CloneGenerator")
-    public PlaceholderStmt clone() {
-        return (PlaceholderStmt) accept(new CloneVisitor(), null);
-    }
-
-    @Override
-    @Generated("com.github.javaparser.generator.core.node.GetMetaModelGenerator")
-    public PlaceholderStmtMetaModel getMetaModel() {
-        return JavaParserMetaModel.placeholderStmtMetaModel;
     }
 
     @Override
@@ -143,19 +144,14 @@ public final class PlaceholderStmt extends Statement implements NodeWithSimpleNa
     }
 
     @Override
-    @Generated("com.github.javaparser.generator.core.node.TypeCastingGenerator")
-    public boolean isPlaceholderStmt() {
-        return true;
+    @Generated("com.github.javaparser.generator.core.node.CloneGenerator")
+    public PlaceholderExpr clone() {
+        return (PlaceholderExpr) accept(new CloneVisitor(), null);
     }
 
     @Override
-    @Generated("com.github.javaparser.generator.core.node.TypeCastingGenerator")
-    public PlaceholderStmt asPlaceholderStmt() {
-        return this;
-    }
-
-    @Generated("com.github.javaparser.generator.core.node.TypeCastingGenerator")
-    public void ifPlaceholderStmt(Consumer<PlaceholderStmt> action) {
-        action.accept(this);
+    @Generated("com.github.javaparser.generator.core.node.GetMetaModelGenerator")
+    public PlaceholderExprMetaModel getMetaModel() {
+        return JavaParserMetaModel.placeholderExprMetaModel;
     }
 }

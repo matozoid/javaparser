@@ -105,6 +105,7 @@ public class MetaModelGenerator {
         add(TypeExpr.class);
         add(UnaryExpr.class);
         add(VariableDeclarationExpr.class);
+        add(PlaceholderExpr.class);
 
         add(ImportDeclaration.class);
 
