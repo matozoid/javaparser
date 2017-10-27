@@ -1285,4 +1285,14 @@ public class ModifierVisitor<A> implements GenericVisitor<Visitable, A> {
         n.setComment(comment);
         return n;
     }
+
+    @Override
+    @Generated("com.github.javaparser.generator.core.visitor.ModifierVisitorGenerator")
+    public Visitable visit(final PlaceholderStmt n, final A arg) {
+        SimpleName label = n.getLabel().map(s -> (SimpleName) s.accept(this, arg)).orElse(null);
+        Comment comment = n.getComment().map(s -> (Comment) s.accept(this, arg)).orElse(null);
+        n.setLabel(label);
+        n.setComment(comment);
+        return n;
+    }
 }

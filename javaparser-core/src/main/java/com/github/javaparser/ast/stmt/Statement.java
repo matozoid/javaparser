@@ -372,4 +372,18 @@ public abstract class Statement extends Node {
     @Generated("com.github.javaparser.generator.core.node.TypeCastingGenerator")
     public void ifWhileStmt(Consumer<WhileStmt> action) {
     }
+
+    @Generated("com.github.javaparser.generator.core.node.TypeCastingGenerator")
+    public boolean isPlaceholderStmt() {
+        return false;
+    }
+
+    @Generated("com.github.javaparser.generator.core.node.TypeCastingGenerator")
+    public PlaceholderStmt asPlaceholderStmt() {
+        throw new IllegalStateException(f("%s is not an PlaceholderStmt", this));
+    }
+
+    @Generated("com.github.javaparser.generator.core.node.TypeCastingGenerator")
+    public void ifPlaceholderStmt(Consumer<PlaceholderStmt> action) {
+    }
 }

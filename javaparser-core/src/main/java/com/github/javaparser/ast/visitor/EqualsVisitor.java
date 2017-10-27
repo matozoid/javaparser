@@ -1376,4 +1376,15 @@ public class EqualsVisitor implements GenericVisitor<Boolean, Visitable> {
             return false;
         return true;
     }
+
+    @Override
+    @Generated("com.github.javaparser.generator.core.visitor.EqualsVisitorGenerator")
+    public Boolean visit(final PlaceholderStmt n, final Visitable arg) {
+        final PlaceholderStmt n2 = (PlaceholderStmt) arg;
+        if (!nodeEquals(n.getLabel(), n2.getLabel()))
+            return false;
+        if (!nodeEquals(n.getComment(), n2.getComment()))
+            return false;
+        return true;
+    }
 }
