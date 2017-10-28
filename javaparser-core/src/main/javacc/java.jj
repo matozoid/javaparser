@@ -1368,15 +1368,33 @@ InitializerDeclaration InitializerDeclaration():
 
 Type Type(NodeList<AnnotationExpr> annotations):
 {
-	Type ret;
+    Type ret;
 }
 {
- (
-   LOOKAHEAD(2) ret = ReferenceType(annotations)
- |
-   ret = PrimitiveType(annotations )
- )
- { return ret; }
+    (LOOKAHEAD(2) 
+        ret = ReferenceType(annotations)
+    |
+        ret = PrimitiveType(annotations )
+    |
+        ret = PlaceholderType(annotations)
+    )
+    { return ret; }
+}
+
+
+PlaceholderType PlaceholderType(NodeList<AnnotationExpr> annotations):
+{
+    SimpleName name;
+	JavaToken begin;
+}
+{
+    <PLACEHOLDER> {begin=token();} name = SimpleName() <PLACEHOLDER>
+    {
+        if(!annotations.isEmpty()) {
+            addProblem("Cannot annotate a placeholder type.");
+        }
+        return new PlaceholderType(range(begin, token()), name);
+    }
 }
 
 ReferenceType ReferenceType(NodeList<AnnotationExpr> annotations):
@@ -2271,7 +2289,7 @@ PlaceholderStmt PlaceholderStatement():
 	JavaToken begin;
 }
 {
-  <PLACEHOLDER> {begin=token();} name = SimpleName() <PLACEHOLDER>
+  <PLACEHOLDER> {begin=token();} name = SimpleName() <PLACEHOLDER> ";"
   { return new PlaceholderStmt(range(begin, token()), name);  }
 }
 

@@ -298,4 +298,18 @@ public abstract class Type extends Node implements Resolvable<Object> {
 
     @Override
     public abstract ResolvedType resolve();
+
+    @Generated("com.github.javaparser.generator.core.node.TypeCastingGenerator")
+    public boolean isPlaceholderType() {
+        return false;
+    }
+
+    @Generated("com.github.javaparser.generator.core.node.TypeCastingGenerator")
+    public PlaceholderType asPlaceholderType() {
+        throw new IllegalStateException(f("%s is not an PlaceholderType", this));
+    }
+
+    @Generated("com.github.javaparser.generator.core.node.TypeCastingGenerator")
+    public void ifPlaceholderType(Consumer<PlaceholderType> action) {
+    }
 }

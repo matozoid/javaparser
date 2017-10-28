@@ -142,6 +142,7 @@ public class MetaModelGenerator {
         add(UnknownType.class);
         add(VoidType.class);
         add(WildcardType.class);
+        add(PlaceholderType.class);
 
         add(ModuleRequiresStmt.class);
         add(ModuleExportsStmt.class);
@@ -166,13 +167,13 @@ public class MetaModelGenerator {
     }
 
     private void run(SourceRoot sourceRoot) throws IOException, NoSuchMethodException {
-        final CompilationUnit javaParserMetaModel = sourceRoot.tryToParse(METAMODEL_PACKAGE, "JavaParserMetaModel.java").getResult().get();
+        final CompilationUnit javaParserMetaModel = sourceRoot.tryToParse(METAMODEL_PACKAGE, "JavaParserMetaModel.java").getResult().orElseThrow(() -> new AssertionError("Can't find metamodel source file."));
 
         generateNodeMetaModels(javaParserMetaModel, sourceRoot);
     }
 
     private void generateNodeMetaModels(CompilationUnit javaParserMetaModelCu, SourceRoot sourceRoot) throws NoSuchMethodException {
-        final ClassOrInterfaceDeclaration metaModelCoid = javaParserMetaModelCu.getClassByName("JavaParserMetaModel").get();
+        final ClassOrInterfaceDeclaration metaModelCoid = javaParserMetaModelCu.getClassByName("JavaParserMetaModel").orElseThrow(() -> new AssertionError("Can't find metamodel class."));
         final NodeList<Statement> initializeNodeMetaModelsStatements = metaModelCoid.getMethodsByName("initializeNodeMetaModels").get(0).getBody().get().getStatements();
         final NodeList<Statement> initializePropertyMetaModelsStatements = metaModelCoid.getMethodsByName("initializePropertyMetaModels").get(0).getBody().get().getStatements();
         final NodeList<Statement> initializeConstructorParametersStatements = metaModelCoid.getMethodsByName("initializeConstructorParameters").get(0).getBody().get().getStatements();

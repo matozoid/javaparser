@@ -603,4 +603,10 @@ public abstract class VoidVisitorWithDefaults<A> implements VoidVisitor<A> {
     public void visit(final PlaceholderExpr n, final A arg) {
         defaultAction(n, arg);
     }
+
+    @Override
+    @Generated("com.github.javaparser.generator.core.visitor.VoidVisitorWithDefaultsGenerator")
+    public void visit(final PlaceholderType n, final A arg) {
+        defaultAction(n, arg);
+    }
 }

@@ -484,6 +484,13 @@ public class ConcreteSyntaxModel {
                 token(GeneratedJavaParserConstants.PLACEHOLDER)
         ));
 
+        concreteSyntaxModelByClass.put(PlaceholderType.class, sequence(
+                comment(),
+                token(GeneratedJavaParserConstants.PLACEHOLDER),
+                child(ObservableProperty.NAME),
+                token(GeneratedJavaParserConstants.PLACEHOLDER)
+        ));
+
         concreteSyntaxModelByClass.put(SuperExpr.class, CsmElement.sequence(
                 CsmElement.comment(),
                 CsmElement.conditional(ObservableProperty.CLASS_EXPR, IS_PRESENT, CsmElement.sequence(CsmElement.child(ObservableProperty.CLASS_EXPR), CsmElement.token(GeneratedJavaParserConstants.DOT))),
