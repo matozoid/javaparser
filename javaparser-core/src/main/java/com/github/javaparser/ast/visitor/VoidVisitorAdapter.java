@@ -778,4 +778,12 @@ public abstract class VoidVisitorAdapter<A> implements VoidVisitor<A> {
         n.getName().accept(this, arg);
         n.getComment().ifPresent(l -> l.accept(this, arg));
     }
+
+    @Override
+    @Generated("com.github.javaparser.generator.core.visitor.VoidVisitorAdapterGenerator")
+    public void visit(final PlaceholderType n, final A arg) {
+        n.getName().accept(this, arg);
+        n.getAnnotations().forEach(p -> p.accept(this, arg));
+        n.getComment().ifPresent(l -> l.accept(this, arg));
+    }
 }

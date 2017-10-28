@@ -1088,4 +1088,15 @@ public class CloneVisitor implements GenericVisitor<Visitable, Object> {
         r.setComment(comment);
         return r;
     }
+
+    @Override
+    @Generated("com.github.javaparser.generator.core.visitor.CloneVisitorGenerator")
+    public Visitable visit(final PlaceholderType n, final Object arg) {
+        SimpleName name = cloneNode(n.getName(), arg);
+        NodeList<AnnotationExpr> annotations = cloneList(n.getAnnotations(), arg);
+        Comment comment = cloneNode(n.getComment(), arg);
+        PlaceholderType r = new PlaceholderType(n.getTokenRange().orElse(null), name);
+        r.setComment(comment);
+        return r;
+    }
 }

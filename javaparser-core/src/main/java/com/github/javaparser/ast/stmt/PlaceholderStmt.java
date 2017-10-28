@@ -34,7 +34,6 @@ import javax.annotation.Generated;
 import java.util.Optional;
 import java.util.function.Consumer;
 import com.github.javaparser.metamodel.PlaceholderStmtMetaModel;
-
 import static com.github.javaparser.utils.Utils.assertNotNull;
 
 /**

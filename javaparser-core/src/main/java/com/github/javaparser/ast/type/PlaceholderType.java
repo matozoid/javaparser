@@ -18,43 +18,42 @@
  * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
  * GNU Lesser General Public License for more details.
  */
-package com.github.javaparser.ast.expr;
+package com.github.javaparser.ast.type;
 
 import com.github.javaparser.TokenRange;
 import com.github.javaparser.ast.AllFieldsConstructor;
 import com.github.javaparser.ast.Node;
+import com.github.javaparser.ast.expr.SimpleName;
 import com.github.javaparser.ast.nodeTypes.NodeWithSimpleName;
 import com.github.javaparser.ast.observer.ObservableProperty;
-import com.github.javaparser.ast.stmt.Statement;
-import com.github.javaparser.ast.visitor.CloneVisitor;
 import com.github.javaparser.ast.visitor.GenericVisitor;
 import com.github.javaparser.ast.visitor.VoidVisitor;
-import com.github.javaparser.metamodel.JavaParserMetaModel;
-import com.github.javaparser.metamodel.PlaceholderStmtMetaModel;
+import com.github.javaparser.resolution.types.ResolvedType;
 import javax.annotation.Generated;
-import java.util.Optional;
-import java.util.function.Consumer;
-import com.github.javaparser.metamodel.PlaceholderExprMetaModel;
 import static com.github.javaparser.utils.Utils.assertNotNull;
+import java.util.function.Consumer;
+import com.github.javaparser.ast.visitor.CloneVisitor;
+import com.github.javaparser.metamodel.PlaceholderTypeMetaModel;
+import com.github.javaparser.metamodel.JavaParserMetaModel;
 
 /**
  * A general purpose placeholder. This is not Java syntax. It is created by inserting a backslash and a name where an
  * expression would normally be.
  */
-public final class PlaceholderExpr extends Expression implements NodeWithSimpleName<PlaceholderExpr> {
+public final class PlaceholderType extends Type implements NodeWithSimpleName<PlaceholderType> {
 
     private SimpleName name;
 
-    public PlaceholderExpr() {
+    public PlaceholderType() {
         this(null, new SimpleName());
     }
 
-    public PlaceholderExpr(final String name) {
+    public PlaceholderType(final String name) {
         this(null, new SimpleName(name));
     }
 
     @AllFieldsConstructor
-    public PlaceholderExpr(final SimpleName name) {
+    public PlaceholderType(final SimpleName name) {
         this(null, name);
     }
 
@@ -62,7 +61,7 @@ public final class PlaceholderExpr extends Expression implements NodeWithSimpleN
      * This constructor is used by the parser and is considered private.
      */
     @Generated("com.github.javaparser.generator.core.node.MainConstructorGenerator")
-    public PlaceholderExpr(TokenRange tokenRange, SimpleName name) {
+    public PlaceholderType(TokenRange tokenRange, SimpleName name) {
         super(tokenRange);
         setName(name);
         customInitialization();
@@ -92,10 +91,10 @@ public final class PlaceholderExpr extends Expression implements NodeWithSimpleN
      * @return this, the BreakStmt
      */
     @Generated("com.github.javaparser.generator.core.node.PropertyGenerator")
-    public PlaceholderExpr setName(final SimpleName name) {
+    public PlaceholderType setName(final SimpleName name) {
         assertNotNull(name);
         if (name == this.name) {
-            return (PlaceholderExpr) this;
+            return (PlaceholderType) this;
         }
         notifyPropertyChange(ObservableProperty.NAME, this.name, name);
         if (this.name != null)
@@ -106,28 +105,16 @@ public final class PlaceholderExpr extends Expression implements NodeWithSimpleN
     }
 
     @Override
-    @Generated("com.github.javaparser.generator.core.node.TypeCastingGenerator")
-    public boolean isPlaceholderExpr() {
-        return true;
-    }
-
-    @Override
-    @Generated("com.github.javaparser.generator.core.node.TypeCastingGenerator")
-    public PlaceholderExpr asPlaceholderExpr() {
-        return this;
-    }
-
-    @Generated("com.github.javaparser.generator.core.node.TypeCastingGenerator")
-    public void ifPlaceholderExpr(Consumer<PlaceholderExpr> action) {
-        action.accept(this);
-    }
-
-    @Override
     @Generated("com.github.javaparser.generator.core.node.RemoveMethodGenerator")
     public boolean remove(Node node) {
         if (node == null)
             return false;
         return super.remove(node);
+    }
+
+    @Override
+    public String asString() {
+        return "`" + name.asString() + "`";
     }
 
     @Override
@@ -143,14 +130,36 @@ public final class PlaceholderExpr extends Expression implements NodeWithSimpleN
     }
 
     @Override
+    public ResolvedType resolve() {
+        return null;
+    }
+
+    @Override
+    @Generated("com.github.javaparser.generator.core.node.TypeCastingGenerator")
+    public boolean isPlaceholderType() {
+        return true;
+    }
+
+    @Override
+    @Generated("com.github.javaparser.generator.core.node.TypeCastingGenerator")
+    public PlaceholderType asPlaceholderType() {
+        return this;
+    }
+
+    @Generated("com.github.javaparser.generator.core.node.TypeCastingGenerator")
+    public void ifPlaceholderType(Consumer<PlaceholderType> action) {
+        action.accept(this);
+    }
+
+    @Override
     @Generated("com.github.javaparser.generator.core.node.CloneGenerator")
-    public PlaceholderExpr clone() {
-        return (PlaceholderExpr) accept(new CloneVisitor(), null);
+    public PlaceholderType clone() {
+        return (PlaceholderType) accept(new CloneVisitor(), null);
     }
 
     @Override
     @Generated("com.github.javaparser.generator.core.node.GetMetaModelGenerator")
-    public PlaceholderExprMetaModel getMetaModel() {
-        return JavaParserMetaModel.placeholderExprMetaModel;
+    public PlaceholderTypeMetaModel getMetaModel() {
+        return JavaParserMetaModel.placeholderTypeMetaModel;
     }
 }
