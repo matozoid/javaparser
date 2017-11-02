@@ -895,9 +895,9 @@ BodyDeclaration<?> ClassOrInterfaceBodyDeclaration():
 	      ret = EnumDeclaration(modifier)
 	    | LOOKAHEAD("@" "interface")
 	      ret = AnnotationTypeDeclaration(modifier)
-	    | LOOKAHEAD( [ TypeParameters() ] Identifier() "(" )
+	    | LOOKAHEAD( [ TypeParameters() ] SimpleName() "(" )
 	      ret = ConstructorDeclaration(modifier)
-	    | LOOKAHEAD( Type() Identifier() ( ArrayBracketPair() )* ( "," | "=" | ";" ) )
+	    | LOOKAHEAD( Type() SimpleName() ( ArrayBracketPair() )* ( "," | "=" | ";" ) )
 	      ret = FieldDeclaration(modifier)
 	    |
 	      ret = MethodDeclaration(modifier)
@@ -1464,7 +1464,7 @@ Expression Expression():
                 }
             }
         |
-            "::"  [typeArgs = TypeArguments() ] (Identifier() | "new") { ret = new MethodReferenceExpr(range(ret, token()), ret, typeArgs.list, token.image); }
+            "::"  [typeArgs = TypeArguments() ] (SimpleName() | "new") { ret = new MethodReferenceExpr(range(ret, token()), ret, typeArgs.list, token.image); }
         )
     ]
     
@@ -1818,7 +1818,7 @@ Expression PrimaryPrefix():
 			}
 	  	}
 	 |
-		"::" [typeArgs = TypeArguments() ] (Identifier() | "new")
+		"::" [typeArgs = TypeArguments() ] (SimpleName() | "new")
 		{
 		  ret = new MethodReferenceExpr(range(ret, token()), ret, typeArgs.list, token.image);
 		}
@@ -1842,7 +1842,7 @@ Expression PrimaryPrefix():
 	  type = ResultType(emptyList())  "." "class" { ret = new ClassExpr(range(type, token()), type); }
 
 	| LOOKAHEAD (AnnotatedType() "::" )
-	  type = AnnotatedType() "::" [typeArgs = TypeArguments() ] (Identifier() | "new")
+	  type = AnnotatedType() "::" [typeArgs = TypeArguments() ] (SimpleName() | "new")
 		{
 		  ret = new TypeExpr(range(type, type), type);
 		  ret = new MethodReferenceExpr(range(ret, token()), ret, typeArgs.list, token.image);
@@ -1892,7 +1892,7 @@ Expression PrimarySuffixWithoutSuper(Expression scope):
 	  |
 	  	ret = AllocationExpression(scope)
 	  |
-	  	LOOKAHEAD( [ TypeArguments() ] Identifier() )
+	  	LOOKAHEAD( [ TypeArguments() ] SimpleName() )
 	  	[ typeArgs = TypeArguments() ]
 	  	name = SimpleName()
 	  	[ args = Arguments() {hasArgs=true;} ]
@@ -2355,7 +2355,7 @@ NodeList<Expression> ForInit():
 }
 {
   (
-	  LOOKAHEAD( Modifiers() Type() Identifier() )
+	  LOOKAHEAD( Modifiers() Type() SimpleName() )
 	  expr = VariableDeclarationExpression() { ret = new NodeList<Expression>(); ret.add(expr); }
 	|
 	  ret = ExpressionList()
@@ -2568,7 +2568,7 @@ AnnotationExpr Annotation():
 {
     "@" { begin=token(); } name = Name()
     (
-        LOOKAHEAD( "(" ( Identifier() "=" | ")" ))
+        LOOKAHEAD( "(" ( SimpleName() "=" | ")" ))
         "(" [ pairs = MemberValuePairs() ] ")"
         { ret = new NormalAnnotationExpr(range(begin, token()), name, pairs); }
     |
@@ -2670,7 +2670,7 @@ BodyDeclaration<?> AnnotationBodyDeclaration():
   (
     modifier = Modifiers()
     (
-	   LOOKAHEAD(Type() Identifier() "(")
+	   LOOKAHEAD(Type() SimpleName() "(")
 	   ret = AnnotationTypeMemberDeclaration(modifier)
 	  |
 	   ret = ClassOrInterfaceDeclaration(modifier)
