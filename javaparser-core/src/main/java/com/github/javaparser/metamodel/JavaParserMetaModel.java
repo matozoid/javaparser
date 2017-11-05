@@ -174,7 +174,7 @@ public final class JavaParserMetaModel {
         variableDeclarationExprMetaModel.getConstructorParameters().add(variableDeclarationExprMetaModel.modifiersPropertyMetaModel);
         variableDeclarationExprMetaModel.getConstructorParameters().add(variableDeclarationExprMetaModel.annotationsPropertyMetaModel);
         variableDeclarationExprMetaModel.getConstructorParameters().add(variableDeclarationExprMetaModel.variablesPropertyMetaModel);
-        placeholderExprMetaModel.getConstructorParameters().add(placeholderExprMetaModel.namePropertyMetaModel);
+        placeholderExprMetaModel.getConstructorParameters().add(placeholderExprMetaModel.placeholderKeyPropertyMetaModel);
         importDeclarationMetaModel.getConstructorParameters().add(importDeclarationMetaModel.namePropertyMetaModel);
         importDeclarationMetaModel.getConstructorParameters().add(importDeclarationMetaModel.isStaticPropertyMetaModel);
         importDeclarationMetaModel.getConstructorParameters().add(importDeclarationMetaModel.isAsteriskPropertyMetaModel);
@@ -613,8 +613,8 @@ public final class JavaParserMetaModel {
         variableDeclarationExprMetaModel.getDeclaredPropertyMetaModels().add(variableDeclarationExprMetaModel.variablesPropertyMetaModel);
         variableDeclarationExprMetaModel.maximumCommonTypePropertyMetaModel = new PropertyMetaModel(variableDeclarationExprMetaModel, "maximumCommonType", com.github.javaparser.ast.type.Type.class, Optional.of(typeMetaModel), false, false, false, false, false);
         variableDeclarationExprMetaModel.getDerivedPropertyMetaModels().add(variableDeclarationExprMetaModel.maximumCommonTypePropertyMetaModel);
-        placeholderExprMetaModel.namePropertyMetaModel = new PropertyMetaModel(placeholderExprMetaModel, "name", com.github.javaparser.ast.expr.SimpleName.class, Optional.of(simpleNameMetaModel), false, false, false, false, false);
-        placeholderExprMetaModel.getDeclaredPropertyMetaModels().add(placeholderExprMetaModel.namePropertyMetaModel);
+        placeholderExprMetaModel.placeholderKeyPropertyMetaModel = new PropertyMetaModel(placeholderExprMetaModel, "placeholderKey", com.github.javaparser.ast.expr.SimpleName.class, Optional.of(simpleNameMetaModel), true, false, false, false, false);
+        placeholderExprMetaModel.getDeclaredPropertyMetaModels().add(placeholderExprMetaModel.placeholderKeyPropertyMetaModel);
         importDeclarationMetaModel.isAsteriskPropertyMetaModel = new PropertyMetaModel(importDeclarationMetaModel, "isAsterisk", boolean.class, Optional.empty(), false, false, false, false, false);
         importDeclarationMetaModel.getDeclaredPropertyMetaModels().add(importDeclarationMetaModel.isAsteriskPropertyMetaModel);
         importDeclarationMetaModel.isStaticPropertyMetaModel = new PropertyMetaModel(importDeclarationMetaModel, "isStatic", boolean.class, Optional.empty(), false, false, false, false, false);

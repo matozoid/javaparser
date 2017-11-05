@@ -775,7 +775,7 @@ public abstract class VoidVisitorAdapter<A> implements VoidVisitor<A> {
     @Override
     @Generated("com.github.javaparser.generator.core.visitor.VoidVisitorAdapterGenerator")
     public void visit(final PlaceholderExpr n, final A arg) {
-        n.getName().accept(this, arg);
+        n.getPlaceholderKey().ifPresent(l -> l.accept(this, arg));
         n.getComment().ifPresent(l -> l.accept(this, arg));
     }
 

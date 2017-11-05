@@ -871,7 +871,7 @@ public class PrettyPrintVisitor implements VoidVisitor<Void> {
 
     @Override
     public void visit(PlaceholderStmt n, Void arg) {
-        printJavaComment(n.getComment(), arg);
+        printComment(n.getComment(), arg);
         printer.print("`");
         n.getName().accept(this, arg);
         printer.print("`");
@@ -879,15 +879,15 @@ public class PrettyPrintVisitor implements VoidVisitor<Void> {
 
     @Override
     public void visit(PlaceholderExpr n, Void arg) {
-        printJavaComment(n.getComment(), arg);
+        printComment(n.getComment(), arg);
         printer.print("`");
-        n.getName().accept(this, arg);
+        n.getPlaceholderKey().ifPresent(k -> k.accept(this, arg));
         printer.print("`");
     }
 
     @Override
     public void visit(PlaceholderType n, Void arg) {
-        printJavaComment(n.getComment(), arg);
+        printComment(n.getComment(), arg);
         printer.print("`");
         n.getName().accept(this, arg);
         printer.print("`");

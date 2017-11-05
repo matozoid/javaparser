@@ -8,5 +8,5 @@ public class PlaceholderExprMetaModel extends ExpressionMetaModel {
         super(superBaseNodeMetaModel, com.github.javaparser.ast.expr.PlaceholderExpr.class, "PlaceholderExpr", "com.github.javaparser.ast.expr", false, false);
     }
 
-    public PropertyMetaModel namePropertyMetaModel;
+    public PropertyMetaModel placeholderKeyPropertyMetaModel;
 }

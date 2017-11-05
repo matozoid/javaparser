@@ -11,6 +11,6 @@ public class PlaceholderExprTest {
     public void test() {
         Expression expression = parseExpression("1+`a`+3");
         assertInstanceOf(PlaceholderExpr.class, expression.asBinaryExpr().getLeft().asBinaryExpr().getRight());
-        assertEquals("a", expression.findFirst(PlaceholderExpr.class).get().getNameAsString());
+        assertEquals("a", expression.findFirst(PlaceholderExpr.class).get().getPlaceholderKeyAsString().get());
     }
 }

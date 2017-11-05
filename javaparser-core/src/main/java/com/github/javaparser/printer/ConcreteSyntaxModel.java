@@ -473,21 +473,21 @@ public class ConcreteSyntaxModel {
         concreteSyntaxModelByClass.put(PlaceholderExpr.class, sequence(
                 comment(),
                 token(GeneratedJavaParserConstants.PLACEHOLDER),
-                child(ObservableProperty.NAME),
+                child(ObservableProperty.PLACEHOLDER_KEY),
                 token(GeneratedJavaParserConstants.PLACEHOLDER)
         ));
 
         concreteSyntaxModelByClass.put(PlaceholderStmt.class, sequence(
                 comment(),
                 token(GeneratedJavaParserConstants.PLACEHOLDER),
-                child(ObservableProperty.NAME),
+                child(ObservableProperty.PLACEHOLDER_KEY),
                 token(GeneratedJavaParserConstants.PLACEHOLDER)
         ));
 
         concreteSyntaxModelByClass.put(PlaceholderType.class, sequence(
                 comment(),
                 token(GeneratedJavaParserConstants.PLACEHOLDER),
-                child(ObservableProperty.NAME),
+                child(ObservableProperty.PLACEHOLDER_KEY),
                 token(GeneratedJavaParserConstants.PLACEHOLDER)
         ));
 
