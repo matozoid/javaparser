@@ -1,4 +1,5 @@
-<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
     <modelVersion>4.0.0</modelVersion>
     <modules>
         <module>javaparser-core</module>
@@ -15,8 +16,9 @@
     <name>javaparser-parent</name>
     <url>https://github.com/javaparser</url>
     <inceptionYear>2007</inceptionYear>
-    <description>Java 9 Parser Parser and Abstract Syntax Tree for Java</description>
+    <description>Java 9 Parser and Abstract Syntax Tree for Java</description>
 
+    <organization><name>aefaeefaaef</name></organization>
     <licenses>
         <license>
             <name>GNU Lesser General Public License</name>
@@ -226,6 +228,18 @@
                     <groupId>org.apache.maven.plugins</groupId>
                     <artifactId>maven-javadoc-plugin</artifactId>
                     <version>3.0.0-M1</version>
+                </plugin>
+                <plugin>
+                    <groupId>org.codehaus.mojo</groupId>
+                    <artifactId>license-maven-plugin</artifactId>
+                    <version>1.14</version>
+                    <configuration>
+                        <licenseName>jp</licenseName>
+                        <licenseResolver>${project.baseUri}/../license</licenseResolver>
+                        <copyrightOwners>
+                            aefijaieofj
+                        </copyrightOwners>
+                    </configuration>
                 </plugin>
             </plugins>
         </pluginManagement>
