@@ -595,8 +595,10 @@ TOKEN :
 | < GT: ">" >
 }
 
-TOKEN : {<PLACEHOLDER: "`">}
-TOKEN: { <CTRL_Z: "\u001A" /** ctrl+z char **/> }
+TOKEN : {
+      <PLACEHOLDER: "`">
+    | <CTRL_Z: "\u001A" /** ctrl+z char **/> 
+}
 
 /*****************************************
  * THE JAVA LANGUAGE GRAMMAR STARTS HERE *
