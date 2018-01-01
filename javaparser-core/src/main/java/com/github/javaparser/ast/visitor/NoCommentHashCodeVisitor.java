@@ -506,7 +506,7 @@ public class NoCommentHashCodeVisitor implements GenericVisitor<Integer, Void> {
     @Override
     @Generated("com.github.javaparser.generator.core.visitor.NoCommentHashCodeVisitorGenerator")
     public Integer visit(final PlaceholderStmt n, final Void arg) {
-        return (n.getName().accept(this, arg));
+        return (n.getPlaceholderKey().isPresent() ? n.getPlaceholderKey().get().accept(this, arg) : 0);
     }
 
     @Override
@@ -518,6 +518,6 @@ public class NoCommentHashCodeVisitor implements GenericVisitor<Integer, Void> {
     @Override
     @Generated("com.github.javaparser.generator.core.visitor.NoCommentHashCodeVisitorGenerator")
     public Integer visit(final PlaceholderType n, final Void arg) {
-        return (n.getName().accept(this, arg)) * 31 + (n.getAnnotations().accept(this, arg));
+        return (n.getPlaceholderKey().isPresent() ? n.getPlaceholderKey().get().accept(this, arg) : 0) * 31 + (n.getAnnotations().accept(this, arg));
     }
 }

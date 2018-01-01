@@ -32,6 +32,7 @@ import com.github.javaparser.metamodel.JavaParserMetaModel;
 import javax.annotation.Generated;
 import java.util.Optional;
 import java.util.function.Consumer;
+import com.github.javaparser.metamodel.OptionalProperty;
 import com.github.javaparser.metamodel.PlaceholderExprMetaModel;
 import static com.github.javaparser.utils.Utils.assertNotNull;
 
@@ -41,6 +42,7 @@ import static com.github.javaparser.utils.Utils.assertNotNull;
  */
 public final class PlaceholderExpr extends Expression implements NodeWithPlaceholderKey<PlaceholderExpr> {
 
+    @OptionalProperty
     private SimpleName placeholderKey;
 
     public PlaceholderExpr() {
@@ -159,7 +161,14 @@ public final class PlaceholderExpr extends Expression implements NodeWithPlaceho
         return JavaParserMetaModel.placeholderExprMetaModel;
     }
 
+    @Generated("com.github.javaparser.generator.core.node.RemoveMethodGenerator")
     public PlaceholderExpr removePlaceholderKey() {
         return setPlaceholderKey((SimpleName) null);
+    }
+
+    @Override
+    @Generated("com.github.javaparser.generator.core.node.TypeCastingGenerator")
+    public Optional<PlaceholderExpr> toPlaceholderExpr() {
+        return Optional.of(this);
     }
 }

@@ -744,4 +744,9 @@ public abstract class Expression extends Node {
     public Optional<VariableDeclarationExpr> toVariableDeclarationExpr() {
         return Optional.empty();
     }
+
+    @Generated("com.github.javaparser.generator.core.node.TypeCastingGenerator")
+    public Optional<PlaceholderExpr> toPlaceholderExpr() {
+        return Optional.empty();
+    }
 }

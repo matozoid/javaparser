@@ -219,7 +219,7 @@ public final class JavaParserMetaModel {
         localClassDeclarationStmtMetaModel.getConstructorParameters().add(localClassDeclarationStmtMetaModel.classDeclarationPropertyMetaModel);
         whileStmtMetaModel.getConstructorParameters().add(whileStmtMetaModel.conditionPropertyMetaModel);
         whileStmtMetaModel.getConstructorParameters().add(whileStmtMetaModel.bodyPropertyMetaModel);
-        placeholderStmtMetaModel.getConstructorParameters().add(placeholderStmtMetaModel.namePropertyMetaModel);
+        placeholderStmtMetaModel.getConstructorParameters().add(placeholderStmtMetaModel.placeholderKeyPropertyMetaModel);
         arrayTypeMetaModel.getConstructorParameters().add(arrayTypeMetaModel.componentTypePropertyMetaModel);
         arrayTypeMetaModel.getConstructorParameters().add(arrayTypeMetaModel.originPropertyMetaModel);
         arrayTypeMetaModel.getConstructorParameters().add(typeMetaModel.annotationsPropertyMetaModel);
@@ -237,7 +237,7 @@ public final class JavaParserMetaModel {
         wildcardTypeMetaModel.getConstructorParameters().add(wildcardTypeMetaModel.extendedTypePropertyMetaModel);
         wildcardTypeMetaModel.getConstructorParameters().add(wildcardTypeMetaModel.superTypePropertyMetaModel);
         wildcardTypeMetaModel.getConstructorParameters().add(typeMetaModel.annotationsPropertyMetaModel);
-        placeholderTypeMetaModel.getConstructorParameters().add(placeholderTypeMetaModel.namePropertyMetaModel);
+        placeholderTypeMetaModel.getConstructorParameters().add(placeholderTypeMetaModel.placeholderKeyPropertyMetaModel);
         moduleRequiresStmtMetaModel.getConstructorParameters().add(moduleRequiresStmtMetaModel.modifiersPropertyMetaModel);
         moduleRequiresStmtMetaModel.getConstructorParameters().add(moduleRequiresStmtMetaModel.namePropertyMetaModel);
         moduleExportsStmtMetaModel.getConstructorParameters().add(moduleExportsStmtMetaModel.namePropertyMetaModel);
@@ -713,8 +713,8 @@ public final class JavaParserMetaModel {
         whileStmtMetaModel.getDeclaredPropertyMetaModels().add(whileStmtMetaModel.bodyPropertyMetaModel);
         whileStmtMetaModel.conditionPropertyMetaModel = new PropertyMetaModel(whileStmtMetaModel, "condition", com.github.javaparser.ast.expr.Expression.class, Optional.of(expressionMetaModel), false, false, false, false, false);
         whileStmtMetaModel.getDeclaredPropertyMetaModels().add(whileStmtMetaModel.conditionPropertyMetaModel);
-        placeholderStmtMetaModel.namePropertyMetaModel = new PropertyMetaModel(placeholderStmtMetaModel, "name", com.github.javaparser.ast.expr.SimpleName.class, Optional.of(simpleNameMetaModel), false, false, false, false, false);
-        placeholderStmtMetaModel.getDeclaredPropertyMetaModels().add(placeholderStmtMetaModel.namePropertyMetaModel);
+        placeholderStmtMetaModel.placeholderKeyPropertyMetaModel = new PropertyMetaModel(placeholderStmtMetaModel, "placeholderKey", com.github.javaparser.ast.expr.SimpleName.class, Optional.of(simpleNameMetaModel), true, false, false, false, false);
+        placeholderStmtMetaModel.getDeclaredPropertyMetaModels().add(placeholderStmtMetaModel.placeholderKeyPropertyMetaModel);
         arrayTypeMetaModel.componentTypePropertyMetaModel = new PropertyMetaModel(arrayTypeMetaModel, "componentType", com.github.javaparser.ast.type.Type.class, Optional.of(typeMetaModel), false, false, false, false, false);
         arrayTypeMetaModel.getDeclaredPropertyMetaModels().add(arrayTypeMetaModel.componentTypePropertyMetaModel);
         arrayTypeMetaModel.originPropertyMetaModel = new PropertyMetaModel(arrayTypeMetaModel, "origin", com.github.javaparser.ast.type.ArrayType.Origin.class, Optional.empty(), false, false, false, false, false);
@@ -741,8 +741,8 @@ public final class JavaParserMetaModel {
         wildcardTypeMetaModel.getDeclaredPropertyMetaModels().add(wildcardTypeMetaModel.extendedTypePropertyMetaModel);
         wildcardTypeMetaModel.superTypePropertyMetaModel = new PropertyMetaModel(wildcardTypeMetaModel, "superType", com.github.javaparser.ast.type.ReferenceType.class, Optional.of(referenceTypeMetaModel), true, false, false, false, false);
         wildcardTypeMetaModel.getDeclaredPropertyMetaModels().add(wildcardTypeMetaModel.superTypePropertyMetaModel);
-        placeholderTypeMetaModel.namePropertyMetaModel = new PropertyMetaModel(placeholderTypeMetaModel, "name", com.github.javaparser.ast.expr.SimpleName.class, Optional.of(simpleNameMetaModel), false, false, false, false, false);
-        placeholderTypeMetaModel.getDeclaredPropertyMetaModels().add(placeholderTypeMetaModel.namePropertyMetaModel);
+        placeholderTypeMetaModel.placeholderKeyPropertyMetaModel = new PropertyMetaModel(placeholderTypeMetaModel, "placeholderKey", com.github.javaparser.ast.expr.SimpleName.class, Optional.of(simpleNameMetaModel), true, false, false, false, false);
+        placeholderTypeMetaModel.getDeclaredPropertyMetaModels().add(placeholderTypeMetaModel.placeholderKeyPropertyMetaModel);
         moduleRequiresStmtMetaModel.modifiersPropertyMetaModel = new PropertyMetaModel(moduleRequiresStmtMetaModel, "modifiers", com.github.javaparser.ast.Modifier.class, Optional.empty(), false, false, false, true, false);
         moduleRequiresStmtMetaModel.getDeclaredPropertyMetaModels().add(moduleRequiresStmtMetaModel.modifiersPropertyMetaModel);
         moduleRequiresStmtMetaModel.namePropertyMetaModel = new PropertyMetaModel(moduleRequiresStmtMetaModel, "name", com.github.javaparser.ast.expr.Name.class, Optional.of(nameMetaModel), false, false, false, false, false);

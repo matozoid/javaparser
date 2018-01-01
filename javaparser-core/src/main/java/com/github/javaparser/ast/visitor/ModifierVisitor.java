@@ -1289,11 +1289,9 @@ public class ModifierVisitor<A> implements GenericVisitor<Visitable, A> {
     @Override
     @Generated("com.github.javaparser.generator.core.visitor.ModifierVisitorGenerator")
     public Visitable visit(final PlaceholderStmt n, final A arg) {
-        SimpleName name = (SimpleName) n.getName().accept(this, arg);
+        SimpleName placeholderKey = n.getPlaceholderKey().map(s -> (SimpleName) s.accept(this, arg)).orElse(null);
         Comment comment = n.getComment().map(s -> (Comment) s.accept(this, arg)).orElse(null);
-        if (name == null)
-            return null;
-        n.setName(name);
+        n.setPlaceholderKey(placeholderKey);
         n.setComment(comment);
         return n;
     }
@@ -1311,12 +1309,10 @@ public class ModifierVisitor<A> implements GenericVisitor<Visitable, A> {
     @Override
     @Generated("com.github.javaparser.generator.core.visitor.ModifierVisitorGenerator")
     public Visitable visit(final PlaceholderType n, final A arg) {
-        SimpleName name = (SimpleName) n.getName().accept(this, arg);
+        SimpleName placeholderKey = n.getPlaceholderKey().map(s -> (SimpleName) s.accept(this, arg)).orElse(null);
         NodeList<AnnotationExpr> annotations = modifyList(n.getAnnotations(), arg);
         Comment comment = n.getComment().map(s -> (Comment) s.accept(this, arg)).orElse(null);
-        if (name == null)
-            return null;
-        n.setName(name);
+        n.setPlaceholderKey(placeholderKey);
         n.setAnnotations(annotations);
         n.setComment(comment);
         return n;

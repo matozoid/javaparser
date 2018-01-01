@@ -58,19 +58,10 @@ public abstract class Generator {
      * with callable. If not found, adds callable. When the new callable has no javadoc, any old javadoc will be kept.
      */
     protected void addOrReplaceWhenSameSignature(ClassOrInterfaceDeclaration containingClassOrInterface, CallableDeclaration<?> callable) {
-        addMethod(containingClassOrInterface, callable, () -> containingClassOrInterface.addMember(callable));
-    }
-
-    /**
-     * Utility method that looks for a method or constructor with an identical signature as "callable" and replaces it
-     * with callable. If not found, fails. When the new callable has no javadoc, any old javadoc will be kept. The
-     * method or constructor is annotated with the generator class.
-     */
-    protected void replaceWhenSameSignature(ClassOrInterfaceDeclaration containingClassOrInterface, CallableDeclaration<?> callable) {
-        addMethod(containingClassOrInterface, callable,
-                () -> {
-                    throw new AssertionError(f("Wanted to regenerate a method with signature %s in %s, but it wasn't there.", callable.getSignature(), containingClassOrInterface.getNameAsString()));
-                });
+        addMethod(containingClassOrInterface, callable, () -> {
+            containingClassOrInterface.addMember(callable);
+            annotateGenerated(callable);
+        });
     }
 
     private void addMethod(

@@ -1381,7 +1381,7 @@ public class EqualsVisitor implements GenericVisitor<Boolean, Visitable> {
     @Generated("com.github.javaparser.generator.core.visitor.EqualsVisitorGenerator")
     public Boolean visit(final PlaceholderStmt n, final Visitable arg) {
         final PlaceholderStmt n2 = (PlaceholderStmt) arg;
-        if (!nodeEquals(n.getName(), n2.getName()))
+        if (!nodeEquals(n.getPlaceholderKey(), n2.getPlaceholderKey()))
             return false;
         if (!nodeEquals(n.getComment(), n2.getComment()))
             return false;
@@ -1403,7 +1403,7 @@ public class EqualsVisitor implements GenericVisitor<Boolean, Visitable> {
     @Generated("com.github.javaparser.generator.core.visitor.EqualsVisitorGenerator")
     public Boolean visit(final PlaceholderType n, final Visitable arg) {
         final PlaceholderType n2 = (PlaceholderType) arg;
-        if (!nodeEquals(n.getName(), n2.getName()))
+        if (!nodeEquals(n.getPlaceholderKey(), n2.getPlaceholderKey()))
             return false;
         if (!nodesEquals(n.getAnnotations(), n2.getAnnotations()))
             return false;

@@ -363,4 +363,9 @@ public abstract class Type extends Node implements Resolvable<Object> {
     public Optional<WildcardType> toWildcardType() {
         return Optional.empty();
     }
+
+    @Generated("com.github.javaparser.generator.core.node.TypeCastingGenerator")
+    public Optional<PlaceholderType> toPlaceholderType() {
+        return Optional.empty();
+    }
 }

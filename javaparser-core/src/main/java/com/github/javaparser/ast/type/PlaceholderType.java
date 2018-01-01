@@ -22,48 +22,50 @@ package com.github.javaparser.ast.type;
 
 import com.github.javaparser.TokenRange;
 import com.github.javaparser.ast.AllFieldsConstructor;
-import com.github.javaparser.ast.Node;
 import com.github.javaparser.ast.expr.SimpleName;
 import com.github.javaparser.ast.nodeTypes.NodeWithSimpleName;
 import com.github.javaparser.ast.observer.ObservableProperty;
 import com.github.javaparser.ast.visitor.GenericVisitor;
 import com.github.javaparser.ast.visitor.VoidVisitor;
+import com.github.javaparser.metamodel.OptionalProperty;
 import com.github.javaparser.resolution.types.ResolvedType;
 import javax.annotation.Generated;
-import static com.github.javaparser.utils.Utils.assertNotNull;
+import java.util.Optional;
 import java.util.function.Consumer;
+import com.github.javaparser.ast.Node;
 import com.github.javaparser.ast.visitor.CloneVisitor;
 import com.github.javaparser.metamodel.PlaceholderTypeMetaModel;
 import com.github.javaparser.metamodel.JavaParserMetaModel;
 
 /**
- * A general purpose placeholder. This is not Java syntax. It is created by inserting a backslash and a name where an
+ * A general purpose placeholder. This is not valid Java syntax. It is created by inserting a backslash and a name where an
  * expression would normally be.
  */
 public final class PlaceholderType extends Type implements NodeWithSimpleName<PlaceholderType> {
 
-    private SimpleName name;
+    @OptionalProperty
+    private SimpleName placeholderKey;
 
     public PlaceholderType() {
         this(null, new SimpleName());
     }
 
-    public PlaceholderType(final String name) {
-        this(null, new SimpleName(name));
+    public PlaceholderType(final String placeholderKey) {
+        this(null, new SimpleName(placeholderKey));
     }
 
     @AllFieldsConstructor
-    public PlaceholderType(final SimpleName name) {
-        this(null, name);
+    public PlaceholderType(final SimpleName placeholderKey) {
+        this(null, placeholderKey);
     }
 
     /**
      * This constructor is used by the parser and is considered private.
      */
     @Generated("com.github.javaparser.generator.core.node.MainConstructorGenerator")
-    public PlaceholderType(TokenRange tokenRange, SimpleName name) {
+    public PlaceholderType(TokenRange tokenRange, SimpleName placeholderKey) {
         super(tokenRange);
-        setName(name);
+        setPlaceholderKey(placeholderKey);
         customInitialization();
     }
 
@@ -79,59 +81,24 @@ public final class PlaceholderType extends Type implements NodeWithSimpleName<Pl
         v.visit(this, arg);
     }
 
-    @Generated("com.github.javaparser.generator.core.node.PropertyGenerator")
-    public SimpleName getName() {
-        return name;
-    }
-
-    /**
-     * Sets the name
-     *
-     * @param label the name, can be null
-     * @return this, the BreakStmt
-     */
-    @Generated("com.github.javaparser.generator.core.node.PropertyGenerator")
-    public PlaceholderType setName(final SimpleName name) {
-        assertNotNull(name);
-        if (name == this.name) {
-            return (PlaceholderType) this;
-        }
-        notifyPropertyChange(ObservableProperty.NAME, this.name, name);
-        if (this.name != null)
-            this.name.setParentNode(null);
-        this.name = name;
-        setAsParentNodeOf(name);
-        return this;
-    }
-
-    @Override
-    @Generated("com.github.javaparser.generator.core.node.RemoveMethodGenerator")
-    public boolean remove(Node node) {
-        if (node == null)
-            return false;
-        return super.remove(node);
-    }
-
     @Override
     public String asString() {
-        return "`" + name.asString() + "`";
-    }
-
-    @Override
-    @Generated("com.github.javaparser.generator.core.node.ReplaceMethodGenerator")
-    public boolean replace(Node node, Node replacementNode) {
-        if (node == null)
-            return false;
-        if (node == name) {
-            setName((SimpleName) replacementNode);
-            return true;
-        }
-        return super.replace(node, replacementNode);
+        return "`" + placeholderKey.asString() + "`";
     }
 
     @Override
     public ResolvedType resolve() {
         return null;
+    }
+
+    @Override
+    public SimpleName getName() {
+        return placeholderKey;
+    }
+
+    @Override
+    public PlaceholderType setName(SimpleName name) {
+        return this;
     }
 
     @Override
@@ -146,9 +113,66 @@ public final class PlaceholderType extends Type implements NodeWithSimpleName<Pl
         return this;
     }
 
+    @Override
+    @Generated("com.github.javaparser.generator.core.node.TypeCastingGenerator")
+    public Optional<PlaceholderType> toPlaceholderType() {
+        return Optional.of(this);
+    }
+
     @Generated("com.github.javaparser.generator.core.node.TypeCastingGenerator")
     public void ifPlaceholderType(Consumer<PlaceholderType> action) {
         action.accept(this);
+    }
+
+    @Generated("com.github.javaparser.generator.core.node.PropertyGenerator")
+    public Optional<SimpleName> getPlaceholderKey() {
+        return Optional.ofNullable(placeholderKey);
+    }
+
+    @Generated("com.github.javaparser.generator.core.node.PropertyGenerator")
+    public PlaceholderType setPlaceholderKey(final SimpleName placeholderKey) {
+        if (placeholderKey == this.placeholderKey) {
+            return (PlaceholderType) this;
+        }
+        notifyPropertyChange(ObservableProperty.PLACEHOLDER_KEY, this.placeholderKey, placeholderKey);
+        if (this.placeholderKey != null)
+            this.placeholderKey.setParentNode(null);
+        this.placeholderKey = placeholderKey;
+        setAsParentNodeOf(placeholderKey);
+        return this;
+    }
+
+    @Generated("com.github.javaparser.generator.core.node.RemoveMethodGenerator")
+    public PlaceholderType removePlaceholderKey() {
+        return setPlaceholderKey((SimpleName) null);
+    }
+
+    @Override
+    @Generated("com.github.javaparser.generator.core.node.RemoveMethodGenerator")
+    public boolean remove(Node node) {
+        if (node == null)
+            return false;
+        if (placeholderKey != null) {
+            if (node == placeholderKey) {
+                removePlaceholderKey();
+                return true;
+            }
+        }
+        return super.remove(node);
+    }
+
+    @Override
+    @Generated("com.github.javaparser.generator.core.node.ReplaceMethodGenerator")
+    public boolean replace(Node node, Node replacementNode) {
+        if (node == null)
+            return false;
+        if (placeholderKey != null) {
+            if (node == placeholderKey) {
+                setPlaceholderKey((SimpleName) replacementNode);
+                return true;
+            }
+        }
+        return super.replace(node, replacementNode);
     }
 
     @Override

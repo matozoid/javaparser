@@ -892,7 +892,7 @@ public class PrettyPrintVisitor implements VoidVisitor<Void> {
     public void visit(PlaceholderStmt n, Void arg) {
         printComment(n.getComment(), arg);
         printer.print("`");
-        n.getName().accept(this, arg);
+        n.getPlaceholderKey().ifPresent(k -> k.accept(this, arg));
         printer.print("`");
     }
 

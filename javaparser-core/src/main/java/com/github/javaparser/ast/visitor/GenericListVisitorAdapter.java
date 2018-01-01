@@ -2047,8 +2047,8 @@ public abstract class GenericListVisitorAdapter<R, A> implements GenericVisitor<
     public List<R> visit(final PlaceholderStmt n, final A arg) {
         List<R> result = new ArrayList<>();
         List<R> tmp;
-        {
-            tmp = n.getName().accept(this, arg);
+        if (n.getPlaceholderKey().isPresent()) {
+            tmp = n.getPlaceholderKey().get().accept(this, arg);
             if (tmp != null)
                 result.addAll(tmp);
         }
@@ -2083,8 +2083,8 @@ public abstract class GenericListVisitorAdapter<R, A> implements GenericVisitor<
     public List<R> visit(final PlaceholderType n, final A arg) {
         List<R> result = new ArrayList<>();
         List<R> tmp;
-        {
-            tmp = n.getName().accept(this, arg);
+        if (n.getPlaceholderKey().isPresent()) {
+            tmp = n.getPlaceholderKey().get().accept(this, arg);
             if (tmp != null)
                 result.addAll(tmp);
         }

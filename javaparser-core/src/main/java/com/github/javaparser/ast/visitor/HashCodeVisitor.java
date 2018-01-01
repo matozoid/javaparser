@@ -514,7 +514,7 @@ public class HashCodeVisitor implements GenericVisitor<Integer, Void> {
     @Override
     @Generated("com.github.javaparser.generator.core.visitor.HashCodeVisitorGenerator")
     public Integer visit(final PlaceholderStmt n, final Void arg) {
-        return (n.getName().accept(this, arg)) * 31 + (n.getComment().isPresent() ? n.getComment().get().accept(this, arg) : 0);
+        return (n.getPlaceholderKey().isPresent() ? n.getPlaceholderKey().get().accept(this, arg) : 0) * 31 + (n.getComment().isPresent() ? n.getComment().get().accept(this, arg) : 0);
     }
 
     @Override
@@ -526,6 +526,6 @@ public class HashCodeVisitor implements GenericVisitor<Integer, Void> {
     @Override
     @Generated("com.github.javaparser.generator.core.visitor.HashCodeVisitorGenerator")
     public Integer visit(final PlaceholderType n, final Void arg) {
-        return (n.getName().accept(this, arg)) * 31 + (n.getAnnotations().accept(this, arg)) * 31 + (n.getComment().isPresent() ? n.getComment().get().accept(this, arg) : 0);
+        return (n.getPlaceholderKey().isPresent() ? n.getPlaceholderKey().get().accept(this, arg) : 0) * 31 + (n.getAnnotations().accept(this, arg)) * 31 + (n.getComment().isPresent() ? n.getComment().get().accept(this, arg) : 0);
     }
 }

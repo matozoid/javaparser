@@ -8,5 +8,5 @@ public class PlaceholderTypeMetaModel extends TypeMetaModel {
         super(superBaseNodeMetaModel, com.github.javaparser.ast.type.PlaceholderType.class, "PlaceholderType", "com.github.javaparser.ast.type", false, false);
     }
 
-    public PropertyMetaModel namePropertyMetaModel;
+    public PropertyMetaModel placeholderKeyPropertyMetaModel;
 }

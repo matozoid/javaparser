@@ -492,4 +492,9 @@ public abstract class Statement extends Node {
     public Optional<WhileStmt> toWhileStmt() {
         return Optional.empty();
     }
+
+    @Generated("com.github.javaparser.generator.core.node.TypeCastingGenerator")
+    public Optional<PlaceholderStmt> toPlaceholderStmt() {
+        return Optional.empty();
+    }
 }
