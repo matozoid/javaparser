@@ -41,6 +41,7 @@ import com.github.javaparser.TokenRange;
 import com.github.javaparser.resolution.declarations.ResolvedTypeParameterDeclaration;
 import com.github.javaparser.resolution.types.ResolvedTypeVariable;
 import java.util.function.Consumer;
+import java.util.Optional;
 
 /**
  * A type parameter.
@@ -235,5 +236,11 @@ public final class TypeParameter extends ReferenceType implements NodeWithSimple
     @Override
     public ResolvedTypeVariable resolve() {
         return getSymbolResolver().toResolvedType(this, ResolvedTypeVariable.class);
+    }
+
+    @Override
+    @Generated("com.github.javaparser.generator.core.node.TypeCastingGenerator")
+    public Optional<TypeParameter> toTypeParameter() {
+        return Optional.of(this);
     }
 }

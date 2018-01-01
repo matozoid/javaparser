@@ -36,6 +36,7 @@ import com.github.javaparser.metamodel.JavaParserMetaModel;
 import javax.annotation.Generated;
 import com.github.javaparser.TokenRange;
 import java.util.function.Consumer;
+import java.util.Optional;
 
 /**
  * Statements in between { and }.
@@ -151,5 +152,11 @@ public final class BlockStmt extends Statement implements NodeWithStatements<Blo
     @Generated("com.github.javaparser.generator.core.node.TypeCastingGenerator")
     public void ifBlockStmt(Consumer<BlockStmt> action) {
         action.accept(this);
+    }
+
+    @Override
+    @Generated("com.github.javaparser.generator.core.node.TypeCastingGenerator")
+    public Optional<BlockStmt> toBlockStmt() {
+        return Optional.of(this);
     }
 }

@@ -32,6 +32,7 @@ import com.github.javaparser.metamodel.BreakStmtMetaModel;
 import com.github.javaparser.metamodel.JavaParserMetaModel;
 import javax.annotation.Generated;
 import com.github.javaparser.TokenRange;
+import com.github.javaparser.metamodel.OptionalProperty;
 import java.util.function.Consumer;
 
 /**
@@ -42,6 +43,7 @@ import java.util.function.Consumer;
  */
 public final class BreakStmt extends Statement {
 
+    @OptionalProperty
     private SimpleName label;
 
     public BreakStmt() {
@@ -163,5 +165,11 @@ public final class BreakStmt extends Statement {
     @Generated("com.github.javaparser.generator.core.node.TypeCastingGenerator")
     public void ifBreakStmt(Consumer<BreakStmt> action) {
         action.accept(this);
+    }
+
+    @Override
+    @Generated("com.github.javaparser.generator.core.node.TypeCastingGenerator")
+    public Optional<BreakStmt> toBreakStmt() {
+        return Optional.of(this);
     }
 }

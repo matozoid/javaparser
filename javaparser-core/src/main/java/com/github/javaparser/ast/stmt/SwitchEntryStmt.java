@@ -33,6 +33,7 @@ import java.util.Optional;
 import static com.github.javaparser.utils.Utils.assertNotNull;
 import com.github.javaparser.ast.Node;
 import com.github.javaparser.ast.visitor.CloneVisitor;
+import com.github.javaparser.metamodel.OptionalProperty;
 import com.github.javaparser.metamodel.SwitchEntryStmtMetaModel;
 import com.github.javaparser.metamodel.JavaParserMetaModel;
 import javax.annotation.Generated;
@@ -61,6 +62,7 @@ import java.util.function.Consumer;
  */
 public final class SwitchEntryStmt extends Statement implements NodeWithStatements<SwitchEntryStmt> {
 
+    @OptionalProperty
     private Expression label;
 
     private NodeList<Statement> statements;
@@ -212,5 +214,11 @@ public final class SwitchEntryStmt extends Statement implements NodeWithStatemen
     @Generated("com.github.javaparser.generator.core.node.TypeCastingGenerator")
     public void ifSwitchEntryStmt(Consumer<SwitchEntryStmt> action) {
         action.accept(this);
+    }
+
+    @Override
+    @Generated("com.github.javaparser.generator.core.node.TypeCastingGenerator")
+    public Optional<SwitchEntryStmt> toSwitchEntryStmt() {
+        return Optional.of(this);
     }
 }

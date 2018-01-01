@@ -43,6 +43,7 @@ import java.util.EnumSet;
 import static com.github.javaparser.utils.Utils.assertNonEmpty;
 import static com.github.javaparser.utils.Utils.assertNotNull;
 import java.util.function.Consumer;
+import java.util.Optional;
 
 /**
  * The declaration of an enum.<br/><code>enum X { ... }</code>
@@ -222,5 +223,11 @@ public final class EnumDeclaration extends TypeDeclaration<EnumDeclaration> impl
     @Override
     public ResolvedEnumDeclaration resolve() {
         return getSymbolResolver().resolveDeclaration(this, ResolvedEnumDeclaration.class);
+    }
+
+    @Override
+    @Generated("com.github.javaparser.generator.core.node.TypeCastingGenerator")
+    public Optional<EnumDeclaration> toEnumDeclaration() {
+        return Optional.of(this);
     }
 }

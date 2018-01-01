@@ -38,6 +38,7 @@ import com.github.javaparser.resolution.types.ResolvedType;
 import java.util.function.Consumer;
 import java.util.function.Supplier;
 import static com.github.javaparser.utils.CodeGenerationUtils.f;
+import java.util.Optional;
 
 /**
  * Base class for types.
@@ -311,5 +312,55 @@ public abstract class Type extends Node implements Resolvable<Object> {
 
     @Generated("com.github.javaparser.generator.core.node.TypeCastingGenerator")
     public void ifPlaceholderType(Consumer<PlaceholderType> action) {
+    }
+
+    @Generated("com.github.javaparser.generator.core.node.TypeCastingGenerator")
+    public Optional<ArrayType> toArrayType() {
+        return Optional.empty();
+    }
+
+    @Generated("com.github.javaparser.generator.core.node.TypeCastingGenerator")
+    public Optional<ClassOrInterfaceType> toClassOrInterfaceType() {
+        return Optional.empty();
+    }
+
+    @Generated("com.github.javaparser.generator.core.node.TypeCastingGenerator")
+    public Optional<IntersectionType> toIntersectionType() {
+        return Optional.empty();
+    }
+
+    @Generated("com.github.javaparser.generator.core.node.TypeCastingGenerator")
+    public Optional<PrimitiveType> toPrimitiveType() {
+        return Optional.empty();
+    }
+
+    @Generated("com.github.javaparser.generator.core.node.TypeCastingGenerator")
+    public Optional<ReferenceType> toReferenceType() {
+        return Optional.empty();
+    }
+
+    @Generated("com.github.javaparser.generator.core.node.TypeCastingGenerator")
+    public Optional<TypeParameter> toTypeParameter() {
+        return Optional.empty();
+    }
+
+    @Generated("com.github.javaparser.generator.core.node.TypeCastingGenerator")
+    public Optional<UnionType> toUnionType() {
+        return Optional.empty();
+    }
+
+    @Generated("com.github.javaparser.generator.core.node.TypeCastingGenerator")
+    public Optional<UnknownType> toUnknownType() {
+        return Optional.empty();
+    }
+
+    @Generated("com.github.javaparser.generator.core.node.TypeCastingGenerator")
+    public Optional<VoidType> toVoidType() {
+        return Optional.empty();
+    }
+
+    @Generated("com.github.javaparser.generator.core.node.TypeCastingGenerator")
+    public Optional<WildcardType> toWildcardType() {
+        return Optional.empty();
     }
 }

@@ -153,4 +153,10 @@ public final class EnclosedExpr extends Expression {
     public void ifEnclosedExpr(Consumer<EnclosedExpr> action) {
         action.accept(this);
     }
+
+    @Override
+    @Generated("com.github.javaparser.generator.core.node.TypeCastingGenerator")
+    public Optional<EnclosedExpr> toEnclosedExpr() {
+        return Optional.of(this);
+    }
 }

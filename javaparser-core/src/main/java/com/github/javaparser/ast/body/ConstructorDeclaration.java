@@ -45,6 +45,7 @@ import com.github.javaparser.TokenRange;
 import com.github.javaparser.resolution.Resolvable;
 import com.github.javaparser.resolution.declarations.ResolvedConstructorDeclaration;
 import java.util.function.Consumer;
+import java.util.Optional;
 
 /**
  * A constructor declaration: <code>class X { X() { } }</code> where X(){} is the constructor declaration.
@@ -237,5 +238,11 @@ public final class ConstructorDeclaration extends CallableDeclaration<Constructo
     @Override
     public ResolvedConstructorDeclaration resolve() {
         return getSymbolResolver().resolveDeclaration(this, ResolvedConstructorDeclaration.class);
+    }
+
+    @Override
+    @Generated("com.github.javaparser.generator.core.node.TypeCastingGenerator")
+    public Optional<ConstructorDeclaration> toConstructorDeclaration() {
+        return Optional.of(this);
     }
 }

@@ -40,6 +40,7 @@ import com.github.javaparser.metamodel.JavaParserMetaModel;
 import com.github.javaparser.metamodel.NonEmptyProperty;
 import javax.annotation.Generated;
 import com.github.javaparser.TokenRange;
+import com.github.javaparser.metamodel.OptionalProperty;
 import java.util.function.Consumer;
 
 /**
@@ -57,6 +58,7 @@ public final class MethodReferenceExpr extends Expression implements NodeWithTyp
 
     private Expression scope;
 
+    @OptionalProperty
     private NodeList<Type> typeArguments;
 
     @NonEmptyProperty
@@ -217,5 +219,11 @@ public final class MethodReferenceExpr extends Expression implements NodeWithTyp
     @Generated("com.github.javaparser.generator.core.node.TypeCastingGenerator")
     public void ifMethodReferenceExpr(Consumer<MethodReferenceExpr> action) {
         action.accept(this);
+    }
+
+    @Override
+    @Generated("com.github.javaparser.generator.core.node.TypeCastingGenerator")
+    public Optional<MethodReferenceExpr> toMethodReferenceExpr() {
+        return Optional.of(this);
     }
 }

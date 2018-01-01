@@ -11,6 +11,7 @@ import com.github.javaparser.metamodel.JavaParserMetaModel;
 import com.github.javaparser.metamodel.UnparsableStmtMetaModel;
 import static com.github.javaparser.ast.Node.Parsedness.*;
 import java.util.function.Consumer;
+import java.util.Optional;
 
 /**
  * A statement that had parse errors.
@@ -92,5 +93,11 @@ public final class UnparsableStmt extends Statement {
     @Generated("com.github.javaparser.generator.core.node.TypeCastingGenerator")
     public void ifUnparsableStmt(Consumer<UnparsableStmt> action) {
         action.accept(this);
+    }
+
+    @Override
+    @Generated("com.github.javaparser.generator.core.node.TypeCastingGenerator")
+    public Optional<UnparsableStmt> toUnparsableStmt() {
+        return Optional.of(this);
     }
 }

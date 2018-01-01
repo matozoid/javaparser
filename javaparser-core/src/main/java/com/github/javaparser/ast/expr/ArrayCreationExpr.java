@@ -40,6 +40,7 @@ import static com.github.javaparser.utils.Utils.assertNotNull;
 import javax.annotation.Generated;
 import com.github.javaparser.TokenRange;
 import com.github.javaparser.ast.Node;
+import com.github.javaparser.metamodel.OptionalProperty;
 import java.util.function.Consumer;
 
 /**
@@ -57,6 +58,7 @@ public final class ArrayCreationExpr extends Expression {
 
     private Type elementType;
 
+    @OptionalProperty
     private ArrayInitializerExpr initializer;
 
     public ArrayCreationExpr() {
@@ -269,5 +271,11 @@ public final class ArrayCreationExpr extends Expression {
     @Generated("com.github.javaparser.generator.core.node.TypeCastingGenerator")
     public void ifArrayCreationExpr(Consumer<ArrayCreationExpr> action) {
         action.accept(this);
+    }
+
+    @Override
+    @Generated("com.github.javaparser.generator.core.node.TypeCastingGenerator")
+    public Optional<ArrayCreationExpr> toArrayCreationExpr() {
+        return Optional.of(this);
     }
 }

@@ -1296,13 +1296,14 @@ ClassOrInterfaceType ClassOrInterfaceType(NodeList<AnnotationExpr> firstAnnotati
   [ LOOKAHEAD(2) typeArgs = TypeArguments() ]
   {
       ret = new ClassOrInterfaceType(range(begin, token()), null, name, typeArgs.list, firstAnnotations);
+      typeArgs = new RangedList<Type>(null);
   }
   (
 	  LOOKAHEAD(2) "." annotations = Annotations()  name = SimpleName()
 	  [ LOOKAHEAD(2) typeArgs = TypeArguments() ]
 	  {
 	    ret = new ClassOrInterfaceType(range(begin, token()), ret, name, typeArgs.list, annotations);
-	    annotations = null;
+        typeArgs = new RangedList<Type>(null);
       }
   )*
   { return ret; }
@@ -1396,7 +1397,7 @@ Type ResultType(NodeList<AnnotationExpr> annotations):
 
 Name Name():
 /*
- * A lookahead of 2 is required below since "Name" can be followed
+ * A lookahead is required below since "Name" can be followed
  * by a ".*" when used in the context of an "ImportDeclaration".
  */
 {

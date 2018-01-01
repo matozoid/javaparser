@@ -298,4 +298,10 @@ public final class FieldDeclaration extends BodyDeclaration<FieldDeclaration> im
     public ResolvedFieldDeclaration resolve() {
         return getSymbolResolver().resolveDeclaration(this, ResolvedFieldDeclaration.class);
     }
+
+    @Override
+    @Generated("com.github.javaparser.generator.core.node.TypeCastingGenerator")
+    public Optional<FieldDeclaration> toFieldDeclaration() {
+        return Optional.of(this);
+    }
 }

@@ -41,6 +41,7 @@ import com.github.javaparser.TokenRange;
 import com.github.javaparser.resolution.types.ResolvedReferenceType;
 import com.github.javaparser.resolution.types.ResolvedUnionType;
 import java.util.function.Consumer;
+import java.util.Optional;
 
 /**
  * <h1>The union type</h1>
@@ -184,5 +185,11 @@ public final class UnionType extends Type implements NodeWithAnnotations<UnionTy
     @Override
     public ResolvedUnionType resolve() {
         return getSymbolResolver().toResolvedType(this, ResolvedUnionType.class);
+    }
+
+    @Override
+    @Generated("com.github.javaparser.generator.core.node.TypeCastingGenerator")
+    public Optional<UnionType> toUnionType() {
+        return Optional.of(this);
     }
 }

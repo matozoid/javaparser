@@ -29,6 +29,7 @@ import com.github.javaparser.ast.visitor.VoidVisitor;
 import java.util.Optional;
 import com.github.javaparser.ast.Node;
 import com.github.javaparser.ast.visitor.CloneVisitor;
+import com.github.javaparser.metamodel.OptionalProperty;
 import com.github.javaparser.metamodel.ReturnStmtMetaModel;
 import com.github.javaparser.metamodel.JavaParserMetaModel;
 import javax.annotation.Generated;
@@ -42,6 +43,7 @@ import java.util.function.Consumer;
  */
 public final class ReturnStmt extends Statement {
 
+    @OptionalProperty
     private Expression expression;
 
     public ReturnStmt() {
@@ -166,5 +168,11 @@ public final class ReturnStmt extends Statement {
     @Generated("com.github.javaparser.generator.core.node.TypeCastingGenerator")
     public void ifReturnStmt(Consumer<ReturnStmt> action) {
         action.accept(this);
+    }
+
+    @Override
+    @Generated("com.github.javaparser.generator.core.node.TypeCastingGenerator")
+    public Optional<ReturnStmt> toReturnStmt() {
+        return Optional.of(this);
     }
 }

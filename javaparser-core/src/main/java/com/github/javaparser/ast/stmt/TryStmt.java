@@ -30,6 +30,7 @@ import com.github.javaparser.ast.visitor.CloneVisitor;
 import com.github.javaparser.ast.visitor.GenericVisitor;
 import com.github.javaparser.ast.visitor.VoidVisitor;
 import com.github.javaparser.metamodel.JavaParserMetaModel;
+import com.github.javaparser.metamodel.OptionalProperty;
 import com.github.javaparser.metamodel.TryStmtMetaModel;
 import javax.annotation.Generated;
 import java.util.Arrays;
@@ -40,7 +41,7 @@ import java.util.function.Consumer;
 
 /**
  * <h1>The try statement</h1>
- * <h2>Java 1-6</h2>
+ * <h2>Java 1.0-6</h2>
  * <pre>
  * try {
  * // ...
@@ -101,6 +102,7 @@ public final class TryStmt extends Statement {
 
     private NodeList<CatchClause> catchClauses;
 
+    @OptionalProperty
     private BlockStmt finallyBlock;
 
     public TryStmt() {
@@ -309,5 +311,11 @@ public final class TryStmt extends Statement {
     @Generated("com.github.javaparser.generator.core.node.TypeCastingGenerator")
     public void ifTryStmt(Consumer<TryStmt> action) {
         action.accept(this);
+    }
+
+    @Override
+    @Generated("com.github.javaparser.generator.core.node.TypeCastingGenerator")
+    public Optional<TryStmt> toTryStmt() {
+        return Optional.of(this);
     }
 }
