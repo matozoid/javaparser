@@ -13,7 +13,6 @@ public class PlaceholderStmtTest {
     public void test() {
         MethodDeclaration methodDeclaration = parseBodyDeclaration("int x() { int a; `abc`; print(1);}").asMethodDeclaration();
         assertInstanceOf(PlaceholderStmt.class, methodDeclaration.asMethodDeclaration().getBody().get().getStatement(1));
-        System.out.println(new YamlPrinter(true).output(methodDeclaration));
         assertEquals("abc", methodDeclaration.findFirst(PlaceholderStmt.class).get().getPlaceholderKey().get().asString());
     }
 }

@@ -908,7 +908,7 @@ public class PrettyPrintVisitor implements VoidVisitor<Void> {
     public void visit(PlaceholderType n, Void arg) {
         printComment(n.getComment(), arg);
         printer.print("`");
-        n.getName().accept(this, arg);
+        n.getPlaceholderKey().ifPresent(k -> k.accept(this, arg));
         printer.print("`");
     }
 
@@ -919,10 +919,10 @@ public class PrettyPrintVisitor implements VoidVisitor<Void> {
             printTypeArgs(n, arg);
             printer.print("this");
         } else {
-            if (n.getExpression().isPresent()) {
-                n.getExpression().get().accept(this, arg);
+            n.getExpression().ifPresent(exp -> {
+                exp.accept(this, arg);
                 printer.print(".");
-            }
+            });
             printTypeArgs(n, arg);
             printer.print("super");
         }

@@ -22,26 +22,26 @@ package com.github.javaparser.ast.type;
 
 import com.github.javaparser.TokenRange;
 import com.github.javaparser.ast.AllFieldsConstructor;
+import com.github.javaparser.ast.Node;
 import com.github.javaparser.ast.expr.SimpleName;
-import com.github.javaparser.ast.nodeTypes.NodeWithSimpleName;
+import com.github.javaparser.ast.nodeTypes.NodeWithPlaceholderKey;
 import com.github.javaparser.ast.observer.ObservableProperty;
+import com.github.javaparser.ast.visitor.CloneVisitor;
 import com.github.javaparser.ast.visitor.GenericVisitor;
 import com.github.javaparser.ast.visitor.VoidVisitor;
+import com.github.javaparser.metamodel.JavaParserMetaModel;
 import com.github.javaparser.metamodel.OptionalProperty;
+import com.github.javaparser.metamodel.PlaceholderTypeMetaModel;
 import com.github.javaparser.resolution.types.ResolvedType;
 import javax.annotation.Generated;
 import java.util.Optional;
 import java.util.function.Consumer;
-import com.github.javaparser.ast.Node;
-import com.github.javaparser.ast.visitor.CloneVisitor;
-import com.github.javaparser.metamodel.PlaceholderTypeMetaModel;
-import com.github.javaparser.metamodel.JavaParserMetaModel;
 
 /**
- * A general purpose placeholder. This is not valid Java syntax. It is created by inserting a backslash and a name where an
+ * A general purpose placeholder. This is not valid Java syntax. It is created by inserting a name in backquotes where an
  * expression would normally be.
  */
-public final class PlaceholderType extends Type implements NodeWithSimpleName<PlaceholderType> {
+public final class PlaceholderType extends Type implements NodeWithPlaceholderKey<PlaceholderType> {
 
     @OptionalProperty
     private SimpleName placeholderKey;
@@ -92,16 +92,6 @@ public final class PlaceholderType extends Type implements NodeWithSimpleName<Pl
     }
 
     @Override
-    public SimpleName getName() {
-        return placeholderKey;
-    }
-
-    @Override
-    public PlaceholderType setName(SimpleName name) {
-        return this;
-    }
-
-    @Override
     @Generated("com.github.javaparser.generator.core.node.TypeCastingGenerator")
     public boolean isPlaceholderType() {
         return true;
@@ -124,6 +114,9 @@ public final class PlaceholderType extends Type implements NodeWithSimpleName<Pl
         action.accept(this);
     }
 
+    /**
+     * Even though this returns an optional, it is always there (unless you remove it with one of the methods on this class.)
+     */
     @Generated("com.github.javaparser.generator.core.node.PropertyGenerator")
     public Optional<SimpleName> getPlaceholderKey() {
         return Optional.ofNullable(placeholderKey);
