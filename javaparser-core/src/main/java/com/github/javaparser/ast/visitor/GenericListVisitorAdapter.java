@@ -1457,6 +1457,11 @@ public abstract class GenericListVisitorAdapter<R, A> implements GenericVisitor<
     public List<R> visit(final SimpleName n, final A arg) {
         List<R> result = new ArrayList<>();
         List<R> tmp;
+        if (n.getPlaceholderKey().isPresent()) {
+            tmp = n.getPlaceholderKey().get().accept(this, arg);
+            if (tmp != null)
+                result.addAll(tmp);
+        }
         if (n.getComment().isPresent()) {
             tmp = n.getComment().get().accept(this, arg);
             if (tmp != null)
@@ -2047,8 +2052,8 @@ public abstract class GenericListVisitorAdapter<R, A> implements GenericVisitor<
     public List<R> visit(final PlaceholderStmt n, final A arg) {
         List<R> result = new ArrayList<>();
         List<R> tmp;
-        if (n.getPlaceholderKey().isPresent()) {
-            tmp = n.getPlaceholderKey().get().accept(this, arg);
+        {
+            tmp = n.getPlaceholderKey().accept(this, arg);
             if (tmp != null)
                 result.addAll(tmp);
         }
@@ -2065,8 +2070,8 @@ public abstract class GenericListVisitorAdapter<R, A> implements GenericVisitor<
     public List<R> visit(final PlaceholderExpr n, final A arg) {
         List<R> result = new ArrayList<>();
         List<R> tmp;
-        if (n.getPlaceholderKey().isPresent()) {
-            tmp = n.getPlaceholderKey().get().accept(this, arg);
+        {
+            tmp = n.getPlaceholderKey().accept(this, arg);
             if (tmp != null)
                 result.addAll(tmp);
         }
@@ -2083,8 +2088,8 @@ public abstract class GenericListVisitorAdapter<R, A> implements GenericVisitor<
     public List<R> visit(final PlaceholderType n, final A arg) {
         List<R> result = new ArrayList<>();
         List<R> tmp;
-        if (n.getPlaceholderKey().isPresent()) {
-            tmp = n.getPlaceholderKey().get().accept(this, arg);
+        {
+            tmp = n.getPlaceholderKey().accept(this, arg);
             if (tmp != null)
                 result.addAll(tmp);
         }

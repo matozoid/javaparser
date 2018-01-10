@@ -689,6 +689,8 @@ public class NoCommentEqualsVisitor implements GenericVisitor<Boolean, Visitable
         final SimpleName n2 = (SimpleName) arg;
         if (!objEquals(n.getIdentifier(), n2.getIdentifier()))
             return false;
+        if (!nodeEquals(n.getPlaceholderKey(), n2.getPlaceholderKey()))
+            return false;
         return true;
     }
 

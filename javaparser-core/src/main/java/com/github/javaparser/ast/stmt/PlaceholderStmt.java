@@ -23,6 +23,7 @@ package com.github.javaparser.ast.stmt;
 import com.github.javaparser.TokenRange;
 import com.github.javaparser.ast.AllFieldsConstructor;
 import com.github.javaparser.ast.expr.SimpleName;
+import com.github.javaparser.ast.nodeTypes.NodeWithOptionalPlaceholderKey;
 import com.github.javaparser.ast.nodeTypes.NodeWithPlaceholderKey;
 import com.github.javaparser.ast.observer.ObservableProperty;
 import com.github.javaparser.ast.visitor.GenericVisitor;
@@ -35,6 +36,7 @@ import com.github.javaparser.ast.Node;
 import com.github.javaparser.ast.visitor.CloneVisitor;
 import com.github.javaparser.metamodel.PlaceholderStmtMetaModel;
 import com.github.javaparser.metamodel.JavaParserMetaModel;
+import static com.github.javaparser.utils.Utils.assertNotNull;
 
 /**
  * A general purpose placeholder. This is not Java syntax. It is created by inserting a backslash and a name where a
@@ -42,7 +44,6 @@ import com.github.javaparser.metamodel.JavaParserMetaModel;
  */
 public final class PlaceholderStmt extends Statement implements NodeWithPlaceholderKey<PlaceholderStmt> {
 
-    @OptionalProperty
     private SimpleName placeholderKey;
 
     public PlaceholderStmt() {
@@ -80,24 +81,6 @@ public final class PlaceholderStmt extends Statement implements NodeWithPlacehol
         v.visit(this, arg);
     }
 
-    @Generated("com.github.javaparser.generator.core.node.PropertyGenerator")
-    public Optional<SimpleName> getPlaceholderKey() {
-        return Optional.ofNullable(placeholderKey);
-    }
-
-    @Generated("com.github.javaparser.generator.core.node.PropertyGenerator")
-    public PlaceholderStmt setPlaceholderKey(final SimpleName placeholderKey) {
-        if (placeholderKey == this.placeholderKey) {
-            return (PlaceholderStmt) this;
-        }
-        notifyPropertyChange(ObservableProperty.PLACEHOLDER_KEY, this.placeholderKey, placeholderKey);
-        if (this.placeholderKey != null)
-            this.placeholderKey.setParentNode(null);
-        this.placeholderKey = placeholderKey;
-        setAsParentNodeOf(placeholderKey);
-        return this;
-    }
-
     @Override
     @Generated("com.github.javaparser.generator.core.node.TypeCastingGenerator")
     public boolean isPlaceholderStmt() {
@@ -131,12 +114,6 @@ public final class PlaceholderStmt extends Statement implements NodeWithPlacehol
     public boolean remove(Node node) {
         if (node == null)
             return false;
-        if (placeholderKey != null) {
-            if (node == placeholderKey) {
-                removePlaceholderKey();
-                return true;
-            }
-        }
         return super.remove(node);
     }
 
@@ -145,11 +122,9 @@ public final class PlaceholderStmt extends Statement implements NodeWithPlacehol
     public boolean replace(Node node, Node replacementNode) {
         if (node == null)
             return false;
-        if (placeholderKey != null) {
-            if (node == placeholderKey) {
-                setPlaceholderKey((SimpleName) replacementNode);
-                return true;
-            }
+        if (node == placeholderKey) {
+            setPlaceholderKey((SimpleName) replacementNode);
+            return true;
         }
         return super.replace(node, replacementNode);
     }
@@ -164,5 +139,24 @@ public final class PlaceholderStmt extends Statement implements NodeWithPlacehol
     @Generated("com.github.javaparser.generator.core.node.GetMetaModelGenerator")
     public PlaceholderStmtMetaModel getMetaModel() {
         return JavaParserMetaModel.placeholderStmtMetaModel;
+    }
+
+    @Generated("com.github.javaparser.generator.core.node.PropertyGenerator")
+    public SimpleName getPlaceholderKey() {
+        return placeholderKey;
+    }
+
+    @Generated("com.github.javaparser.generator.core.node.PropertyGenerator")
+    public PlaceholderStmt setPlaceholderKey(final SimpleName placeholderKey) {
+        assertNotNull(placeholderKey);
+        if (placeholderKey == this.placeholderKey) {
+            return (PlaceholderStmt) this;
+        }
+        notifyPropertyChange(ObservableProperty.PLACEHOLDER_KEY, this.placeholderKey, placeholderKey);
+        if (this.placeholderKey != null)
+            this.placeholderKey.setParentNode(null);
+        this.placeholderKey = placeholderKey;
+        setAsParentNodeOf(placeholderKey);
+        return this;
     }
 }

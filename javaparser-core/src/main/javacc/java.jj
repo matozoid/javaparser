@@ -1414,10 +1414,17 @@ Name Name():
 SimpleName SimpleName():
 {
     SimpleName ret;
+	JavaToken begin;
+	String placeholderKey;
 }
 {
-  Identifier() { ret = new SimpleName(tokenRange(), token.image); }
-  { return ret; }
+    (
+        Identifier() { ret = new SimpleName(tokenRange(), token.image, null); }
+        |
+          <PLACEHOLDER> {begin=token();} placeholderKey = Identifier() <PLACEHOLDER> 
+          { ret = new SimpleName(range(begin, token()), "placeholder", new SimpleName(placeholderKey)); }
+    )
+    { return ret; }
 }
 
 

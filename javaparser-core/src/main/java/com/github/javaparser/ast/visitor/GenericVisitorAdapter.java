@@ -1268,6 +1268,11 @@ public abstract class GenericVisitorAdapter<R, A> implements GenericVisitor<R, A
     @Generated("com.github.javaparser.generator.core.visitor.GenericVisitorAdapterGenerator")
     public R visit(final SimpleName n, final A arg) {
         R result;
+        if (n.getPlaceholderKey().isPresent()) {
+            result = n.getPlaceholderKey().get().accept(this, arg);
+            if (result != null)
+                return result;
+        }
         if (n.getComment().isPresent()) {
             result = n.getComment().get().accept(this, arg);
             if (result != null)
@@ -2040,8 +2045,8 @@ public abstract class GenericVisitorAdapter<R, A> implements GenericVisitor<R, A
     @Generated("com.github.javaparser.generator.core.visitor.GenericVisitorAdapterGenerator")
     public R visit(final PlaceholderStmt n, final A arg) {
         R result;
-        if (n.getPlaceholderKey().isPresent()) {
-            result = n.getPlaceholderKey().get().accept(this, arg);
+        {
+            result = n.getPlaceholderKey().accept(this, arg);
             if (result != null)
                 return result;
         }
@@ -2057,8 +2062,8 @@ public abstract class GenericVisitorAdapter<R, A> implements GenericVisitor<R, A
     @Generated("com.github.javaparser.generator.core.visitor.GenericVisitorAdapterGenerator")
     public R visit(final PlaceholderExpr n, final A arg) {
         R result;
-        if (n.getPlaceholderKey().isPresent()) {
-            result = n.getPlaceholderKey().get().accept(this, arg);
+        {
+            result = n.getPlaceholderKey().accept(this, arg);
             if (result != null)
                 return result;
         }
@@ -2074,8 +2079,8 @@ public abstract class GenericVisitorAdapter<R, A> implements GenericVisitor<R, A
     @Generated("com.github.javaparser.generator.core.visitor.GenericVisitorAdapterGenerator")
     public R visit(final PlaceholderType n, final A arg) {
         R result;
-        if (n.getPlaceholderKey().isPresent()) {
-            result = n.getPlaceholderKey().get().accept(this, arg);
+        {
+            result = n.getPlaceholderKey().accept(this, arg);
             if (result != null)
                 return result;
         }

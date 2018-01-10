@@ -37,13 +37,14 @@ import javax.annotation.Generated;
 import java.util.Optional;
 import java.util.function.Consumer;
 
+import static com.github.javaparser.utils.Utils.assertNotNull;
+
 /**
  * A general purpose placeholder. This is not valid Java syntax. It is created by inserting a name in backquotes where an
  * expression would normally be.
  */
 public final class PlaceholderType extends Type implements NodeWithPlaceholderKey<PlaceholderType> {
 
-    @OptionalProperty
     private SimpleName placeholderKey;
 
     public PlaceholderType() {
@@ -114,27 +115,6 @@ public final class PlaceholderType extends Type implements NodeWithPlaceholderKe
         action.accept(this);
     }
 
-    /**
-     * Even though this returns an optional, it is always there (unless you remove it with one of the methods on this class.)
-     */
-    @Generated("com.github.javaparser.generator.core.node.PropertyGenerator")
-    public Optional<SimpleName> getPlaceholderKey() {
-        return Optional.ofNullable(placeholderKey);
-    }
-
-    @Generated("com.github.javaparser.generator.core.node.PropertyGenerator")
-    public PlaceholderType setPlaceholderKey(final SimpleName placeholderKey) {
-        if (placeholderKey == this.placeholderKey) {
-            return (PlaceholderType) this;
-        }
-        notifyPropertyChange(ObservableProperty.PLACEHOLDER_KEY, this.placeholderKey, placeholderKey);
-        if (this.placeholderKey != null)
-            this.placeholderKey.setParentNode(null);
-        this.placeholderKey = placeholderKey;
-        setAsParentNodeOf(placeholderKey);
-        return this;
-    }
-
     @Generated("com.github.javaparser.generator.core.node.RemoveMethodGenerator")
     public PlaceholderType removePlaceholderKey() {
         return setPlaceholderKey((SimpleName) null);
@@ -145,12 +125,6 @@ public final class PlaceholderType extends Type implements NodeWithPlaceholderKe
     public boolean remove(Node node) {
         if (node == null)
             return false;
-        if (placeholderKey != null) {
-            if (node == placeholderKey) {
-                removePlaceholderKey();
-                return true;
-            }
-        }
         return super.remove(node);
     }
 
@@ -159,11 +133,9 @@ public final class PlaceholderType extends Type implements NodeWithPlaceholderKe
     public boolean replace(Node node, Node replacementNode) {
         if (node == null)
             return false;
-        if (placeholderKey != null) {
-            if (node == placeholderKey) {
-                setPlaceholderKey((SimpleName) replacementNode);
-                return true;
-            }
+        if (node == placeholderKey) {
+            setPlaceholderKey((SimpleName) replacementNode);
+            return true;
         }
         return super.replace(node, replacementNode);
     }
@@ -178,5 +150,24 @@ public final class PlaceholderType extends Type implements NodeWithPlaceholderKe
     @Generated("com.github.javaparser.generator.core.node.GetMetaModelGenerator")
     public PlaceholderTypeMetaModel getMetaModel() {
         return JavaParserMetaModel.placeholderTypeMetaModel;
+    }
+
+    @Generated("com.github.javaparser.generator.core.node.PropertyGenerator")
+    public SimpleName getPlaceholderKey() {
+        return placeholderKey;
+    }
+
+    @Generated("com.github.javaparser.generator.core.node.PropertyGenerator")
+    public PlaceholderType setPlaceholderKey(final SimpleName placeholderKey) {
+        assertNotNull(placeholderKey);
+        if (placeholderKey == this.placeholderKey) {
+            return (PlaceholderType) this;
+        }
+        notifyPropertyChange(ObservableProperty.PLACEHOLDER_KEY, this.placeholderKey, placeholderKey);
+        if (this.placeholderKey != null)
+            this.placeholderKey.setParentNode(null);
+        this.placeholderKey = placeholderKey;
+        setAsParentNodeOf(placeholderKey);
+        return this;
     }
 }

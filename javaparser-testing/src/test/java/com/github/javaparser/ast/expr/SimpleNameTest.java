@@ -21,10 +21,13 @@
 
 package com.github.javaparser.ast.expr;
 
+import com.github.javaparser.ast.body.MethodDeclaration;
+import com.github.javaparser.ast.type.PlaceholderType;
 import org.junit.Test;
+import static org.junit.jupiter.api.Assertions.*;
 
+import static com.github.javaparser.JavaParser.parseBodyDeclaration;
 import static com.github.javaparser.JavaParser.parseSimpleName;
-import static junit.framework.TestCase.assertEquals;
 
 public class SimpleNameTest {
 
@@ -47,5 +50,19 @@ public class SimpleNameTest {
     public void unicodeEscapesArePreservedInIdentifiers() {
         SimpleName name = parseSimpleName("xxx\\u2122xxx");
         assertEquals("xxx\\u2122xxx", name.asString());
+    }
+
+    @Test
+    public void test() {
+        MethodDeclaration methodDeclaration = parseBodyDeclaration("int x() { int `ghi`; print(1);}").asMethodDeclaration();
+        assertEquals(true, methodDeclaration.asMethodDeclaration()
+                .getBody().get()
+                .getStatement(0).asExpressionStmt()
+                .getExpression().asVariableDeclarationExpr()
+                .getVariable(0)
+                .getName()
+                .getPlaceholderKey().isPresent()
+        );
+        assertEquals("ghi", methodDeclaration.findFirst(PlaceholderType.class).get().getPlaceholderKeyAsString());
     }
 }

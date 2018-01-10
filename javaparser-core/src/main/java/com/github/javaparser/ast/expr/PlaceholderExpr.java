@@ -42,7 +42,6 @@ import static com.github.javaparser.utils.Utils.assertNotNull;
  */
 public final class PlaceholderExpr extends Expression implements NodeWithPlaceholderKey<PlaceholderExpr> {
 
-    @OptionalProperty
     private SimpleName placeholderKey;
 
     public PlaceholderExpr() {
@@ -80,30 +79,6 @@ public final class PlaceholderExpr extends Expression implements NodeWithPlaceho
         v.visit(this, arg);
     }
 
-    @Generated("com.github.javaparser.generator.core.node.PropertyGenerator")
-    public Optional<SimpleName> getPlaceholderKey() {
-        return Optional.ofNullable(placeholderKey);
-    }
-
-    /**
-     * Sets the name
-     *
-     * @param label the name, can be null
-     * @return this, the BreakStmt
-     */
-    @Generated("com.github.javaparser.generator.core.node.PropertyGenerator")
-    public PlaceholderExpr setPlaceholderKey(final SimpleName placeholderKey) {
-        if (placeholderKey == this.placeholderKey) {
-            return (PlaceholderExpr) this;
-        }
-        notifyPropertyChange(ObservableProperty.PLACEHOLDER_KEY, this.placeholderKey, placeholderKey);
-        if (this.placeholderKey != null)
-            this.placeholderKey.setParentNode(null);
-        this.placeholderKey = placeholderKey;
-        setAsParentNodeOf(placeholderKey);
-        return this;
-    }
-
     @Override
     @Generated("com.github.javaparser.generator.core.node.TypeCastingGenerator")
     public boolean isPlaceholderExpr() {
@@ -126,12 +101,6 @@ public final class PlaceholderExpr extends Expression implements NodeWithPlaceho
     public boolean remove(Node node) {
         if (node == null)
             return false;
-        if (placeholderKey != null) {
-            if (node == placeholderKey) {
-                removePlaceholderKey();
-                return true;
-            }
-        }
         return super.remove(node);
     }
 
@@ -140,11 +109,9 @@ public final class PlaceholderExpr extends Expression implements NodeWithPlaceho
     public boolean replace(Node node, Node replacementNode) {
         if (node == null)
             return false;
-        if (placeholderKey != null) {
-            if (node == placeholderKey) {
-                setPlaceholderKey((SimpleName) replacementNode);
-                return true;
-            }
+        if (node == placeholderKey) {
+            setPlaceholderKey((SimpleName) replacementNode);
+            return true;
         }
         return super.replace(node, replacementNode);
     }
@@ -170,5 +137,24 @@ public final class PlaceholderExpr extends Expression implements NodeWithPlaceho
     @Generated("com.github.javaparser.generator.core.node.TypeCastingGenerator")
     public Optional<PlaceholderExpr> toPlaceholderExpr() {
         return Optional.of(this);
+    }
+
+    @Generated("com.github.javaparser.generator.core.node.PropertyGenerator")
+    public SimpleName getPlaceholderKey() {
+        return placeholderKey;
+    }
+
+    @Generated("com.github.javaparser.generator.core.node.PropertyGenerator")
+    public PlaceholderExpr setPlaceholderKey(final SimpleName placeholderKey) {
+        assertNotNull(placeholderKey);
+        if (placeholderKey == this.placeholderKey) {
+            return (PlaceholderExpr) this;
+        }
+        notifyPropertyChange(ObservableProperty.PLACEHOLDER_KEY, this.placeholderKey, placeholderKey);
+        if (this.placeholderKey != null)
+            this.placeholderKey.setParentNode(null);
+        this.placeholderKey = placeholderKey;
+        setAsParentNodeOf(placeholderKey);
+        return this;
     }
 }

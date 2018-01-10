@@ -9,4 +9,6 @@ public class SimpleNameMetaModel extends NodeMetaModel {
     }
 
     public PropertyMetaModel identifierPropertyMetaModel;
+
+    public PropertyMetaModel placeholderKeyPropertyMetaModel;
 }

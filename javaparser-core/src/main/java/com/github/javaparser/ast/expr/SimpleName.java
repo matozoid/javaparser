@@ -20,19 +20,22 @@
  */
 package com.github.javaparser.ast.expr;
 
+import com.github.javaparser.TokenRange;
 import com.github.javaparser.ast.AllFieldsConstructor;
 import com.github.javaparser.ast.Node;
 import com.github.javaparser.ast.nodeTypes.NodeWithIdentifier;
+import com.github.javaparser.ast.nodeTypes.NodeWithOptionalPlaceholderKey;
 import com.github.javaparser.ast.observer.ObservableProperty;
+import com.github.javaparser.ast.visitor.CloneVisitor;
 import com.github.javaparser.ast.visitor.GenericVisitor;
 import com.github.javaparser.ast.visitor.VoidVisitor;
-import static com.github.javaparser.utils.Utils.assertNonEmpty;
-import com.github.javaparser.ast.visitor.CloneVisitor;
-import com.github.javaparser.metamodel.NonEmptyProperty;
-import com.github.javaparser.metamodel.SimpleNameMetaModel;
 import com.github.javaparser.metamodel.JavaParserMetaModel;
+import com.github.javaparser.metamodel.NonEmptyProperty;
+import com.github.javaparser.metamodel.OptionalProperty;
+import com.github.javaparser.metamodel.SimpleNameMetaModel;
 import javax.annotation.Generated;
-import com.github.javaparser.TokenRange;
+import java.util.Optional;
+import static com.github.javaparser.utils.Utils.assertNonEmpty;
 
 /**
  * A name that consists of a single identifier.
@@ -40,27 +43,35 @@ import com.github.javaparser.TokenRange;
  *
  * @see Name
  */
-public final class SimpleName extends Node implements NodeWithIdentifier<SimpleName> {
+public final class SimpleName extends Node implements NodeWithIdentifier<SimpleName>, NodeWithOptionalPlaceholderKey<SimpleName> {
 
     @NonEmptyProperty
     private String identifier;
 
+    @OptionalProperty
+    private SimpleName placeholderKey;
+
     public SimpleName() {
-        this(null, "empty");
+        this(null, "empty", null);
+    }
+
+    public SimpleName(final String identifier) {
+        this(null, identifier, null);
     }
 
     @AllFieldsConstructor
-    public SimpleName(final String identifier) {
-        this(null, identifier);
+    public SimpleName(final String identifier, SimpleName placeholderKey) {
+        this(null, identifier, placeholderKey);
     }
 
     /**
      * This constructor is used by the parser and is considered private.
      */
     @Generated("com.github.javaparser.generator.core.node.MainConstructorGenerator")
-    public SimpleName(TokenRange tokenRange, String identifier) {
+    public SimpleName(TokenRange tokenRange, String identifier, SimpleName placeholderKey) {
         super(tokenRange);
         setIdentifier(identifier);
+        setPlaceholderKey(placeholderKey);
         customInitialization();
     }
 
@@ -97,6 +108,12 @@ public final class SimpleName extends Node implements NodeWithIdentifier<SimpleN
     public boolean remove(Node node) {
         if (node == null)
             return false;
+        if (placeholderKey != null) {
+            if (node == placeholderKey) {
+                removePlaceholderKey();
+                return true;
+            }
+        }
         return super.remove(node);
     }
 
@@ -121,6 +138,36 @@ public final class SimpleName extends Node implements NodeWithIdentifier<SimpleN
     public boolean replace(Node node, Node replacementNode) {
         if (node == null)
             return false;
+        if (placeholderKey != null) {
+            if (node == placeholderKey) {
+                setPlaceholderKey((SimpleName) replacementNode);
+                return true;
+            }
+        }
         return super.replace(node, replacementNode);
     }
+
+    @Generated("com.github.javaparser.generator.core.node.PropertyGenerator")
+    public Optional<SimpleName> getPlaceholderKey() {
+        return Optional.ofNullable(placeholderKey);
+    }
+
+    @Generated("com.github.javaparser.generator.core.node.PropertyGenerator")
+    public SimpleName setPlaceholderKey(final SimpleName placeholderKey) {
+        if (placeholderKey == this.placeholderKey) {
+            return (SimpleName) this;
+        }
+        notifyPropertyChange(ObservableProperty.PLACEHOLDER_KEY, this.placeholderKey, placeholderKey);
+        if (this.placeholderKey != null)
+            this.placeholderKey.setParentNode(null);
+        this.placeholderKey = placeholderKey;
+        setAsParentNodeOf(placeholderKey);
+        return this;
+    }
+
+    @Generated("com.github.javaparser.generator.core.node.RemoveMethodGenerator")
+    public SimpleName removePlaceholderKey() {
+        return setPlaceholderKey((SimpleName) null);
+    }
+
 }

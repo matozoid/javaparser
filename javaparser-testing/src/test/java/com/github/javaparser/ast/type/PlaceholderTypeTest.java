@@ -18,7 +18,7 @@ public class PlaceholderTypeTest {
                 .getVariable(0)
                 .getType()
         );
-        assertEquals("def", methodDeclaration.findFirst(PlaceholderType.class).get().getPlaceholderKey().get().asString());
+        assertEquals("def", methodDeclaration.findFirst(PlaceholderType.class).get().getPlaceholderKeyAsString());
     }
 
 }
